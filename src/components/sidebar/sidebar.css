@@ -36,10 +36,12 @@ p{
 .sidebarList{
     list-style: none;
     margin-bottom: 30px;
+    padding-left: 30px;
 }
 .sidebatListItem{
     display: inline-block;
-    width: 45%;
+ 
+    width: 42%;
     text-align: center;
     margin-top: 15px;
     cursor: pointer;

@@ -1,0 +1,69 @@
+.write {
+    margin-top: 100px;
+}
+
+.fileinputwe {
+    display: none;
+}
+
+.writeIcon {
+    width: 29px;
+    height: 29px;
+    border: 2px solid rgba(0, 0, 0);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.writeform {
+    margin-left: 160px;
+}
+
+.writeform .abcd {
+    display: flex;
+}
+
+.writeTitle {
+    border: none;
+    font-size: 30px;
+    margin-left: 7px;
+    padding-left: 10px;
+    width: 70vw;
+}
+
+.writeTitle:focus {
+    outline: none;
+}
+
+.writeTectArea {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+
+.writeform{
+    position: relative;
+}
+
+.writebtn {
+    position: absolute;
+    top: 20px;
+    right: 200px;
+    color: #fff;
+    background-color: #008080;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+
+.writeImage{
+    width: 70vw;
+    margin: 0px 0px 30px 200px;
+    height: 300px;
+  
+}

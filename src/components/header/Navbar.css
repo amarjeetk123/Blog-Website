@@ -9,13 +9,11 @@ position: fixed;
 top: 0;
 z-index: 100;
 background-color:#fff;
-padding: 10px 0px;
+
 }
 .main{
     width: 90%;
     height: 50px;
-
-   
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -1,0 +1,90 @@
+.userSetting{
+    margin-top: 100px;
+    display: flex;
+
+}
+.settingWrapper{
+    flex: 9;
+    padding: 20px;
+}
+.settingTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.settingUpdateTitle{
+    font-size: 22px;
+    color: #E03B8B;
+    cursor: pointer;
+}
+.settingDeleteTitle{
+    cursor: pointer;
+    color: #ff0000;
+    font-weight: 500;
+}
+
+.settingForm{
+    display: flex;
+    flex-direction: column;
+}
+.setingProfilepic{
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+.ppimage{
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.setingProfilepicIcon{
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #E03B8B;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+.pplabel{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+.settingForm > label{
+    font-size: 20px;
+    margin-top: 20px;
+
+}
+.settingForm > input{
+    columns: #808080;
+    margin: 7px 0px;
+    height: 25px;
+    padding: 5px 10px;
+    font-size: 20px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+.settingForm > input:focus{
+    outline: none;
+}
+.settingUpdatebtn{
+    
+    padding: 5px 10px;
+    border: none;
+    border-radius: 7px;
+    background-color: #008080;
+    color: #ffffff;
+    font-size: 20px;
+    width: 150px;
+    align-self: center;
+    cursor: pointer;
+    margin-top: 16px;
+}
+.hide{
+    display: none;
+}
