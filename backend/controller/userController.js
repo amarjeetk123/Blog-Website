@@ -245,9 +245,16 @@ exports.createPost = async (req,res) =>{
 exports.updatePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);  
-        if(post.username == req.body.username){
-
+        const {username , title} = req.body
+        if(!username){
+            return res.status(401).send("username is required to update the title of post")
+        }
+        if(post.username == username){
             try {
+              const titleexist = await Post.findOne({title})
+              if(titleexist){
+                return res.status(401).send("Please write another title this title is already in use")
+              }
                 const updatedPost = await Post.findByIdAndUpdate(req.params.id , {
                     $set: req.body
                 }, {new:true} )
@@ -261,11 +268,16 @@ exports.updatePost = async (req, res) => {
                     success: false,
                     message: "error in edit post controller"
                 })
-            }
-                
+            }    
         }
         else{
-            res.status(401).json("You can update only your post!")
+            res.status(401).json({
+                success: false,
+                message: "You can update only your post!" ,
+                 a:post.username,
+                 b:username
+            })
+            
         }
 
         
