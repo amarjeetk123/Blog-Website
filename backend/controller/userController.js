@@ -1,7 +1,8 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs")
 
-const Post = require("../models/Post")    // i am using this is delete controller....
+const Post = require("../models/Post");    // i am using this is delete controller....
+const { aggregate } = require("../models/User");
 
 exports.home = (req, res) => {
     res.send("Amarjett Kumar Aryan");
@@ -327,21 +328,55 @@ exports.deletePost = async (req, res) => {
 
 }
 
-// function for getting the post  - almost same like getUser
-exports.getPost = async (req,res) => {
+// function for getting \any post on search or by postid  - almost same like getUser
+exports.getPost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
-res.status(201).json({
-    success: true,
-    post,
-})
-        
+        res.status(201).json({
+            success: true,
+            post,
+        })
+
     } catch (error) {
         console.log(error.message)
         console.log("error in getPost controller")
         res.status(201).json({
             success: false,
             message: "error in getPost controller"
+        })
+    }
+}
+
+// function for getting the post  
+exports.getAllPost = async (req, res) => {
+    const username = req.query.user;
+    const categoryname = req.query.cat;
+    try {
+        let posts;
+        if (username) {        // it will show all thw posts related to a single user
+            posts = await Post.find({ username: username })
+        }
+        else if (categoryname) {  // it will show all the posts related to a perticular categories
+            posts = await Post.find({
+                category: {
+                    $in: [categoryname]
+                }
+            })
+        }
+        else {
+            posts = await Post.find()  // it will show all the posts
+        }
+        res.status(201).json({
+            success: true,
+            posts
+        })
+
+    } catch (error) {
+        console.log(error.message)
+        console.log("error in getAllPost controller")
+        res.status(201).json({
+            success: false,
+            message: "not able to find getAllPost"
         })
     }
 }
