@@ -26,6 +26,8 @@ router.post("/category",createCategory)
 router.get("/getallcategory",getAllCategory)
 
 
+
+
 const multer = require("multer") // for string photos from user
 const storage = multer.diskStorage({
     destination:(req,file,cb) => {   //  cb- call back

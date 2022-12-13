@@ -16,12 +16,14 @@
     text-align: center;
     font-family: 'Lora', serif;
     font-size: 28px;
+    margin-top: 20px;
 }
 .SinglePagecon{
     float: right;
     font-size: 25px;
 }
 .deleteIcon , .editIcon{
+    margin-top: 25px;
     cursor: pointer;
     margin-left: 10px;
 }
@@ -35,12 +37,13 @@
     display: flex;
     justify-content: space-between;
     font-size: 25px;
+
 }
 .singlepostdis{
-    color: #6666;
+    color: rgba(19, 17, 17, 0.4);
     font-size: 20px;
     line-height: 25px;
-    margin-top: 15px;
+  
 }
 .singlepostdis::first-letter{
     font-size: 32px;

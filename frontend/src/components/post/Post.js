@@ -1,6 +1,9 @@
 import "./post.css"
+import {Link} from "react-router-dom"
 
-function Post() {
+
+function Post({post}) {
+  
   return (
     <div className="post">
         <img 
@@ -13,14 +16,15 @@ function Post() {
                 <span className="postCat" >Music</span>
                 <span className="postCat" >Life</span>
             </div>
-            <span className="postTitle" >
-            Lorem ipsum dolor sit amet, consectetur 
-            </span>
+            <Link to={`/post/${post._id}`}  className="link" >
+            <span className="postTitle" >  { post.title }  </span>
+            </Link>
+          
             <hr />
-            <span className="postDate">1 Hours ago</span>
+            <span className="postDate"> { new Date(post.createdAt).toDateString()  } </span>
          </div>
          <p className="poDis" >
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labor aliquip ex ea commodo consequatconsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volupta
+          {post.description}
          </p>
 
     </div>

@@ -22,19 +22,20 @@ exports.register = async (req, res) => {
             return res.status(401).send("All field are required")
         }
 
+         //check if username exists or not
+         let username = newUser.username
+         const existingUser2 = await User.findOne({ username })
+         if (existingUser2) {
+             return res.status(401).send("userNmae already exist")
+         }
+
         //check if user email exists or not
         let email = newUser.email
         const existingUser = await User.findOne({ email })
         if (existingUser) {
-            return res.status(401).send("emailid already found in database")
+            return res.status(401).send("Email id already exist")
         }
 
-        //check if username exists or not
-        let username = newUser.username
-        const existingUser2 = await User.findOne({ username })
-        if (existingUser2) {
-            return res.status(401).send("userNmae already found in database")
-        }
 
         //encrypt the password
         const myEncyPassword = await bcrypt.hash(newUser.password, 10)
