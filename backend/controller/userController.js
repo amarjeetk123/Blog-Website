@@ -2,7 +2,6 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs")
 
 const Post = require("../models/Post");    // i am using this is delete controller....
-const { aggregate } = require("../models/User");
 
 exports.home = (req, res) => {
     res.send("Amarjett Kumar Aryan");
@@ -57,9 +56,10 @@ exports.register = async (req, res) => {
 
     } catch (error) {
         console.log("error is:-", error.message)
+        console.log("error in register controller")
         res.status(401).json({
             success: false,
-            message: "error in register controller"
+            message: "user is not registerd"
         })
 
     }
@@ -109,8 +109,9 @@ exports.login = async (req, res) => {
     }
 }
 
-// Function for update user information
 
+
+// Function for update user information
 exports.update = async (req, res) => {
     if (req.body.userId === req.params.id) {
         if (req.body.password) {
@@ -148,8 +149,6 @@ exports.update = async (req, res) => {
 }
 
 // Function for delete user 
-
-
 exports.deleteuser = async (req, res) => {
     if (req.body.userId === req.params.id) {
 
@@ -189,7 +188,6 @@ exports.deleteuser = async (req, res) => {
     }
 }
 
-
 // function for get a single user 
 exports.getUser = async (req, res) => {
     try {
@@ -210,6 +208,8 @@ exports.getUser = async (req, res) => {
 
     }
 }
+
+
 
 
 // function for creating post  // allmost same as /register  in /register i am using .save for saving data in datavase but here i will used .create for saving data inside databse
@@ -380,5 +380,4 @@ exports.getAllPost = async (req, res) => {
         })
     }
 }
-
 
