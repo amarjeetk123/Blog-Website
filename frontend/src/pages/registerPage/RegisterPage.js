@@ -29,9 +29,9 @@ function RegisterPage() {
   }
 
   return (
-    <div className="register"  onSubmit={handleSubmit}  >
+    <div className="register"    >
       <span className="registerTitle">register</span>
-      <form className="registerFarm">
+      <form className="registerFarm" onSubmit={handleSubmit}>
       <label>Username</label>
         <input type="text" placeholder="Enter your username...."
         onChange={(e) => setUsername(e.target.value)} />
