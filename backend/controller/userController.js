@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs")
+const validator = require("email-validator");
 
 const Post = require("../models/Post");    // i am using this is delete controller....
 
@@ -27,6 +28,12 @@ exports.register = async (req, res) => {
          const existingUser2 = await User.findOne({ username })
          if (existingUser2) {
              return res.status(401).send("userNmae already exist")
+         }
+
+         // do email validation
+        const a=  validator.validate(newUser.email);
+         if(a==false){
+            return res.status(401).send("Email is not in correct format")
          }
 
         //check if user email exists or not
