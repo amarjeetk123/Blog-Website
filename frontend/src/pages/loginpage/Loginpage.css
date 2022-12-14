@@ -39,6 +39,10 @@
     color: #fff;
     cursor: pointer;
 }
+.login-btn:disabled{
+    cursor: no-drop;
+    color: #eaafcb;
+}
 .register-btn{
     position: absolute;
     right: 20px;
@@ -50,4 +54,17 @@
     font-size: 15px;
     top: 90px;
     cursor: pointer;
+}
+
+.same3{
+    color: red;
+    font-weight: 500;
+    position: absolute;
+    margin-left: 10px;
+}
+.warning1 {
+    margin-top: 57px;
+}
+.warning2{
+    margin-top: 139px; 
 }

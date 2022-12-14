@@ -8,7 +8,6 @@ exports.home = (req, res) => {
     res.send("Amarjett Kumar Aryan");
 };
 
-
 // Function for user registraion
 exports.register = async (req, res) => {
     try {
@@ -23,18 +22,18 @@ exports.register = async (req, res) => {
             return res.status(401).send("All field are required")
         }
 
-         //check if username exists or not
-         let username = newUser.username
-         const existingUser2 = await User.findOne({ username })
-         if (existingUser2) {
-             return res.status(401).send("userNmae already exist")
-         }
+        //check if username exists or not
+        let username = newUser.username
+        const existingUser2 = await User.findOne({ username })
+        if (existingUser2) {
+            return res.status(401).send("userNmae already exist")
+        }
 
-         // do email validation
-        const a=  validator.validate(newUser.email);
-         if(a==false){
+        // do email validation
+        const a = validator.validate(newUser.email);
+        if (a == false) {
             return res.status(401).send("Email is not in correct format")
-         }
+        }
 
         //check if user email exists or not
         let email = newUser.email
@@ -75,30 +74,34 @@ exports.register = async (req, res) => {
 
 // Function for user Login
 exports.login = async (req, res) => {
+
+    //collected information from frontend
+    let { username, password } = req.body
     try {
-        //collected information from frontend
-        const { email, password } = req.body
 
         //validate
-        if (!(email && password)) {
-            res.status(401).send("email and password is required")
+        if (!username) {
+            return res.status(401).send("username is required")
+        }
+        if (!password) {
+            return res.status(401).send("password is required")
         }
         //check user in database
-        const user = await User.findOne({ email })
+        const user = await User.findOne({ username })
 
         // if user is not exist
         if (!user) {
-            return res.status(401).json("Wrong email")
+            return res.status(401).json("Wrong username")
         }
 
         // match the password
-        const validate = await bcrypt.compare(password, user.password)
+        let validate = await bcrypt.compare(password, user.password);
 
         if (!validate) {
-            return res.status(401).json("Wrong Password")
+            return res.status(401).json("Wrong Password");
         }
 
-        password = undefined
+        password = undefined;
 
         res.json({
             succsess: true,
@@ -109,6 +112,7 @@ exports.login = async (req, res) => {
 
     } catch (error) {
         console.log("error is:-", error.message)
+        console.log("error in login controller")
         res.status(201).json({
             succsess: false,
             message: "error in login controller"

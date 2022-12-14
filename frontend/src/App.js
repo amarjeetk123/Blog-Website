@@ -12,11 +12,11 @@ import WritePage from './pages/write/WritePage';
 import UserSetting from './pages/userSettings/UserSetting';
 import RegisterPage from './pages/registerPage/RegisterPage';
 import Loginpage from './pages/loginpage/Loginpage';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Context } from './context_api/Context';
 
 function App() {
-  const [user , setUser] = useState(false)
-  
+  const {user}  = useContext(Context)
   return (
     <BrowserRouter>
       <Navbar />

@@ -1,9 +1,14 @@
-import { useState } from "react"
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { Context } from "../../context_api/Context"
 import "./Navbar.css"
 
 export default function Navbar() {
-    const [user, setUser] = useState(false)
+    const { user, dispatch } = useContext(Context)
+
+    const handleLogout = () => {
+        dispatch({ type: "LOGOUT" })
+    }
     return (
         < div className="container" >
             <div className="main" >
@@ -16,32 +21,33 @@ export default function Navbar() {
                 </div>
                 <div className="center" >
                     <ul>
-                        <Link to="/" style={{textDecoration:"none" , color:"inherit" }}>
+                        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
                             <li > Home</li>
                         </Link>
-                        <Link to="/write" style={{textDecoration:"none" , color:"inherit" }}>
+                        <Link to="/write" style={{ textDecoration: "none", color: "inherit" }}>
                             <li > Write </li>
                         </Link>
-                        <Link to="/" style={{textDecoration:"none" , color:"inherit" }}>
-                            <li  > LogOut </li>
-                        </Link>
+
+                        <li onClick={handleLogout}  >  {user && "LogOut"}   </li>
+
                     </ul>
 
                 </div>
-                <div className="right"  style={{display:"flex" , alignItems:"center" }} >
+                <div className="right" >
 
                     {
-                        user ?   <img className="image" src="https://th.bing.com/th/id/R.33d02c67b4a6e90abe2d7a58f764edd8?rik=JYmQaMVSULpYQg&riu=http%3a%2f%2fthewowstyle.com%2fwp-content%2fuploads%2f2015%2f01%2fnature-images.jpg&ehk=BNPsuSOUR7ATZ3EpRwxx1xFl7LUbO3tYlu1wFLCBrCE%3d&risl=&pid=ImgRaw&r=0" alt="imag" /> : 
-                        <ul style={ {display:"flex" , gap:"1px"} } >
-                             <Link to="/login" style={{textDecoration:"none" , color:"inherit" }}>
-                            <li > Login</li>
-                        </Link>
-                        <Link to="/register" style={{textDecoration:"none" , color:"inherit" }}>
-                            <li > Register </li>
-                        </Link>
-                        </ul>
+                        user ? <img className="image" src={user.profilepicture} alt="imag" /> :
+                            <ul style={{ display: "flex", gap: "1px" }} >
+                                <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+                                    <li > Login</li>
+                                </Link>
+                                <Link to="/register" style={{ textDecoration: "none", color: "inherit" }}>
+                                    <li > Register </li>
+                                </Link>
+                            </ul>
                     }
-<i class="fa-thin fa-magnifying-glass-plus"></i>
+
+                    <i class="fa-solid fa-magnifying-glass " id="search_icon"></i>
 
 
                 </div>
