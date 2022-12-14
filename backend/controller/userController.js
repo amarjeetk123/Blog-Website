@@ -101,12 +101,13 @@ exports.login = async (req, res) => {
             return res.status(401).json("Wrong Password");
         }
 
-        password = undefined;
+        user.password = undefined;
 
         res.json({
             succsess: true,
             user,
-            message: "user login succesfully"
+            message: "user login succesfully",
+            
         })
 
 
