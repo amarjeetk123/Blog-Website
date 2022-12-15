@@ -9,6 +9,7 @@ position: fixed;
 top: 0;
 z-index: 100;
 background-color:#fff;
+padding:0px 0px 10px 0px;
 
 }
 .main{
@@ -31,7 +32,7 @@ background-color:#fff;
     object-fit: cover;
 }
 .left_icon{
-    font-size: 20px;
+    font-size: 30px;
     margin-right: 10px;
     cursor: pointer;
     color: #444;

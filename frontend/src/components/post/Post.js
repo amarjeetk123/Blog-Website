@@ -8,11 +8,14 @@ function Post({post}) {
   
   return (
     <div className="post">
-        { post.photo && <img 
+      <Link to={`/post/${post._id}`}  className="link">
+      { post.photo && <img 
         className="postImage"
         src={publicFolder + post.photo }
         alt=""
          /> }
+      </Link>
+      
          <div className="postInfo" >
             <div className="postCast" >
                 <span className="postCat" >Music</span>

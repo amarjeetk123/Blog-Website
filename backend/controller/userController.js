@@ -311,7 +311,7 @@ exports.updatePost = async (req, res) => {
 exports.deletePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
-        const { username, title } = req.body
+        const { username } = req.body
         if (!username) {
             return res.status(401).send("username is required to delete the title")
         }
@@ -343,6 +343,7 @@ exports.deletePost = async (req, res) => {
 
 
     } catch (error) {
+        console.log(error)
         res.status(500).send(error)
     }
 
