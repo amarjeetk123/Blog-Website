@@ -271,10 +271,10 @@ exports.updatePost = async (req, res) => {
         }
         if (post.username == username) {
             try {
-                const titleexist = await Post.findOne({ title })
-                if (titleexist) {
-                    return res.status(401).send("Please write another title this title is already in use")
-                }
+                // const titleexist = await Post.findOne({ title })
+                // if (titleexist ) {
+                //     return res.status(401).send("Please write another title This title is already in USE")
+                // }
                 const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
                     $set: req.body
                 }, { new: true })
@@ -284,6 +284,7 @@ exports.updatePost = async (req, res) => {
                     updatedPost,
                 })
             } catch (error) {
+                console.log(error)
                 res.status(201).json({
                     success: false,
                     message: "error in edit post controller"

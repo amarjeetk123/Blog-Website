@@ -23,18 +23,22 @@ const SinglePost = () => {
         const res = await axios.get("/getpost/" + path);
         // console.log(res.data.post)
         setPost(res.data.post)
+
+        // for post update
+        setTitle(res.data.post.title)
+        setDescription(res.data.post.description)
     }
     const handleDelete = async () => {
         try {
             const userPermission = window.confirm("Are you want to delete this post")
             if (userPermission) {
-                
+
                 const id = path
                 // console.log(username1) 
-              const  data = {
+                const data = {
                     username: user.user.username,
                 }
-                const res = await axios.delete(`/post/delete/${id}`, { data})
+                const res = await axios.delete(`/post/delete/${id}`, { data })
                 window.location.replace("/")
             }
 
@@ -44,28 +48,64 @@ const SinglePost = () => {
 
         }
     }
+    // code for update the post
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+    const [updateMode, setUpdateMode] = useState(false)
+
+    const handleUpdate = async () => {
+        try {
+            const data = {
+                username: user.user.username,
+                title: title,
+                description,
+            }
+
+            const id = path
+            const res = await axios.put(`/post/${id}`, data)     // value comming fro user through useContext
+
+            window.location.reload()
+
+        } catch (error) {
+            // console.log(error)
+            // console.log(error.response)
+            alert(error.response.data)
+        }
+    }
+
+
     useEffect(() => {
         getPost();
+
     }, [path])
 
     return (
         <div className="singlePost" >
 
             <div className="singlePosetWrapper" >
+
                 <div className="image-div">
-                    {post.photo && (
+                    {post.photo ?
                         <img src={publicFolder + post.photo}
                             className="singlepageimage"
+                        /> :
+                        <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
+                            className="singlepageimage"
                         />
-                    )}
+                    }
                 </div>
 
-                <h1 className="singlePostTitle"> {post.title}
-                    {post.username === user?.user?.username && <div className="SinglePagecon">
-                        <i className="fa-regular fa-pen-to-square editIcon"></i>
-                        <i className="fa-solid fa-trash deleteIcon  " onClick={handleDelete} ></i>
-                    </div>}
-                </h1>
+                {updateMode ? <input value={title} className="singlePostTitle-inputmode" autoFocus
+                    onChange={(e) => setTitle(e.target.value)}
+                /> :
+                    <h1 className="singlePostTitle"> {post.title}
+                        {post.username === user?.user?.username && <div className="SinglePagecon">
+                            <i className="fa-regular fa-pen-to-square editIcon" onClick={(e) => setUpdateMode(true)} ></i>
+                            <i className="fa-solid fa-trash deleteIcon  " onClick={handleDelete} ></i>
+                        </div>}
+                    </h1>}
+
+
                 <div className="postInformation">
                     <span className="postAuthor" >   Author:
                         <Link to={`/?user=${post.username}`} className="link" >
@@ -74,12 +114,18 @@ const SinglePost = () => {
                     </span>
                     <span className="singlePostDate" > {new Date(post.createdAt).toDateString()} </span>
                 </div>
-                <div className="singlepostdis" >
-                    {post.description}
-                </div>
-
+                {updateMode ? <textarea autoFocus value={description} className="singlepostdis-textarea"
+                    onChange={(e) => setDescription(e.target.value)} /> :
+                    <div className="singlepostdis" >
+                        {post.description}
+                    </div>}
+                {/* the belove button is visible at the time of content updating  */}
+               { updateMode &&  <div className="up-btn-div">
+                    <button type="submit" className="update-btn" onClick={handleUpdate} >Update Post</button>
+                </div> }
 
             </div>
+
 
         </div>
     )
