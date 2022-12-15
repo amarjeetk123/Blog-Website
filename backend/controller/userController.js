@@ -107,7 +107,7 @@ exports.login = async (req, res) => {
             succsess: true,
             user,
             message: "user login succesfully",
-            
+
         })
 
 
@@ -230,25 +230,32 @@ exports.getUser = async (req, res) => {
 exports.createPost = async (req, res) => {
 
     try {
-        const { username, title, description } = req.body
+        const { username, title, description , photo } = req.body
         if (!username) {
             return res.status(404).send("username is required")
         }
         if (!title) {
             return res.status(404).send("title is required to crete a post")
         }
+        if (!description) {
+            return res.status(404).send("Description is required to crete a post")
+        }
 
-        const savePost = await Post.create({ username, title, description });
+        const savePost = await Post.create({ username, title, description , photo });
         res.status(201).json({
             success: true,
             message: "Post is succesfuuly creted",
-            savePost
+            savePost,
         })
 
     } catch (error) {
+        console.log(error.message)
+        console.log("error in creat post controller")
         res.status(201).json({
             success: false,
-            message: "error in creat post controller"
+            message: "error in creat post controller",
+            m2:error.message,
+           
         })
 
     }

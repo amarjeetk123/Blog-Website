@@ -5,6 +5,10 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 const SinglePost = () => {
+
+    const publicFolder = "http://localhost:4001/images/"
+    
+
     const location = useLocation()
     // console.log(location)   console.log(location.pathname.split("/")[2]);
     const path = location.pathname.split("/")[2]
@@ -13,19 +17,20 @@ const SinglePost = () => {
 
     const getPost = async ()  => {
         const res = await axios.get("/getpost/" + path  );
-        // console.log(res.data.post)
+        console.log(res.data.post)
         setPost(res.data.post)
+        
     }
      useEffect(() => {
         getPost();
     },[path])
-
+    console.log( "second" , post.photo)
     return (
         <div className="singlePost" >
 
             <div className="singlePosetWrapper" >
                 { post.photo && (
-                     <img src={post.photo}
+                     <img src={ publicFolder +  post.photo}
                      className="singlepageimage"
                  />
                 ) }

@@ -4,7 +4,7 @@ const postSchema = new mongoose.Schema({
   
     title:{
         type:String,
-        unique:[true , "title should be unique" ] ,
+        // unique:[true , "title should be unique" ] ,
         required : [true , "title is required"]
     },
     description:{

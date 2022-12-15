@@ -24,7 +24,7 @@ const Loginpage = () => {
         password,
       })
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
-      console.log(res)
+      // console.log(res)
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" })
       console.log(error.response.data)
@@ -36,7 +36,6 @@ const Loginpage = () => {
       }
     }
   }
- 
 
   useEffect(() => {
     setUsernameerror(false)

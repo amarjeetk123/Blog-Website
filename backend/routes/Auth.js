@@ -29,6 +29,7 @@ router.get("/getallcategory",getAllCategory)
 
 
 const multer = require("multer") // for string photos from user
+
 const storage = multer.diskStorage({
     destination:(req,file,cb) => {   //  cb- call back
         cb(null , "images")   // images is our destination folder where our images will be stored
@@ -55,5 +56,6 @@ router.post("/api/upload" , upload.single("file") , (req , res) => {    // "file
         })
     }
 } )
+
 
 module.exports = router;

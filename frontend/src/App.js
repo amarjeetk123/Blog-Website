@@ -14,6 +14,7 @@ import RegisterPage from './pages/registerPage/RegisterPage';
 import Loginpage from './pages/loginpage/Loginpage';
 import { useContext, useState } from 'react';
 import { Context } from './context_api/Context';
+import Post from "./components/post/Post"
 
 function App() {
   const {user}  = useContext(Context)
@@ -27,6 +28,7 @@ function App() {
         <Route path='/write' element={ user ?  <WritePage /> : <RegisterPage /> } />
         <Route path='/settings' element={ user ?  <UserSetting /> : <RegisterPage /> } />
         <Route path='/post/:postid' element={ <Single /> } />
+        <Route path='/special/:postid' element={ <Post/> } />
         
 
       </Routes>

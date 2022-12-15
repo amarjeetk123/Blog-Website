@@ -3,14 +3,16 @@ import {Link} from "react-router-dom"
 
 
 function Post({post}) {
+
+  const publicFolder = "http://localhost:4001/images/"
   
   return (
     <div className="post">
-        <img 
+        { post.photo && <img 
         className="postImage"
-        src="https://th.bing.com/th/id/R.7f34a70a5bee79488309934920d316cb?rik=IRJI6pSFo6OI%2fQ&riu=http%3a%2f%2fallpicts.in%2fwp-content%2fuploads%2f2018%2f03%2fNatural-Images-HD-1080p-Download-with-Keyhole-Arch-at-Pfeiffer-Beach.jpg&ehk=JPI0MFI04N62Xtd7MT1P2sw4vJgwODLsp1EcpgvuGFo%3d&risl=&pid=ImgRaw&r=0"
+        src={publicFolder + post.photo }
         alt=""
-         />
+         /> }
          <div className="postInfo" >
             <div className="postCast" >
                 <span className="postCat" >Music</span>

@@ -9,7 +9,7 @@ export default function Navbar() {
     const handleLogout = () => {
         dispatch({ type: "LOGOUT" })
     }
-    console.log(user)
+    // console.log(user.user)
     return (
         < div className="container" >
             <div className="main" >
@@ -37,7 +37,7 @@ export default function Navbar() {
                 <div className="right" >
 
                     {
-                        user ? <img className="image" src={user.profilepicture} alt="image." /> :
+                        user ? <img className="image" src={user.user.profilepicture} alt="image." /> :
                             <ul style={{ display: "flex", gap: "1px" }} >
                                 <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
                                     <li > Login</li>
