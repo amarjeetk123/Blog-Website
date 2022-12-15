@@ -44,7 +44,7 @@
     color: rgba(32, 24, 24, 0.676);
     font-size: 20px;
     line-height: 25px;
-  
+  margin-bottom: 40px;
 }
 .singlepostdis::first-letter{
     font-size: 32px;
@@ -59,7 +59,7 @@
 
 .singlepageimage{
     margin-top: 68px;
-     width: 370px;
+     width: 340px;
      height: 95%;
  }
 
@@ -93,16 +93,15 @@ padding-left: 10px;
 .up-btn-div{
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
     padding: 20px 0px;
 }
 .update-btn{
     cursor: pointer;
-   width: 200px;
+   width: 150px;
    
     padding: 5px 10px;
-    
+   
     background-color: #49de7d;
     border: none;
     display: flex;
@@ -110,7 +109,7 @@ padding-left: 10px;
     align-items: center;
     color: #ffffff;
     border-radius: 6px;
-    font-size: 25px;
+    font-size: 21px;
     
 }
 .update-btn:hover{

@@ -64,7 +64,8 @@ const SinglePost = () => {
             const id = path
             const res = await axios.put(`/post/${id}`, data)     // value comming fro user through useContext
 
-            window.location.reload()
+            // window.location.reload()
+            setUpdateMode(false)
 
         } catch (error) {
             // console.log(error)
@@ -98,7 +99,7 @@ const SinglePost = () => {
                 {updateMode ? <input value={title} className="singlePostTitle-inputmode" autoFocus
                     onChange={(e) => setTitle(e.target.value)}
                 /> :
-                    <h1 className="singlePostTitle"> {post.title}
+                    <h1 className="singlePostTitle"> {title}
                         {post.username === user?.user?.username && <div className="SinglePagecon">
                             <i className="fa-regular fa-pen-to-square editIcon" onClick={(e) => setUpdateMode(true)} ></i>
                             <i className="fa-solid fa-trash deleteIcon  " onClick={handleDelete} ></i>
@@ -117,7 +118,7 @@ const SinglePost = () => {
                 {updateMode ? <textarea autoFocus value={description} className="singlepostdis-textarea"
                     onChange={(e) => setDescription(e.target.value)} /> :
                     <div className="singlepostdis" >
-                        {post.description}
+                        {description}
                     </div>}
                 {/* the belove button is visible at the time of content updating  */}
                { updateMode &&  <div className="up-btn-div">
