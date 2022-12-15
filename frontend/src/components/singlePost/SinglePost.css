@@ -1,16 +1,13 @@
 .singlePost{
     flex: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.singlepageimage{
-   margin-top: 68px;
-    width: 100%;
-    height: 300px;
-    
-}
+
 .singlePosetWrapper{
-    padding: 20px;
-    padding-right: 0px;
+    width: 95%;
 }
 .singlePostTitle{
     text-align: center;
@@ -37,10 +34,11 @@
     display: flex;
     justify-content: space-between;
     font-size: 25px;
+    line-height: 50px;
 
 }
 .singlepostdis{
-    color: rgba(19, 17, 17, 0.4);
+    color: rgba(32, 24, 24, 0.676);
     font-size: 20px;
     line-height: 25px;
   
@@ -50,3 +48,14 @@
     margin-left: 10px;
     font-weight: 600;
 }
+
+.image-div{
+    width: 100%;
+    height: auto;
+}
+
+.singlepageimage{
+    margin-top: 68px;
+     width: 370px;
+     height: 95%;
+ }

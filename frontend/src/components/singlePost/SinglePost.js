@@ -7,35 +7,36 @@ import axios from "axios"
 const SinglePost = () => {
 
     const publicFolder = "http://localhost:4001/images/"
-    
 
     const location = useLocation()
     // console.log(location)   console.log(location.pathname.split("/")[2]);
     const path = location.pathname.split("/")[2]
 
-    const [post , setPost] = useState({})
+    const [post, setPost] = useState({})
 
-    const getPost = async ()  => {
-        const res = await axios.get("/getpost/" + path  );
+    const getPost = async () => {
+        const res = await axios.get("/getpost/" + path);
         console.log(res.data.post)
         setPost(res.data.post)
-        
+
     }
-     useEffect(() => {
+    useEffect(() => {
         getPost();
-    },[path])
-    console.log( "second" , post.photo)
+    }, [path])
+    console.log("second", post.photo)
     return (
         <div className="singlePost" >
 
             <div className="singlePosetWrapper" >
-                { post.photo && (
-                     <img src={ publicFolder +  post.photo}
-                     className="singlepageimage"
-                 />
-                ) }
-               
-                <h1 className="singlePostTitle"> {post.title} 
+               <div className="image-div">
+               {post.photo && (
+                    <img src={publicFolder + post.photo}
+                        className="singlepageimage"
+                    />
+                )}
+               </div>
+
+                <h1 className="singlePostTitle"> {post.title}
                     <div className="SinglePagecon">
                         <i className="fa-regular fa-pen-to-square editIcon"></i>
                         <i className="fa-solid fa-trash deleteIcon  "></i>
@@ -43,14 +44,14 @@ const SinglePost = () => {
                 </h1>
                 <div className="postInformation">
                     <span className="postAuthor" >   Author:
-                    <Link to={`/?user=${post.username}`} className="link" >
-                     <b>{post.username}</b> 
-                    </Link>
-                      </span>
-                    <span className="singlePostDate" >   { new Date(post.createdAt).toDateString()  }</span>
+                        <Link to={`/?user=${post.username}`} className="link" >
+                            <b>{post.username}</b>
+                        </Link>
+                    </span>
+                    <span className="singlePostDate" >   {new Date(post.createdAt).toDateString()}</span>
                 </div>
                 <div className="singlepostdis" >
-                  {post.description}
+                    {post.description}
                 </div>
 
 
