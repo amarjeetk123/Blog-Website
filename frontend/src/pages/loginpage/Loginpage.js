@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useContext, useRef, useState, useEffect } from "react"
+import { useContext,  useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Context } from "../../context_api/Context"
 import "./Loginpage.css"
@@ -18,13 +18,16 @@ const Loginpage = () => {
 
     dispatch({ type: "LOGIN_START" })
 
+
+
     try {
       const res = await axios.post("/login", {
         username,
         password,
       })
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
-      // console.log(res)
+      // console.log( "res", res.data)
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data }) 
+      
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" })
       console.log(error.response.data)

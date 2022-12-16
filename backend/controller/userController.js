@@ -144,14 +144,16 @@ exports.update = async (req, res) => {
        
 
         try {
-            const updatedUser = await User.findByIdAndUpdate(req.params.id, {
+            const user = await User.findByIdAndUpdate(req.params.id, {
                 $set: req.body
             }, { new: true })
-            updatedUser.password = undefined;
+            
+            user.password = undefined;
             res.status(201).json({
                 success: true,
+                user,
                 message: "user information updated succesfully",
-                updatedUser
+                
             });
 
         } catch (error) {

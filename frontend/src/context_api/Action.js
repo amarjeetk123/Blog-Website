@@ -3,7 +3,7 @@ export const LoginStart = (userCredentials)  => ({
     type: "LOGIN_START"
 })
 
-export const LoginSuccess = ()  => ({
+export const LoginSuccess = (user)  => ({     // we can remove (user) but it is good practice to write here
     type: "LOGIN_SUCCESS",
     payload: user,
 })
@@ -24,7 +24,7 @@ export const UpdateStart = (userCredentials) => ({
     type: "UPDATE_START",
   });
   
-  export const UpdateSuccess = () => ({
+  export const UpdateSuccess = (user) => ({
     type: "UPDATE_SUCCESS",
     payload: user,
   });

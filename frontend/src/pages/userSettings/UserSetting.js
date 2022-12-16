@@ -22,50 +22,47 @@ const UserSetting = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log("1st",user)
-
         dispatch({ type: "UPDATE_START" });
 
-        const updatedUser = {
+        const User = {
             userId: user.user._id,
             email,
             password,
         }
-        console.log("2nd" ,updatedUser)
-
+       
         if (file) {
             const data = new FormData();
             // here i have to use a random number so that user can not upload differet images with same file,.... for this we can use current date tiem
             const filename = Date.now() + file.name
             data.append("name", filename)
             data.append("file", file)
-            updatedUser.profilepicture = filename;
+            User.profilepicture = filename;
             try {
                 const res = await axios.post("api/upload", data)
             } catch (error) {
                 // console.log(error.message)
-                console.log("error in first try catch in handleSubmit in writePage.js")
+              //  console.log("error in first try catch in handleSubmit in writePage.js")
             }
         }
 
         try {
-            const id = updatedUser.userId
-            const res = await axios.put(`/user/update/${id}`, updatedUser)
+            const id = User.userId
+            const res = await axios.put(`/user/update/${id}`, User)
             
             setSuccessMessage(true)
-            console.log( "3rd" , res.data)
+                    
+            dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
 
-            console.log("4",user.user)
-           
-            dispatch({ type: "UPDATE_SUCCESS", payload: res.data.updatedUser });
-            // dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
+            console.log(res.data)
+
+            // window.location.reload()
 
             
         } catch (error) {
             dispatch({ type: "UPDATE_FAILURE" });
-            console.log(error)
-            console.log(error.message)
-            console.log("error in second try catch in handleSubmit in writePage.js")
+            // console.log(error)
+            // console.log(error.message)
+            // console.log("error in second try catch in handleSubmit in writePage.js")
         }
     }
 
@@ -73,15 +70,16 @@ const UserSetting = () => {
         <div className="userSetting">
             <div className="settingWrapper">
                 <div className="settingTitle">
-                    <span className="settingUpdateTitle">  Update Your Account   </span>
-                    <span className="settingDeleteTitle">  Delete Your Accound    </span>
+                    
+                    <button className="settingDeleteTitle"  onClick={handleDelete}>Delete Your Accound </button>
+                    
                 </div>
 
                 <form className="settingForm" onSubmit={handleSubmit} >
                     <label className="pplabel" >Profile Picture</label>
                     <div className="setingProfilepic">
                         {
-                            user ?
+                            user.user.profilepicture ?
                                 <img className="ppimage1"
                                     src={ file ? URL.createObjectURL(file) : publicFolder + user.user.profilepicture  } 
                                     alt="userImage"
