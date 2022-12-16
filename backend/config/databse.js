@@ -8,6 +8,7 @@ const connectToDB = () =>{
         useNewUrlParser: true,
         useUnifiedTopology: true,
         family: 4,
+        
     } ).then( (res) =>{
          console.log("DB connection succesfull")
     } ).catch((err) =>{

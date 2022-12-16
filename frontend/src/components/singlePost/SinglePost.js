@@ -121,9 +121,9 @@ const SinglePost = () => {
                         {description}
                     </div>}
                 {/* the belove button is visible at the time of content updating  */}
-               { updateMode &&  <div className="up-btn-div">
+                {updateMode && <div className="up-btn-div">
                     <button type="submit" className="update-btn" onClick={handleUpdate} >Update Post</button>
-                </div> }
+                </div>}
 
             </div>
 

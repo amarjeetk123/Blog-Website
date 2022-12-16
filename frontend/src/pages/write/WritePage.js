@@ -4,6 +4,7 @@ import "./WritePage.css"
 import { Context } from "../../context_api/Context"
 
 const WritePage = () => {
+
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [file, setFile] = useState(null)
@@ -28,7 +29,7 @@ const WritePage = () => {
                 const res = await axios.post("api/upload", data)
             } catch (error) {
                 // console.log(error.message)
-                console.log("error in first try catch in handleSubmit in writePage.js")
+                // console.log("error in first try catch in handleSubmit in writePage.js")
             }
         }
 
@@ -37,9 +38,9 @@ const WritePage = () => {
             window.location.replace("/post/" + res.data.savePost._id)
             // console.log(res.data.savePost._id)
         } catch (error) {
-            console.log(error)
-            console.log(error.message)
-            console.log("error in second try catch in handleSubmit in writePage.js")
+            // console.log(error)
+            // console.log(error.message)
+            // console.log("error in second try catch in handleSubmit in writePage.js")
         }
 
 

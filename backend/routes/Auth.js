@@ -11,9 +11,9 @@ router.get("/",home)
 router.post("/register",register)
 router.post("/login",login)
 
-router.put("user/:id",update)
-router.delete("user/:id", deleteuser)
-router.get("user/:id", getUser)
+router.put("/user/update/:id",update)
+router.delete("/user/delete/:id", deleteuser)
+router.get("/user/:id", getUser)
 
 router.post("/post",createPost)
 router.put("/post/:id",updatePost)

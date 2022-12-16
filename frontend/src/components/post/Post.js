@@ -36,8 +36,8 @@ function Post({ post }) {
         <ReactReadMoreReadLess charLimit={120}
           readMoreText={"Read more ▼"}
           readLessText={"Read less ▲"}
-          readMoreStyle={{ color:"#3DBE29" , cursor:"pointer" }}
-          readLessStyle={{ color:"#3DBE29" , cursor:"pointer" }}
+          readMoreStyle={{ color:"#008080" , cursor:"pointer" }}
+          readLessStyle={{ color:"#008080" , cursor:"pointer" }}
           >
           {post.description}
         </ReactReadMoreReadLess>

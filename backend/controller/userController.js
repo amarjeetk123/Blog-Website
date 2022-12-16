@@ -126,15 +126,23 @@ exports.login = async (req, res) => {
 
 // Function for update user information
 exports.update = async (req, res) => {
-    if (req.body.userId === req.params.id) {
+
+ 
+
+    if (req.body.userId == req.params.id) {
+
+       
+        // const data = {}
+        // if (req.body.email) {
+        //     data.email = req.body.email
+        // }
         if (req.body.password) {
             const salt = await bcrypt.genSalt(10)
             req.body.password = await bcrypt.hash(req.body.password, salt); // it is another awy of hashing the password with salt value
+// data.password = req.body.password
+        }
+       
 
-        }
-        if (req.body.username) {
-            return res.status(401).send("You can not update your username")
-        }
         try {
             const updatedUser = await User.findByIdAndUpdate(req.params.id, {
                 $set: req.body
@@ -157,6 +165,8 @@ exports.update = async (req, res) => {
 
     }
     else {
+       
+
         res.status(401).json("You can update only your account!..")
     }
 }
@@ -230,7 +240,7 @@ exports.getUser = async (req, res) => {
 exports.createPost = async (req, res) => {
 
     try {
-        const { username, title, description , photo } = req.body
+        const { username, title, description, photo } = req.body
         if (!username) {
             return res.status(404).send("username is required")
         }
@@ -241,7 +251,7 @@ exports.createPost = async (req, res) => {
             return res.status(404).send("Description is required to crete a post")
         }
 
-        const savePost = await Post.create({ username, title, description , photo });
+        const savePost = await Post.create({ username, title, description, photo });
         res.status(201).json({
             success: true,
             message: "Post is succesfuuly creted",
@@ -254,8 +264,8 @@ exports.createPost = async (req, res) => {
         res.status(201).json({
             success: false,
             message: "error in creat post controller",
-            m2:error.message,
-           
+            m2: error.message,
+
         })
 
     }

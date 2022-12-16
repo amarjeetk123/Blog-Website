@@ -31,7 +31,7 @@
     color: #ff0000;
 }
 .editIcon{
-    color: #00D84A;
+    color: #008080;
 }
 .postInformation{
     display: flex;
@@ -102,7 +102,7 @@ padding-left: 10px;
    
     padding: 5px 10px;
    
-    background-color: #49de7d;
+    background-color: #219e9e;
     border: none;
     display: flex;
     justify-content: center;
@@ -113,5 +113,5 @@ padding-left: 10px;
     
 }
 .update-btn:hover{
-    background-color: #00D84A;
+    background-color: #008080;
 }

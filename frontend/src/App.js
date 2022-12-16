@@ -1,9 +1,7 @@
-
 import './App.css';
 import Single from './pages/single/Single';
 // import {BrowserRouter , Router , Route , Link , Switch} from "react-router-dom"
 import {BrowserRouter , Route , Routes} from "react-router-dom"
-
 
 import Navbar from "./components/header/Navbar"
 // import Home from "./components/pages/home/Home"
@@ -29,13 +27,7 @@ function App() {
         <Route path='/settings' element={ user ?  <UserSetting /> : <RegisterPage /> } />
         <Route path='/post/:postid' element={ <Single /> } />
         <Route path='/special/:postid' element={ <Post/> } />
-        
-
       </Routes>
-     
-    
-  
-      
     </BrowserRouter>
   );
 }

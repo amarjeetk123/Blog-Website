@@ -30,6 +30,7 @@ padding:0px 0px 10px 0px;
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
 }
 .left_icon{
     font-size: 30px;
