@@ -11,6 +11,41 @@
   - ` Mongo DB `
   - ` Express JS `
 
-Live Link:- [Click Here!]()
+ ## 👍 Feature of my Project 👍
+ - User Registration
+ - User Login
+ - Read Any Artical
+ - Write Artical
+ - Edit Artical
+ - Delete Artical
+ - Update User Information
+ - Delete User Account
 
+<!-- New Feature 
+ - 
+ -  -->
+
+
+## 👨‍💻 About Developer 👨‍💻
+#
+Hey I am Amarjeet Kumar, Fullstack Javascript Developer. Very much eager to explore and develop scalable, user friendly, robust applications. 
+
+<!-- [Portfolio]() -->
+
+[Linkdin](https://www.linkedin.com/in/amarjeet-kumar-46b79b236/)
+
+[Instagram]()
+
+
+<!-- Live Link:- [Click Here!]() -->
+
+Web View 🖥️
 ![](./images/1st.png)
+
+
+## ⏳ Meta Information ⏳
+ - Time taken: 5 days
+
+ - Upcoming Future Enhancement: Making It Responsive
+
+## 😃 Thanks for spending your valuable time on this project 😃 
