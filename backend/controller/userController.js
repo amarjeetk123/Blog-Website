@@ -127,33 +127,41 @@ exports.login = async (req, res) => {
 // Function for update user information
 exports.update = async (req, res) => {
 
- 
-
     if (req.body.userId == req.params.id) {
 
-       
-        // const data = {}
-        // if (req.body.email) {
-        //     data.email = req.body.email
-        // }
-        if (req.body.password) {
+        const {email , password}  = req.body
+        
+        const data = {}
+        if(!email){
+            return res.status(401).send(" email id is requird")
+        }
+        if(email){
+            const res = await User.findById({email})
+            if(res){
+                return res.status(401).send("You Entered the same email as ")
+            }
+            data.email = email;
+        }
+        if(password==""){
+            return res.status(401).send("Please give a password")
+        }
+        if (password  && password !== "") {
             const salt = await bcrypt.genSalt(10)
             req.body.password = await bcrypt.hash(req.body.password, salt); // it is another awy of hashing the password with salt value
-// data.password = req.body.password
+            data.password = req.body.password
         }
-       
+      
+
 
         try {
-            const user = await User.findByIdAndUpdate(req.params.id, {
-                $set: req.body
-            }, { new: true })
-            
+            const user = await User.findByIdAndUpdate(req.params.id, data)
+
             user.password = undefined;
             res.status(201).json({
                 success: true,
                 user,
                 message: "user information updated succesfully",
-                
+
             });
 
         } catch (error) {
@@ -162,19 +170,16 @@ exports.update = async (req, res) => {
                 success: false,
                 message: "error in update controller"
             });
-
         }
-
     }
     else {
-       
-
         res.status(401).json("You can update only your account!..")
     }
 }
 
 // Function for delete user 
 exports.deleteuser = async (req, res) => {
+   
     if (req.body.userId === req.params.id) {
 
         try {  // this try catch is for deleting all the post of that user which are deleting thier account
@@ -188,14 +193,13 @@ exports.deleteuser = async (req, res) => {
                     success: true,
                     message: "user deleted succesfully",
                 });
-
+                
             } catch (error) {
                 console.log(error.message)
                 res.status(401).json({
                     success: false,
                     message: "error in delete controller in second try catch "
                 });
-
             }
         } catch (error) {
             console.log(error.message)
@@ -206,7 +210,6 @@ exports.deleteuser = async (req, res) => {
 
             });
         }
-
     }
     else {
         res.status(401).json("You can only delete your account!..")

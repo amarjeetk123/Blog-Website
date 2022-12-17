@@ -61,10 +61,10 @@ export default function Navbar() {
 
                                 :
                                 <ul style={{ display: "flex", gap: "1px" }} >
-                                    <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
-                                        <li > Login</li>
+                                    <Link to="/login" className="link2">
+                                        <li className="link" > Login</li>
                                     </Link>
-                                    <Link to="/register" style={{ textDecoration: "none", color: "inherit" }}>
+                                    <Link to="/register" className="link2">
                                         <li > Register </li>
                                     </Link>
                                 </ul>

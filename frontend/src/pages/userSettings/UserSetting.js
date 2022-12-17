@@ -5,17 +5,18 @@ import { Context } from "../../context_api/Context"
 import axios from "axios"
 
 const UserSetting = () => {
-    
-    const publicFolder = "http://localhost:4001/images/" ;
+
+    const publicFolder = "http://localhost:4001/images/";
 
     const { user, dispatch } = useContext(Context)
-  
+
     const [file, setFile] = useState(null)
 
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState(user.user.email)
+    console.log(email)
     const [password, setPassword] = useState("")
 
-    const [sucseesMessage , setSuccessMessage] = useState(false)
+    const [sucseesMessage, setSuccessMessage] = useState(false)
 
 
 
@@ -29,7 +30,7 @@ const UserSetting = () => {
             email,
             password,
         }
-       
+
         if (file) {
             const data = new FormData();
             // here i have to use a random number so that user can not upload differet images with same file,.... for this we can use current date tiem
@@ -41,23 +42,23 @@ const UserSetting = () => {
                 const res = await axios.post("api/upload", data)
             } catch (error) {
                 // console.log(error.message)
-              //  console.log("error in first try catch in handleSubmit in writePage.js")
+                //  console.log("error in first try catch in handleSubmit in writePage.js")
             }
         }
 
         try {
             const id = User.userId
             const res = await axios.put(`/user/update/${id}`, User)
-            
+
             setSuccessMessage(true)
-                    
+
             dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
 
             console.log(res.data)
 
             // window.location.reload()
 
-            
+
         } catch (error) {
             dispatch({ type: "UPDATE_FAILURE" });
             // console.log(error)
@@ -66,13 +67,44 @@ const UserSetting = () => {
         }
     }
 
+    const handleDelete = async (e) => {
+        e.preventDefault();
+
+        const userChoice = window.confirm("Are you sure...?")
+
+        if (userChoice) {
+            try {
+                const id = user.user._id
+                const data = {
+                    userId: user.user._id,
+                }
+
+                const res = await axios.delete(`/user/delete/${id}`, { data })
+               // console.log(res)
+                dispatch({ type: "LOGOUT" });
+                window.location.replace("/register")
+            } catch (error) {
+
+                const data = {
+                    userId: user.user._id,
+                }
+                const id = user.user._id
+                console.log(id)
+                console.log(data.userId)
+                console.log(error.message)
+            }
+
+        }
+
+    }
+
     return (
         <div className="userSetting">
             <div className="settingWrapper">
                 <div className="settingTitle">
-                    
-                    <button className="settingDeleteTitle"  onClick={handleDelete}>Delete Your Accound </button>
-                    
+
+                    <button className="settingDeleteTitle" onClick={handleDelete}>Delete Your Accound </button>
+
                 </div>
 
                 <form className="settingForm" onSubmit={handleSubmit} >
@@ -81,7 +113,7 @@ const UserSetting = () => {
                         {
                             user.user.profilepicture ?
                                 <img className="ppimage1"
-                                    src={ file ? URL.createObjectURL(file) : publicFolder + user.user.profilepicture  } 
+                                    src={file ? URL.createObjectURL(file) : publicFolder + user.user.profilepicture}
                                     alt="userImage"
                                 /> :
                                 <img className="ppimage2"
@@ -95,26 +127,26 @@ const UserSetting = () => {
                         <input type={"file"} className="hide" id="fileInput"
                             onChange={(e) => setFile(e.target.files[0])} />
                     </div>
-                    
+
                     <label>Username</label>
-                    <input type={"text"} placeholder={user.user.username} defaultValue={user.user.username} readOnly   className="setingUsernameinput" />
+                    <input type={"text"} placeholder={user.user.username} defaultValue={user.user.username} readOnly className="setingUsernameinput" />
 
                     <label>Email</label>
-                    <input type={"email"} placeholder={user.user.email} className="setingUseremailinput " onChange={(e) => setEmail(e.target.value)} />
+                    <input type={"email"} placeholder={email} defaultValue={email}  className="setingUseremailinput " onChange={(e) => setEmail(e.target.value)} />
 
                     <label>Password</label>
-                    <input type={"text"} className="setingUsernameinput"  onChange={(e) => setPassword(e.target.value)} />
+                    <input type={"password"} className="setingUsernameinput" placeholder={user.user.password} onChange={(e) => setPassword(e.target.value)} />
 
                     <button className="settingUpdatebtn " type="submit"> Update</button>
 
                     {
                         sucseesMessage &&
-                       <div className="msg-box">
-                         <h1>Your Information is Succesfull Updated</h1>
-                       </div>
+                        <div className="msg-box">
+                            <h1>Your Information is Succesfull Updated</h1>
+                        </div>
                     }
-   
- 
+
+
                 </form>
 
             </div>
