@@ -3,6 +3,7 @@ import { useContext,  useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Context } from "../../context_api/Context"
 import "./Loginpage.css"
+import { SERVER_URL } from "../../App"
 
 const Loginpage = () => {
   const [usernameerror, setUsernameerror] = useState(false)
@@ -21,7 +22,7 @@ const Loginpage = () => {
 
 
     try {
-      const res = await axios.post("/login", {
+      const res = await axios.post(`${SERVER_URL}/login`, {
         username,
         password,
       })

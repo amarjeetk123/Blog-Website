@@ -2,6 +2,7 @@ import axios from "axios"
 import { useContext, useState } from "react"
 import "./WritePage.css"
 import { Context } from "../../context_api/Context"
+import { SERVER_URL } from "../../App"
 
 const WritePage = () => {
 
@@ -26,7 +27,8 @@ const WritePage = () => {
             data.append("file", file)
             newPost.photo = filename;
             try {
-                const res = await axios.post("api/upload", data)
+                // const res = await axios.post("api/upload", data)
+                const res = await axios.post(`${SERVER_URL}/api/upload`, data)
             } catch (error) {
                 // console.log(error.message)
                 // console.log("error in first try catch in handleSubmit in writePage.js")

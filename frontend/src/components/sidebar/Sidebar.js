@@ -2,13 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
+import { SERVER_URL } from "../../App";
 
 const Sidebar = () => {
 
     const [catge, setCatge] = useState([10]);
 
     const getAllCategory = async () => {
-        const res = await axios.get("/getallcategory");
+        // const res = await axios.get("/getallcategory");
+        const res = await axios.get(`${SERVER_URL}/getallcategory`);
         // console.log(res.data.category)
         setCatge(res.data.category)
     }

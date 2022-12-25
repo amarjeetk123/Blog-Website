@@ -2,6 +2,7 @@ import "./RegisterPage.css"
 import {Link} from "react-router-dom"
 import { useState } from "react"
 import axios from "axios"
+import { SERVER_URL } from "../../App"
 
 function RegisterPage() {
   const [username , setUsername] = useState("")
@@ -12,7 +13,7 @@ function RegisterPage() {
     e.preventDefault();
 
   try {
-    const res = await axios.post("/register" , {
+    const res = await axios.post(`${SERVER_URL}/register` , {
       username,
       email,
       password

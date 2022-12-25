@@ -1,11 +1,12 @@
 import "./post.css"
 import { Link } from "react-router-dom"
 import ReactReadMoreReadLess from "react-read-more-read-less";
-
+import { SERVER_URL } from "../../App";
 
 function Post({ post }) {
 
-  const publicFolder = "http://localhost:4001/images/"
+  // const publicFolder = "http://localhost:4001/images/"
+  const publicFolder = `${SERVER_URL}/images/`
 
   return (
     <div className="post">

@@ -4,14 +4,11 @@ import { useContext, useEffect, useState } from "react"
 
 import axios from "axios"
 import { Context } from "../../context_api/Context"
+import { SERVER_URL } from "../../App"
 
 const SinglePost = () => {
-
     const { user } = useContext(Context)
-    // console.log(user.user.username) 
-    const publicFolder = "http://localhost:4001/images/"
-
-
+    const publicFolder = `${SERVER_URL}/images/`
 
     const location = useLocation()
     // console.log(location)   console.log(location.pathname.split("/")[2]);
@@ -20,7 +17,8 @@ const SinglePost = () => {
     const [post, setPost] = useState({})
 
     const getPost = async () => {
-        const res = await axios.get("/getpost/" + path);
+        // const res = await axios.get("/getpost/" + path);
+        const res = await axios.get(`${SERVER_URL}/getpost/` + path);
         // console.log(res.data.post)
         setPost(res.data.post)
 
@@ -38,7 +36,7 @@ const SinglePost = () => {
                 const data = {
                     username: user.user.username,
                 }
-                const res = await axios.delete(`/post/delete/${id}`, { data })
+                const res = await axios.delete(`${SERVER_URL}/post/delete/${id}`, { data })
                 window.location.replace("/")
             }
 
@@ -62,7 +60,7 @@ const SinglePost = () => {
             }
 
             const id = path
-            const res = await axios.put(`/post/${id}`, data)     // value comming fro user through useContext
+            const res = await axios.put(`${SERVER_URL}/post/${id}`, data)     // value comming fro user through useContext
 
             // window.location.reload()
             setUpdateMode(false)
