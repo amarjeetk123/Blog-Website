@@ -127,21 +127,21 @@ exports.login = async (req, res) => {
 // Function for update user information
 exports.update = async (req, res) => {
 
-    if (req.body.userId == req.params.id) {
+ 
 
         const {email , password , profilepicture}  = req.body
-        
+        // console.log(profilepicture)
         const data = {}
-        if(!email){
-            return res.status(401).send(" email id is requird")
-        }
-        if(email){
-            const res = await User.findById({email})
-            if(res){
-                return res.status(401).send("You Entered the same email as ")
-            }
-            data.email = email;
-        }
+        // if(!email){
+        //     return res.status(401).send(" email id is requird")
+        // }
+        // if(email){
+        //     const res = await User.findById({email})
+        //     if(res){
+        //         return res.status(401).send("You Entered the same email as ")
+        //     }
+        //     data.email = email;
+        // }
         if(password==""){
             return res.status(401).send("Please give a password")
         }
@@ -168,16 +168,17 @@ exports.update = async (req, res) => {
             });
 
         } catch (error) {
-            console.log(error.message)
+            // console.log(error.message)
+            console.log("error in")
             res.status(401).json({
                 success: false,
                 message: "error in update controller"
             });
         }
-    }
-    else {
-        res.status(401).json("You can update only your account!..")
-    }
+    // }
+    // else {
+    //     res.status(401).json("You can update only your account!..")
+    // }
 }
 
 // Function for delete user 
