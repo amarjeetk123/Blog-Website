@@ -129,7 +129,7 @@ exports.update = async (req, res) => {
 
     if (req.body.userId == req.params.id) {
 
-        const {email , password}  = req.body
+        const {email , password , profilepicture}  = req.body
         
         const data = {}
         if(!email){
@@ -149,6 +149,9 @@ exports.update = async (req, res) => {
             const salt = await bcrypt.genSalt(10)
             req.body.password = await bcrypt.hash(req.body.password, salt); // it is another awy of hashing the password with salt value
             data.password = req.body.password
+        }
+        if(profilepicture){
+            data.profilepicture = profilepicture
         }
       
 

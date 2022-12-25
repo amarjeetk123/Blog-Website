@@ -9,16 +9,18 @@ const UserSetting = () => {
     const publicFolder = "http://localhost:4001/images/";
 
     const { user, dispatch } = useContext(Context)
+    console.log("user" , user)
 
     const [file, setFile] = useState(null)
+    console.log( "file" ,file)
+    // console.log( "file" ,user.user.profilepicture)
+  
 
     const [email, setEmail] = useState(user.user.email)
-    console.log(email)
-    const [password, setPassword] = useState("")
+    // console.log(email)
+    const [password, setPassword] = useState(user.user.password)
 
     const [sucseesMessage, setSuccessMessage] = useState(false)
-
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,8 +43,8 @@ const UserSetting = () => {
             try {
                 const res = await axios.post("api/upload", data)
             } catch (error) {
-                // console.log(error.message)
-                //  console.log("error in first try catch in handleSubmit in writePage.js")
+                console.log(error)
+                 console.log("error in first try catch in handleSubmit in writePage.js")
             }
         }
 
@@ -54,18 +56,17 @@ const UserSetting = () => {
 
             dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
 
-            console.log(res.data)
-
+            console.log(res)
             // window.location.reload()
-
 
         } catch (error) {
             dispatch({ type: "UPDATE_FAILURE" });
-            // console.log(error)
-            // console.log(error.message)
-            // console.log("error in second try catch in handleSubmit in writePage.js")
+            console.log(error.message)
+            
         }
     }
+    console.log( "file" ,user.user.profilepicture)
+
 
     const handleDelete = async (e) => {
         e.preventDefault();
@@ -80,18 +81,12 @@ const UserSetting = () => {
                 }
 
                 const res = await axios.delete(`/user/delete/${id}`, { data })
-               // console.log(res)
+            //    console.log( "del" , res)
                 dispatch({ type: "LOGOUT" });
                 window.location.replace("/register")
             } catch (error) {
 
-                const data = {
-                    userId: user.user._id,
-                }
-                const id = user.user._id
-                console.log(id)
-                console.log(data.userId)
-                console.log(error.message)
+                // console.log(  "del" , error.message)
             }
 
         }
@@ -113,7 +108,7 @@ const UserSetting = () => {
                         {
                             user.user.profilepicture ?
                                 <img className="ppimage1"
-                                    src={file ? URL.createObjectURL(file) : publicFolder + user.user.profilepicture}
+                                    src={file==null ? URL.createObjectURL(file) : publicFolder + user.user.profilepicture}
                                     alt="userImage"
                                 /> :
                                 <img className="ppimage2"
