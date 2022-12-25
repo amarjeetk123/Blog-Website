@@ -2,14 +2,16 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { Context } from "../../context_api/Context"
 import "./Navbar.css"
+import { SERVER_URL } from "../../App"
 
 export default function Navbar() {
     const { user, dispatch } = useContext(Context)
+    const publicFolder = `${SERVER_URL}/images/`
 
     const handleLogout = () => {
         dispatch({ type: "LOGOUT" })
     }
-    // console.log(user.user)
+    // console.log("user",user.user.profilepicture)
     return (
         < div className="container" >
             <div className="main" >
@@ -54,9 +56,9 @@ export default function Navbar() {
                     <Link  to={"/settings"} >
                         {
                             user ?
-                                user.user.profilepicture ? <img className="image" src={user.user.profilepicture} alt="image." />
+                                user.user.profilepicture ? <img className="image" src={publicFolder + user.user.profilepicture} alt="user" />
                                     : <img src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
-                                        className="image"
+                                        className="image" alt="user"
                                     />
 
                                 :

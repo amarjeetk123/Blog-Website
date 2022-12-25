@@ -36,7 +36,7 @@ const WritePage = () => {
         }
 
         try {
-            const res = await axios.post("/post", newPost)
+            const res = await axios.post(`${SERVER_URL}/post`, newPost)
             window.location.replace("/post/" + res.data.savePost._id)
             // console.log(res.data.savePost._id)
         } catch (error) {

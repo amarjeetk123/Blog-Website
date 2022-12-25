@@ -19,9 +19,8 @@ const Loginpage = () => {
 
     dispatch({ type: "LOGIN_START" })
 
-
-
     try {
+     
       const res = await axios.post(`${SERVER_URL}/login`, {
         username,
         password,

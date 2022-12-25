@@ -14,10 +14,10 @@ function Post({ post }) {
         {post.photo ? <img
           className="postImage"
           src={publicFolder + post.photo}
-          alt=""
+          alt="Post Image"
         /> :
           <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
-            className="postImage"
+            className="postImage"  alt="POST Image"
           />}
       </Link>
 

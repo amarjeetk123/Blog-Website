@@ -26,7 +26,7 @@ function App() {
         <Route path='/' element={ <Home /> } />
         <Route path='/register' element={ user ? <Home /> : <RegisterPage /> } />
         <Route path='/login' element={ user ? <Home /> : <Loginpage /> } />
-        <Route path='/write' element={ user ?  <WritePage /> : <RegisterPage /> } />
+        <Route path='/write' element={ user ?  <WritePage /> : <Loginpage /> } />
         <Route path='/settings' element={ user ?  <UserSetting /> : <RegisterPage /> } />
         <Route path='/post/:postid' element={ <Single /> } />
         <Route path='/special/:postid' element={ <Post/> } />
