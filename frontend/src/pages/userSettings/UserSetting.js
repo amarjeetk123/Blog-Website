@@ -4,9 +4,12 @@ import { useContext, useState } from "react"
 import { Context } from "../../context_api/Context"
 import axios from "axios"
 
+import { SERVER_URL } from "../../App"
+
 const UserSetting = () => {
 
-    const publicFolder = "http://localhost:4001/images/";
+    // const publicFolder = "http://localhost:4001/images/";
+    const publicFolder = `${SERVER_URL}/images`
 
     const { user, dispatch } = useContext(Context)
     console.log("user" , user)
@@ -41,7 +44,8 @@ const UserSetting = () => {
             data.append("file", file)
             User.profilepicture = filename;
             try {
-                const res = await axios.post("api/upload", data)
+                // const res = await axios.post("api/upload", data)
+                const res = await axios.post(`${SERVER_URL}/api/upload`, data)
             } catch (error) {
                 console.log(error)
                  console.log("error in first try catch in handleSubmit in writePage.js")
@@ -50,7 +54,8 @@ const UserSetting = () => {
 
         try {
             const id = User.userId
-            const res = await axios.put(`/user/update/${id}`, User)
+            // const res = await axios.put(`/user/update/${id}`, User)
+            const res = await axios.put(`${SERVER_URL}/user/update/${id}`, User)
 
             setSuccessMessage(true)
 
@@ -80,7 +85,7 @@ const UserSetting = () => {
                     userId: user.user._id,
                 }
 
-                const res = await axios.delete(`/user/delete/${id}`, { data })
+                const res = await axios.delete(`${SERVER_URL}/user/delete/${id}`, { data })
             //    console.log( "del" , res)
                 dispatch({ type: "LOGOUT" });
                 window.location.replace("/register")

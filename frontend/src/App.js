@@ -14,9 +14,10 @@ import { useContext, useState } from 'react';
 import { Context } from './context_api/Context';
 import Post from "./components/post/Post"
 
-// export const URL = process.env.URL;
+export const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
+ 
   const {user}  = useContext(Context)
   return (
     <BrowserRouter>
