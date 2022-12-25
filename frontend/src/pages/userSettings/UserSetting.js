@@ -16,9 +16,9 @@ const UserSetting = () => {
     // console.log( "file" ,user.user.profilepicture)
   
 
-    const [email, setEmail] = useState(user.user.email)
+    const [email, setEmail] = useState("")
     // console.log(email)
-    const [password, setPassword] = useState(user.user.password)
+    const [password, setPassword] = useState("")
 
     const [sucseesMessage, setSuccessMessage] = useState(false)
 
@@ -57,7 +57,7 @@ const UserSetting = () => {
             dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
 
             console.log(res)
-            // window.location.reload()
+            window.location.reload()
 
         } catch (error) {
             dispatch({ type: "UPDATE_FAILURE" });
@@ -108,7 +108,7 @@ const UserSetting = () => {
                         {
                             user.user.profilepicture ?
                                 <img className="ppimage1"
-                                    src={file==null ? URL.createObjectURL(file) : publicFolder + user.user.profilepicture}
+                                    src={ publicFolder + user.user.profilepicture}
                                     alt="userImage"
                                 /> :
                                 <img className="ppimage2"
