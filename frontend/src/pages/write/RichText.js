@@ -5,8 +5,7 @@ import JoditEditor from 'jodit-react';
 const RichTextEditor = ({setDescription}) => {
     const editor = useRef(null)
     const config = {
-        buttons : ["bold","italic","underline","link" , "unlink"  ],
-    
+        buttons : ["bold","italic","underline","link"   ],
       }
     
   return (
