@@ -7,8 +7,6 @@ import axios from "axios"
 import { SERVER_URL } from "../../App"
 
 const UserSetting = () => {
-
-    // const publicFolder = "http://localhost:4001/images/";
     const publicFolder = `${SERVER_URL}/images/`
 
     const { user, dispatch } = useContext(Context)
@@ -18,7 +16,6 @@ const UserSetting = () => {
     console.log( "file" ,file)
     // console.log( "file" ,user.user.profilepicture)
   
-
     const [email, setEmail] = useState("")
     // console.log(email)
     const [password, setPassword] = useState("")

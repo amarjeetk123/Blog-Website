@@ -57,14 +57,15 @@ const WritePage = () => {
             </div>
             <form className="writeform"  >
                 <div className="abcd" >
-                    <label htmlFor="fileInput" >
-                        <i className="fas fa-plus writeIcon"> </i>
+                    <label htmlFor="fileInput" className="add-cover" >
+                        <i className="fas fa-plus writeIcon"></i>
+                        <h3>Add Cover</h3>
                     </label>
                     <input type="file" id="fileInput" className="fileinputwe" onChange={(e) => setFile(e.target.files[0])} />
-                    <input type={"text"} placeholder="Title" className="writeTitle" autoFocus={true}
-                     onChange={(e) => setTitle(e.target.value)  } />
                 </div>
                 <div className="writefromGroup">
+                <input type={"text"} placeholder="Add Title..." className="writeTitle" autoFocus={true}
+                     onChange={(e) => setTitle(e.target.value)  } />
                     <textarea placeholder="Write About Your Story....." className="writeTectArea writeTitle"
                     onChange={(e) => setDescription(e.target.value)  } ></textarea>
 

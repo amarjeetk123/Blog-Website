@@ -6,17 +6,6 @@
     display: none;
 }
 
-.writeIcon {
-    width: 29px;
-    height: 29px;
-    border: 2px solid rgba(0, 0, 0);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
 .writeform {
     margin-left: 160px;
 }
@@ -27,10 +16,13 @@
 
 .writeTitle {
     border: none;
-    font-size: 30px;
-    margin-left: 7px;
+    font-size: 32px;
+    font-weight: 600 ;
     padding-left: 10px;
     width: 70vw;
+    margin-top: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 2px;
 }
 
 .writeTitle:focus {
@@ -41,6 +33,7 @@
     margin-top: 20px;
     font-size: 25px;
     min-height: 350px;
+    font-weight: lighter;
 }
 
 
@@ -69,10 +62,35 @@
 }
 .image-div{
     width: 100%;
-    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-cover{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 7px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.add-cover h3{
+    font-weight: lighter;
+}
+.add-cover:hover{
+    background-color: rgb(241, 223, 223);
+    transition: 1s;
+}
+.writeIcon {
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgba(0, 0, 0);
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    
 }
+
+
