@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 
-const {home , register , login, update , deleteuser , getUser , createPost , updatePost ,deletePost, getPost, getAllPost } = require("../controller/userController")
+const {home , register , login, update , deleteuser , getUser , createPost , updatePost ,deletePost, getPost, getAllPost, getUserByUserName } = require("../controller/userController")
 
 const {createCategory , getAllCategory } = require("../controller/categoryController");
 
@@ -14,6 +14,8 @@ router.post("/login",login)
 router.put("/user/update/:id",update)
 router.delete("/user/delete/:id", deleteuser)
 router.get("/user/:id", getUser)
+router.get("/userbyusername", getUserByUserName)
+
 
 router.post("/post",createPost)
 router.put("/post/:id",updatePost)
