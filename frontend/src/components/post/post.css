@@ -1,15 +1,3 @@
-/* .post {
-    width: 90%;
-    margin: 10px 25px 40px 25px;
-    box-shadow: 1px 1px 1px rgb(203, 191, 191) , -1px -1px 1px rgb(203, 191, 191) ;
-    border-radius: 8px;
-} */
-
-/* .postInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
 
 .container1{
     background-color: #ffffff;
@@ -38,7 +26,6 @@
     text-transform: capitalize;
     letter-spacing: 2px;
 }
-
 
 .postdate{
     font-size: 20px;

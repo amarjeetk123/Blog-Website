@@ -60,18 +60,7 @@ function Post({ post }) {
           </div>
 
           <h2 className="postTitle">{post.title} </h2>
-          {/* {<h2 className="poDis" >
-             <ReactReadMoreReadLess charLimit={170}
-              readMoreText={"Read more ▼"}
-              readLessText={"Read less ▲"}
-              readMoreStyle={{ color: "#008080", cursor: "pointer" }}
-              readLessStyle={{ color: "#008080", cursor: "pointer" }}
-            >
-
-              {<span dangerouslySetInnerHTML={{ __html:post.description}} /> }
-            </ReactReadMoreReadLess> 
-            <span dangerouslySetInnerHTML={{ __html:post.description}} /> 
-          </h2>} */}
+      
           <div className="poDis" >
             <span  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.description) }} />
           </div>
