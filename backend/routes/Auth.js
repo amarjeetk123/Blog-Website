@@ -14,7 +14,7 @@ router.post("/login",login)
 router.put("/user/update/:id",update)
 router.delete("/user/delete/:id", deleteuser)
 router.get("/user/:id", getUser)
-router.get("/userbyusername", getUserByUserName)
+router.post("/getuserbyusername", getUserByUserName)
 
 
 router.post("/post",createPost)

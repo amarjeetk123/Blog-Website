@@ -1,64 +1,49 @@
 import "./post.css";
 
 import { Link } from "react-router-dom";
-
-import ReactReadMoreReadLess from "react-read-more-read-less";
+// import ReactReadMoreReadLess from "react-read-more-read-less";
+import DOMPurify from "dompurify";
 import { SERVER_URL } from "../../App";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Post({ post }) {
-  // const publicFolder = "http://localhost:4001/images/"
-  const publicFolder = `${SERVER_URL}/images/`;
 
-  // console.log(post.photo)
-  console.log(post)
+  const publicFolder = `${SERVER_URL}/images/`;
+  // console.log(post)
+
+  const [user, setUser] = useState("")
+  const getUser = async () => {
+    try {
+      const data = {
+        username: post.username,
+      }
+      const res = await axios.post(`${SERVER_URL}/getuserbyusername/`, data);
+      console.log( res)
+      setUser(res.data.user)
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+
 
   return (
-    // <div className="post">
-    //   {/* <Link to={`/post/${post._id}`} className="link">
-    //     {post.photo ? <img
-    //       className="postImage"
-    //       src={publicFolder + post.photo}
-    //       alt="Post Image"
-    //     /> :
-    //       <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
-    //         className="postImage"  alt="POST Image"
-    //       />}
-    //   </Link> */}
-    //   {/*
-    //   <div className="postInfo" >
-    //     <div className="postCast" >
-    //       <span className="postCat" >Music</span>
-    //       <span className="postCat" >Life</span>
-    //     </div>
-    //     <Link to={`/post/${post._id}`} className="link" >
-    //       <span className="postTitle" >  {post.title}  </span>
-    //     </Link>
-
-    //     <hr />
-    //     <span className="postDate"> {new Date(post.createdAt).toDateString()} </span>
-    //   </div> */}
-    //   {/* <p className="poDis" >
-    //     <ReactReadMoreReadLess charLimit={120}
-    //       readMoreText={"Read more ▼"}
-    //       readLessText={"Read less ▲"}
-    //       readMoreStyle={{ color:"#008080" , cursor:"pointer" }}
-    //       readLessStyle={{ color:"#008080" , cursor:"pointer" }}
-    //       >
-    //       {post.description}
-    //     </ReactReadMoreReadLess>
-
-    //   </p> */}
-
-    // </div>
-
     <div className="container1">
+      <div>
       <Link to={`/post/${post._id}`} className="link main-div">
         <div className="left">
           <div className="first">
-            {false? (
+            {user.profilepicture ? (
               <img
                 className="image2"
-                src={publicFolder + "avc"}
+                src={publicFolder + user.profilepicture}
                 alt="user"
               />
             ) : (
@@ -68,24 +53,29 @@ function Post({ post }) {
                 alt="user"
               />
             )}
-          <div>
-          {<h2 className="username">{post.username}</h2>}
-            <h2 className="postdate">{new Date(post.createdAt).toDateString()}</h2>
-          </div>
+            <div>
+              {<h2 className="username">{post.username}</h2>}
+              <h2 className="postdate">{new Date(post.createdAt).toDateString()}</h2>
+            </div>
           </div>
 
           <h2 className="postTitle">{post.title} </h2>
-          {<h2 className="poDis" >
-            <ReactReadMoreReadLess charLimit={170}
+          {/* {<h2 className="poDis" >
+             <ReactReadMoreReadLess charLimit={170}
               readMoreText={"Read more ▼"}
               readLessText={"Read less ▲"}
               readMoreStyle={{ color: "#008080", cursor: "pointer" }}
               readLessStyle={{ color: "#008080", cursor: "pointer" }}
             >
-              {post.description}
-            </ReactReadMoreReadLess>
 
-          </h2>}
+              {<span dangerouslySetInnerHTML={{ __html:post.description}} /> }
+            </ReactReadMoreReadLess> 
+            <span dangerouslySetInnerHTML={{ __html:post.description}} /> 
+          </h2>} */}
+          <div className="poDis" >
+            <span  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.description) }} />
+          </div>
+
         </div>
 
         <div className="right">
@@ -104,8 +94,10 @@ function Post({ post }) {
           )}
         </div>
       </Link>
+      </div>
     </div>
   );
 }
 
 export default Post;
+

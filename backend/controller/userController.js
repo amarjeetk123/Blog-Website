@@ -242,14 +242,16 @@ exports.getUser = async (req, res) => {
 }
 
 exports.getUserByUserName = async (req,res) => {
-    const {username} = req.body
+  
     try {
-        const user = await User.findById(username)
-        const { password, ...userInformation } = user._doc;  // we are fetchin all the information excluding user password
+        let {username} = req.body
+
+        const user = await User.findOne({username})
+         user.password = undefined
         res.status(201).json({
             success: true,
             message: "user found succesfully",
-            userInformation
+            user
         })
 
     } catch (error) {

@@ -12,9 +12,12 @@
 } */
 
 .container1{
-    padding: 10px 40px 20px 20px;
+    background-color: #ffffff;
+    padding: 34px 40px 0px 20px;
     width: 80%;
+    height: 270px;
     box-shadow: 1px 1px 1px rgb(203, 191, 191) , -1px -1px 1px rgb(203, 191, 191) ;
+
  }
 .postCat {
     font-family: 'Varela Round', sans-serif;
@@ -46,11 +49,12 @@
 }
 
 .poDis {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 21px;
     overflow: hidden;
     color: rgb(116, 97, 97);
-    line-height: 24px;
+    margin-left: -27px;
+    margin-top: -35px;
 
 }
 
