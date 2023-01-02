@@ -37,11 +37,12 @@ const Sidebar = () => {
             <div className="item">
                 <span className="title">Follow Us</span>
                 <div className="sidebarSocail" >
-                    <i className="fab fa-facebook-square  sidebar_icon" >  </i>
-                    <i className="fab fa-twitter-square sidebar_icon" >  </i>
-                    <i className="fab fa-pinterest-square sidebar_icon" >  </i>
-                    <i className="fab fa-instagram-square sidebar_icon" >  </i>
-
+                    <a href="https://www.facebook.com/amarkumar.aaryan.5"><i className="fab fa-facebook-square  sidebar_icon" ></i></a>
+                    <a href="https://twitter.com/AMARJEE07266175"><i className="fab fa-twitter-square sidebar_icon" >  </i></a>
+                    <a href="https://www.instagram.com/amarkumar.aaryan.5/"><i className="fab fa-instagram-square sidebar_icon" ></i></a>
+                    
+                    
+                    
 
                 </div>
             </div>
@@ -50,3 +51,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
