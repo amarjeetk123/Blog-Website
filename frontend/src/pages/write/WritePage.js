@@ -46,8 +46,6 @@ const WritePage = () => {
             // console.log("error in second try catch in handleSubmit in writePage.js")
         }
     }
-// the below object is for textEditor
-   
 
     return (
         <div className="write" >
@@ -72,15 +70,11 @@ const WritePage = () => {
                     <div className="textEditor">
                         <RichTextEditor  setDescription={setDescription} />
                     </div>
-                    <div>{description}</div>
-
-
                 </div>
                 <button className="writebtn" type="submit" onClick={handleSubmit} >
                     Publish
                 </button>
             </form>
-
         </div>
     )
 }
