@@ -23,11 +23,6 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
             <div className="item">
-                <span className="title">About me</span>
-                {/* <img src="https://th.bing.com/th/id/OIP.u5jd2IbRxY-2XbqPYC4AAgHaEo?pid=ImgDet&rs=1" /> */}
-                <p>Lorem ima kidjk kdkd dkdd ddkdkd dkdkd kkd ddk ddk</p>
-            </div>
-            <div className="item">
                 <span className="title">Categories</span>
                 <ul className="sidebarList" >
                     {
