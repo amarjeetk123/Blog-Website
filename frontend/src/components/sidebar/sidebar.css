@@ -56,6 +56,24 @@ p{
 }
 .sidebar_icon{
     margin-right: 20px;
-    font-size: 20px;
+    font-size: 40px;
     cursor: pointer;
+    transition: 0.3s;
+}
+.facebook-icon:hover{
+color: rgb(59, 89, 152);
+}
+.twitter-icon:hover{
+    color: rgb(38, 168,222 );
+}
+.instagram-icon:hover{
+    color: rgb(228, 64,95 );
+}
+.linkdin-icon:hover{
+    color: rgb(14, 118, 168);
+}
+.writeme{
+    margin-top: 50px;
+    font-size: 18px;
+    font-weight: normal;
 }
