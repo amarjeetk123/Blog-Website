@@ -17,26 +17,6 @@ export default function Navbar() {
             <div className="main" >
                 <div className="left" >
 
-                    <Link to="https://github.com/amarjeetk123" className="link">
-                        <i className="fa-brands fa-square-github left_icon"></i>
-                    </Link>
-
-                    <Link className="link" to="https://www.instagram.com/amarkumar.aaryan.5/"  >
-                        <i className="fab fa-twitter-square left_icon" >  </i>
-                    </Link>
-
-                    <Link className="link" to="https://www.linkedin.com/in/amarjeet-kumar-46b79b236/"  >
-                        <i className="fa-brands fa-linkedin  left_icon"></i>
-                    </Link>
-
-                    <Link to="https://www.instagram.com/amarkumar.aaryan.5/" className="link">
-                        <i className="fab fa-instagram-square left_icon" >  </i>
-                    </Link>
-                    <Link className="link" to="https://www.facebook.com/amarkumar.aaryan.5"  >
-                        <i className="fab fa-facebook-square  left_icon" >  </i>
-                    </Link>
-
-
                 </div>
                 <div className="center" >
                     <ul>
