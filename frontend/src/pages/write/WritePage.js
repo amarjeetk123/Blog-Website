@@ -4,6 +4,7 @@ import "./WritePage.css"
 import { Context } from "../../context_api/Context"
 import { SERVER_URL } from "../../App"
 import RichTextEditor from "./RichText"
+import TipTop from "./RichText"
 
 const WritePage = () => {
 
@@ -68,7 +69,10 @@ const WritePage = () => {
                     {/* <textarea placeholder="Write About Your Story....." className="writeTectArea writeTitle"
                     onChange={(e) => setDescription(e.target.value)  } ></textarea> */}
                     <div className="textEditor">
-                        <RichTextEditor  setDescription={setDescription} />
+                         {/* <RichTextEditor  setDescription={setDescription} />  */}
+                         
+                         <TipTop setDescription={setDescription} />
+                         {description}
                     </div>
                 </div>
                 <button className="writebtn" type="submit" onClick={handleSubmit} >
