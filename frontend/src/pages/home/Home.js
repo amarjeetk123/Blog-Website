@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom"
 
 const Home = () => {
   const [posts , setPosts] = useState([])
-  console.log(SERVER_URL)
+  // console.log(SERVER_URL)
 
   const {search} = useLocation()
 //  console.log(search)
@@ -27,7 +27,6 @@ const Home = () => {
       setPosts(res.data.posts)
   }
 
-
   useEffect( () => {
     fetchPost();
   },[search] )
@@ -37,7 +36,6 @@ const Home = () => {
     <div className="home" >
     <Sidebar />
     <Posts  posts={posts} />
-    
     </div>
     </>
     

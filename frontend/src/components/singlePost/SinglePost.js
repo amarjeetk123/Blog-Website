@@ -6,6 +6,8 @@ import axios from "axios"
 import { Context } from "../../context_api/Context"
 import { SERVER_URL } from "../../App"
 
+import parse from "html-react-parser";
+
 const SinglePost = () => {
     const { user } = useContext(Context)
     const publicFolder = `${SERVER_URL}/images/`
@@ -116,7 +118,7 @@ const SinglePost = () => {
                 {updateMode ? <textarea autoFocus value={description} className="singlepostdis-textarea"
                     onChange={(e) => setDescription(e.target.value)} /> :
                     <div className="singlepostdis" >
-                        {description}
+                        {parse(description)}
                     </div>}
                 {/* the belove button is visible at the time of content updating  */}
                 {updateMode && <div className="up-btn-div">
