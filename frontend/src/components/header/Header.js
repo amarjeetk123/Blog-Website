@@ -5,7 +5,6 @@ const Header = () => {
     <div className='header' >
         <div className='header-title' >
             <span className='headertitleSm' >Article and Blog</span>
-            <span className='headertitleLg' >WELCOME</span>
 
         </div>
       

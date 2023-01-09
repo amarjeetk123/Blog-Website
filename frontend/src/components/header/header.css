@@ -10,17 +10,13 @@
 }
 .headertitleSm{
     position: absolute;
-    top: 9%;
-    font-size: 27px;
+    top: 12%;
+    font-size: 52px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(54, 42, 42);
 }
 
-.headertitleLg{
-    position: absolute;
-    top: 11%;
-    font-size: 90px;
-    color: #4DD637;
-    text-shadow: 3px 3px 10px ;
-}
+
 .headerimag{
      width: 100%;
      height: 400px;
@@ -28,6 +24,6 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-top: 50px;
+    margin: 50px 0px 35px;
     
 }
