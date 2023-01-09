@@ -60,19 +60,10 @@ function Post({ post }) {
 
             <h2 className="postTitle">{post.title} </h2>
 
-
-            {/* <ReactReadMoreReadLess charLimit={170}
-              readMoreText={"Read more ▼"}
-              readLessText={"Read less ▲"}
-              readMoreStyle={{ color: "#008080", cursor: "pointer" }}
-              readLessStyle={{ color: "#008080", cursor: "pointer" }}
-            >
-             {}
-            </ReactReadMoreReadLess> */}
-            <div>  
+            <div>
               <span className="discription">
                 {res[0]?.props?.children}
-               <br />
+                <br />
                 {res[1]?.props?.children}
                 <br />
                 {res[2]?.props?.children}
