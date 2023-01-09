@@ -18,8 +18,6 @@ const Sidebar = () => {
         getAllCategory()
     }, [])
 
-  
-
     return (
         <div className="sidebar">
             <div className="item">
@@ -40,7 +38,7 @@ const Sidebar = () => {
                     <a className="link facebook-icon" href="https://www.facebook.com/amarkumar.aaryan.5"><i className="fab fa-facebook-square  sidebar_icon" ></i></a>
                     <a className="link twitter-icon" href="https://twitter.com/AMARJEE07266175"><i className="fab fa-twitter-square sidebar_icon" >  </i></a>
                     <a className="link instagram-icon" href="https://www.instagram.com/amarkumar.aaryan.5/"><i className="fab fa-instagram-square sidebar_icon" ></i></a>
-                    <a className="link linkdin-icon" href="https://www.linkedin.com/in/amarjeet-kumar-46b79b236/"><i class="fa-brands fa-linkedin sidebar_icon"></i></a>
+                    <a className="link linkdin-icon" href="https://www.linkedin.com/in/amarjeet-kumar-46b79b236/"><i className="fa-brands fa-linkedin sidebar_icon"></i></a>
                 </div>
             </div>
            <h2 className="writeme"> © 2023 Writeme</h2>
