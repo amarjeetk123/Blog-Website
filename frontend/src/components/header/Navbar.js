@@ -26,9 +26,10 @@ export default function Navbar() {
                         <Link to="/write" style={{ textDecoration: "none", color: "inherit" }}>
                             <li > Write </li>
                         </Link>
-
                         <li onClick={handleLogout}  >  {user && "LogOut"}   </li>
-
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc8AfiY3YAj34Uy_GZjB2Ke7iLKsZajZ9qwH5V38EbIdaxlug/viewform"  style={{ textDecoration: "none", color: "inherit" }}>
+                            <li>Feedback</li>
+                        </a>
                     </ul>
 
                 </div>
@@ -55,7 +56,6 @@ export default function Navbar() {
                     </Link>
 
                     <i className="fa-solid fa-magnifying-glass " id="search_icon"></i>
-
 
                 </div>
 
