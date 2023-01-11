@@ -70,8 +70,8 @@ const WritePage = () => {
                     {/* <textarea placeholder="Write About Your Story....." className="writeTectArea writeTitle"
                     onChange={(e) => setDescription(e.target.value)  } ></textarea> */}
                     <div className="textEditor">
-                         <RichTextEditor  setDescription={setDescription} /> 
-                         {/* <TipTop setDescription={setDescription} /> */}
+                        <RichTextEditor setDescription={setDescription} />
+                        {/* <TipTop setDescription={setDescription} /> */}
                     </div>
                 </div>
                 <button className="writebtn" type="submit" onClick={handleSubmit} >
