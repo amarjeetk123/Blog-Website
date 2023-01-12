@@ -30,7 +30,7 @@ function RegisterPage() {
   }
 
   return (
-    <div className="register"    >
+    <div className="register" >
       <span className="registerTitle">register</span>
       <form className="registerFarm" onSubmit={handleSubmit}>
         <label>Username</label>

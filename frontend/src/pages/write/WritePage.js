@@ -54,6 +54,7 @@ const WritePage = () => {
             <div className="image-div">
                 {file && <img className="writeImage"
                     src={URL.createObjectURL(file)}
+                    alt="l"
                 />}
             </div>
             <form className="writeform"  >
