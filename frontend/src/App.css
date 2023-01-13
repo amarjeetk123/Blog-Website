@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Sevillana&family=Teko:wght@300;400;500;600&display=swap');
+
+:root{
+  --first-color:#e9ebf1;
+  --hover-color:#E2E8F0;
+  --border-color: #e7e9f2 ;
+}
 .jodit-status-bar{
   visibility: hidden;
 }
 body{
-  background-color:#e7e9f2 ;
+  background-color:var(--first-color) ;
 }
 
 
