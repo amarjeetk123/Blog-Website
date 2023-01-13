@@ -58,10 +58,10 @@ export default function Navbar() {
                             )
                         ) : (
                             <ul style={{ display: "flex", gap: "1px" }}>
-                                <Link to="/login" className="link2">
+                                <Link to="/login" className="link">
                                     <li className="link"> Login</li>
                                 </Link>
-                                <Link to="/register" className="link2">
+                                <Link to="/register" className="link">
                                     <li> Register </li>
                                 </Link>
                             </ul>
@@ -69,6 +69,7 @@ export default function Navbar() {
                     </Link>
                 </div>
             </div>
+
             {user && showuserbox && (
                 <div className="user-box">
                     <div className="first same">
@@ -94,6 +95,7 @@ export default function Navbar() {
                             </h4>
                         </div>
                     </div>
+                    
                     <Link  className="link" to={`/?user=${user.user.username}`} onClick={() => setShowUserbox(false) } >
                     <div className="second same">
                         <div>
