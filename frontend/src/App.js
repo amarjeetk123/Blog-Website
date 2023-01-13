@@ -48,7 +48,7 @@ function App() {
               <Route path='/write' element={user ? <WritePage /> : <Loginpage />} />
               <Route path='/settings' element={user ? <UserSetting /> : <RegisterPage />} />
               <Route path='/post/:postid' element={<Single />} />
-              <Route path='/special/:postid' element={<Post />} />
+              {/* <Route path='/special/:postid' element={<Post />} /> */}
             </Routes>
           </BrowserRouter>
       }
