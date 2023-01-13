@@ -22,7 +22,10 @@ padding:0px 0px 10px 0px;
     margin: 0px  auto;
     z-index: 999;
 }
-
+.left h1{
+    font-size: 40px;
+    margin-top: 8px;
+}
 
 
 .image{

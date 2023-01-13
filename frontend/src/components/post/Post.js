@@ -35,7 +35,7 @@ function Post({ post }) {
   // console.log(res[0]?.props?.children)
   return (
     <div className="container1">
-      <div>
+    
         <Link to={`/post/${post._id}`} className="link main-div">
           <div className="left">
             <div className="first">
@@ -88,7 +88,7 @@ function Post({ post }) {
             )}
           </div>
         </Link>
-      </div>
+    
     </div>
   );
 }

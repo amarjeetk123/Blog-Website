@@ -16,7 +16,7 @@ export default function Navbar() {
         < div className="container" >
             <div className="main" >
                 <div className="left" >
-
+<h1>WriteME</h1>
                 </div>
                 <div className="center" >
                     <ul>
@@ -55,7 +55,6 @@ export default function Navbar() {
 
                     </Link>
 
-                    <i className="fa-solid fa-magnifying-glass " id="search_icon"></i>
 
                 </div>
 
