@@ -1,7 +1,7 @@
 import "./post.css";
 import { Link } from "react-router-dom";
-import ReactReadMoreReadLess from "react-read-more-read-less";
-import DOMPurify from "dompurify";
+// import ReactReadMoreReadLess from "react-read-more-read-less";
+// import DOMPurify from "dompurify";
 import { SERVER_URL } from "../../App";
 import { useEffect, useState } from "react";
 import axios from "axios";

@@ -4,6 +4,7 @@ import { Context } from "../../context_api/Context";
 import "./Navbar.css";
 import { SERVER_URL } from "../../App";
 
+
 export default function Navbar() {
     const { user, dispatch } = useContext(Context);
     const publicFolder = `${SERVER_URL}/images/`;
@@ -13,10 +14,16 @@ export default function Navbar() {
     const handleLogout = () => {
         dispatch({ type: "LOGOUT" });
     };
-    // console.log("user",user.user.profilepicture)
+ 
+    const handleHide = () => {
+        if(showuserbox){
+            setShowUserbox(false)
+        }
+    }
+    
     return (
-        <div className="container"  >
-            <div className="main">
+        <div className="container" onClick={handleHide } >
+            <div className="main" >
                 <div className="left">
                     <h1>WriteME</h1>
                 </div>
@@ -58,10 +65,10 @@ export default function Navbar() {
                             )
                         ) : (
                             <ul style={{ display: "flex", gap: "1px" }}>
-                                <Link to="/login" className="link">
+                                <Link to="/login" className="link2">
                                     <li className="link"> Login</li>
                                 </Link>
-                                <Link to="/register" className="link">
+                                <Link to="/register" className="link2">
                                     <li> Register </li>
                                 </Link>
                             </ul>
@@ -70,7 +77,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {user && showuserbox && (
+            {user && showuserbox  &&  (
                 <div className="user-box">
                     <div className="first same">
                         <div>
@@ -96,7 +103,7 @@ export default function Navbar() {
                         </div>
                     </div>
                     
-                    <Link  className="link" to={`/?user=${user.user.username}`} onClick={() => setShowUserbox(false) } >
+                    <Link  className="link" to={`/?user=${user.user.username}`}  >
                     <div className="second same">
                         <div>
                             <h2 style={{ fontWeight: "400" }}>My Blogs</h2>
@@ -111,7 +118,7 @@ export default function Navbar() {
                     </div>
                     </Link>
                  
-                    <Link to={"/settings"} className="link" onClick={() => setShowUserbox(false) } >
+                    <Link to={"/settings"} className="link"  >
                         <div className=" same">
                             <i
                                 style={{ color: "#808080", fontSize: "30px" }}
