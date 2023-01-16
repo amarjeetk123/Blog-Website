@@ -122,59 +122,57 @@ exports.login = async (req, res) => {
     }
 }
 
-
-
 // Function for update user information
 exports.update = async (req, res) => {
 
- 
-
-        const {email , password , profilepicture}  = req.body
-        // console.log(profilepicture)
-        const data = {}
-        // if(!email){
-        //     return res.status(401).send(" email id is requird")
-        // }
-        // if(email){
-        //     const res = await User.findById({email})
-        //     if(res){
-        //         return res.status(401).send("You Entered the same email as ")
-        //     }
-        //     data.email = email;
-        // }
-        if(password==""){
-            return res.status(401).send("Please give a password")
-        }
-        if (password  && password !== "") {
-            const salt = await bcrypt.genSalt(10)
-            req.body.password = await bcrypt.hash(req.body.password, salt); // it is another awy of hashing the password with salt value
-            data.password = req.body.password
-        }
-        if(profilepicture){
-            data.profilepicture = profilepicture
-        }
-      
 
 
-        try {
-            const user = await User.findByIdAndUpdate(req.params.id, data)
+    const { email, password, profilepicture } = req.body
+    // console.log(profilepicture)
+    const data = {}
+    // if(!email){
+    //     return res.status(401).send(" email id is requird")
+    // }
+    // if(email){
+    //     const res = await User.findById({email})
+    //     if(res){
+    //         return res.status(401).send("You Entered the same email as ")
+    //     }
+    //     data.email = email;
+    // }
+    if (password == "") {
+        return res.status(401).send("Please give a password")
+    }
+    if (password && password !== "") {
+        const salt = await bcrypt.genSalt(10)
+        req.body.password = await bcrypt.hash(req.body.password, salt); // it is another awy of hashing the password with salt value
+        data.password = req.body.password
+    }
+    if (profilepicture) {
+        data.profilepicture = profilepicture
+    }
 
-            user.password = undefined;
-            res.status(201).json({
-                success: true,
-                user,
-                message: "user information updated succesfully",
 
-            });
 
-        } catch (error) {
-            // console.log(error.message)
-            console.log("error in")
-            res.status(401).json({
-                success: false,
-                message: "error in update controller"
-            });
-        }
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, data)
+
+        user.password = undefined;
+        res.status(201).json({
+            success: true,
+            user,
+            message: "user information updated succesfully",
+
+        });
+
+    } catch (error) {
+        // console.log(error.message)
+        console.log("error in")
+        res.status(401).json({
+            success: false,
+            message: "error in update controller"
+        });
+    }
     // }
     // else {
     //     res.status(401).json("You can update only your account!..")
@@ -183,7 +181,7 @@ exports.update = async (req, res) => {
 
 // Function for delete user 
 exports.deleteuser = async (req, res) => {
-   
+
     if (req.body.userId === req.params.id) {
 
         try {  // this try catch is for deleting all the post of that user which are deleting thier account
@@ -197,7 +195,7 @@ exports.deleteuser = async (req, res) => {
                     success: true,
                     message: "user deleted succesfully",
                 });
-                
+
             } catch (error) {
                 console.log(error.message)
                 res.status(401).json({
@@ -241,13 +239,13 @@ exports.getUser = async (req, res) => {
     }
 }
 
-exports.getUserByUserName = async (req,res) => {
-  
-    try {
-        let {username} = req.body
+exports.getUserByUserName = async (req, res) => {
 
-        const user = await User.findOne({username})
-         user.password = undefined
+    try {
+        let { username } = req.body
+
+        const user = await User.findOne({ username })
+        user.password = undefined
         res.status(201).json({
             success: true,
             message: "user found succesfully",
@@ -264,9 +262,7 @@ exports.getUserByUserName = async (req,res) => {
     }
 }
 
-
 // function for creating post  // allmost same as /register  in /register i am using .save for saving data in datavase but here i will used .create for saving data inside databse
-
 exports.createPost = async (req, res) => {
 
     try {
@@ -305,16 +301,12 @@ exports.createPost = async (req, res) => {
 exports.updatePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
-        const { username, title } = req.body
+        const { username } = req.body
         if (!username) {
             return res.status(401).send("username is required to update the title")
         }
         if (post.username == username) {
             try {
-                // const titleexist = await Post.findOne({ title })
-                // if (titleexist ) {
-                //     return res.status(401).send("Please write another title This title is already in USE")
-                // }
                 const updatedPost = await Post.findByIdAndUpdate(req.params.id, {
                     $set: req.body
                 }, { new: true })
@@ -340,7 +332,6 @@ exports.updatePost = async (req, res) => {
             })
 
         }
-
 
     } catch (error) {
         res.status(500).send(error)
