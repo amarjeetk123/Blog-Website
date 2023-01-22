@@ -1,6 +1,7 @@
 import "./SinglePost.css"
 import { Link, useLocation } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
+import RichTextEditor from "../../pages/write/RichText"
 
 import axios from "axios"
 import { Context } from "../../context_api/Context"
@@ -115,8 +116,11 @@ const SinglePost = () => {
                     </span>
                     <span className="singlePostDate" > {new Date(post.createdAt).toDateString()} </span>
                 </div>
-                {updateMode ? <textarea autoFocus value={description} className="singlepostdis-textarea"
-                    onChange={(e) => setDescription(e.target.value)} /> :
+                {updateMode ? <RichTextEditor
+                    setDescription={setDescription}
+                    value={description}
+                    className="singlepostdis-textarea"
+                /> :
                     <div className="singlepostdis" >
                         {parse(description)}
                     </div>}

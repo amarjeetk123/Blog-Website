@@ -10,10 +10,10 @@ const UserSetting = () => {
     const publicFolder = `${SERVER_URL}/images/`
 
     const { user, dispatch } = useContext(Context)
-    console.log("user" , user)
+    // console.log("user" , user)
 
     const [file, setFile] = useState(null)
-    console.log( "file" ,file)
+    // console.log( "file" ,file)
     // console.log( "file" ,user.user.profilepicture)
   
     const [email, setEmail] = useState("")

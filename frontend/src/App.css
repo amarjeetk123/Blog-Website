@@ -4,12 +4,18 @@
   --first-color:#e9ebf1;
   --hover-color:#E2E8F0;
   --border-color: #e7e9f2 ;
+  --jd-color-border: #de0a0a;
 }
+
+
 .jodit-status-bar{
   visibility: hidden;
 }
+td{
+  border: 1px solid black;
+}
 body{
-  background-color:var(--first-color) ;
+  background-color: #ffffff ;
 }
 
 

@@ -1,14 +1,24 @@
 import React, {useRef} from "react"
 import JoditEditor from 'jodit-react';
+import "../../App.css"
 
-const RichTextEditor = ({setDescription}) => {
+
+const RichTextEditor = ({setDescription,value}) => {
     const editor = useRef(null)
+    editor.value = value
     const config = {
-        buttons : ["bold","italic","underline","link"   ],
+        buttons : ["bold","italic","underline","link", "strikethrough", "font", "|", "fontsize", "|", "brush", "indent","outdent", "ul", "table", "fullsize"   ],
       }
 
+      
   return (
-    <JoditEditor ref={editor}  onBlur={newContent => setDescription(newContent)}  config={config} />
+    <JoditEditor spellcheck={true} ref={editor} value={value}  onBlur={newContent => setDescription(newContent)}  config={config} />
+//     <div className="App">
+//     <RichTextEditorComponent>
+//         <p>The Rich Text Editor component is WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p>
+//         <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
+//     </RichTextEditorComponent>
+// </div>
   )
 }
 
