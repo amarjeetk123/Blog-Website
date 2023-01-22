@@ -98,3 +98,8 @@
     padding: 2px 3px;
     border-radius: 2px;
   }
+
+  p{
+    font-size: 20px;
+    padding-left: 10px;
+  }

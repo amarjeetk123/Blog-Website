@@ -28,7 +28,7 @@ export default function Navbar() {
                     <h1>WriteME</h1>
                 </div>
                 <div className="center">
-                    <ul>
+                    <ul className="navbar-list">
                         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
                             <li> Home</li>
                         </Link>
