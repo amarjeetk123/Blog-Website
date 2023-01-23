@@ -4,7 +4,6 @@ import "./WritePage.css"
 import { Context } from "../../context_api/Context"
 import { SERVER_URL } from "../../App"
 import RichTextEditor from "./RichText"
-// import TipTop from "./RichText"
 // import parse from "html-react-parser";
 
 const WritePage = () => {
