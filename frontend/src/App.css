@@ -21,7 +21,7 @@ td{
   border: 1px solid black;
 }
 body{
-  background-color: #ffffff ;
+  background-color: var(--first-color) ;
 }
 
 .loading-animation{

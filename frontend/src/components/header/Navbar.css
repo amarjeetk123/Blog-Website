@@ -4,7 +4,7 @@
     top: 0;
     z-index: 100;
     background-color: #fff;
-    padding: 0px 0px 10px 0px;
+    padding: 5px 0px;
 }
 
 .main {
@@ -20,7 +20,6 @@
 
 .left h1 {
     font-size: 40px;
-    margin-top: 8px;
 }
 
 
@@ -30,7 +29,7 @@
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
-
+ margin-bottom: 10px;
 }
 
 .left_icon {
@@ -47,7 +46,7 @@
 
  .navbar-list li {
     margin-right: 20px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 400;
     cursor: pointer;
     list-style: none;
@@ -71,23 +70,19 @@
 .user-box {
     position: absolute;
     background-color: #ffffff;
-
     margin-top: 12px;
     right: 5%;
     border-radius: 8px;
 }
 
 .same {
-    padding: 20px;
+    padding: 0px 20px;
     border-bottom: 2px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.user-box .first {
-    padding: 20px;
-}
 
 .same:hover {
     background-color: var(--hover-color);
@@ -95,7 +90,8 @@
 }
 
 
-.user-box .first .left .username {
+.user-box  .left2 .username {
     font-size: 22px;
-    margin-top: -9px;
+    margin-top: -14px;
 }
+
