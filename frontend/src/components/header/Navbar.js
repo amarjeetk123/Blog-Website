@@ -29,20 +29,20 @@ export default function Navbar() {
         <div className="center">
           <ul className="navbar-list">
             <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-              <li> Home</li>
+              <li title="Home" > Home</li>
             </Link>
             <Link
               to="/write"
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <li> Write </li>
+              <li title="Blog Writing"> Write </li>
             </Link>
             
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSc8AfiY3YAj34Uy_GZjB2Ke7iLKsZajZ9qwH5V38EbIdaxlug/viewform"
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <li>Feedback</li>
+              <li title="Feedback Form">Feedback</li>
             </a>
           </ul>
         </div>
@@ -54,21 +54,23 @@ export default function Navbar() {
                   className="image"
                   src={publicFolder + user.user.profilepicture}
                   alt="user"
+                  title="Profile"
                 />
               ) : (
                 <img
                   src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
                   className="image"
                   alt="user"
+                  title="Profile"
                 />
               )
             ) : (
-              <ul style={{ display: "flex", gap: "1px" }}>
+              <ul style={{ display: "flex", gap: "30px" }}>
                 <Link to="/login" className="link2">
-                  <li style={{listStyle:"none"}} > Login</li>
+                  <li style={{listStyle:"none" , fontSize:"23px" }} > Login</li>
                 </Link>
                 <Link to="/register" className="link2">
-                  <li> Register </li>
+                  <li style={{listStyle:"none" , fontSize:"23px"}}> Register </li>
                 </Link>
               </ul>
             )}

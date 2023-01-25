@@ -2,7 +2,17 @@
 .container1{
    width: 100%;
     border-bottom: 2px solid #e7e9f2;
+    overflow: hidden;
+    padding-bottom: 10px;
 }
+.left{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 50%;
+}
+
+
 .username{
     letter-spacing: 0.5px;
     margin-top: 13px;
@@ -12,9 +22,9 @@
 .postTitle {
     font-family: 'Noto Sans Chakma', sans-serif;
     font-size: 28px;
-    width: 100%;
     text-transform: capitalize;
     letter-spacing: 2px;
+    margin-top: -10px;
 }
 
 .postdate{
@@ -22,12 +32,14 @@
     font-family: 'Lora', serif;
     color: #999;
     font-style: italic;
+    margin-top: -15px;
 }
 
 .discription {
     font-family: 'Poppins', sans-serif;
     font-size: 21px;
     overflow: hidden;
+    margin-top: -30px;
 
 }
 
@@ -41,12 +53,7 @@
     display: flex;
     gap: 10px;
 }
-.left{
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 50%;
-}
+
 .image2{
     width: 70px;
     height: 70px;

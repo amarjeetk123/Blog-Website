@@ -1,7 +1,6 @@
 import "./post.css";
 import { Link } from "react-router-dom";
 // import ReactReadMoreReadLess from "react-read-more-read-less";
-// import DOMPurify from "dompurify";
 import { SERVER_URL } from "../../App";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -60,13 +59,13 @@ function Post({ post }) {
 
             <h2 className="postTitle">{post.title} </h2>
 
-            <div>
-              <span className="discription">
+            <div className="discription">
+              <span >
                 {res[0]?.props?.children}
-                <br />
-                {res[1]?.props?.children}
-                <br />
-                {res[2]?.props?.children}
+                {/* <br />
+                {res[1]?.props?.children} */}
+                {/* <br />
+                {res[2]?.props?.children} */}
               </span>
             </div>
 
