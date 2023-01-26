@@ -18,7 +18,24 @@
     z-index: 999;
 }
 
-.left h1 {
+.search-box {
+    width: 400px;
+    border-radius: 16px;
+    height: 25px;
+    font-size: 22px;
+    padding: 6px 10px 6px 20px;
+    border: none;
+    background-color: var(--first-color);
+}
+
+.search-box:focus {
+    outline-color: #444;
+}
+.search-box::placeholder{
+    font-size: 20px;
+}
+
+.left1 h1 {
     font-size: 40px;
 }
 
@@ -29,7 +46,7 @@
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
- margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .left_icon {
@@ -44,14 +61,12 @@
     justify-content: center;
 }
 
- .navbar-list li {
+.navbar-list li {
     margin-right: 20px;
     font-size: 24px;
     font-weight: 400;
     cursor: pointer;
     list-style: none;
- 
-   
 }
 
 #search_icon {
@@ -82,16 +97,12 @@
     align-items: center;
     gap: 20px;
 }
-
-
 .same:hover {
     background-color: var(--hover-color);
     cursor: pointer;
 }
 
-
-.user-box  .left2 .username {
+.user-box .left2 .username {
     font-size: 22px;
     margin-top: -14px;
 }
-

@@ -1,13 +1,12 @@
 .sidebar {
-    height: 400px;
     width: 20%;
-    margin: 0px 0px 50px 40px;
-    padding-bottom: 30px;
+    margin: 0px 0px 100px 40px;
+    padding-top: 10px;
     background-color: #ffffff;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+ 
 }
 
 .sidebar .item {
@@ -23,8 +22,8 @@
     border-top: 1px solid #a7a4a4;
     border-bottom: 1px solid #a7a4a4;
     font-family: 'Varela Round', sans-serif;
-    font-size: 18px;
-    color: #222;
+    font-size: 22px;
+    color: rgb(63, 62, 62);
     font-weight: 600;
     text-align: center;
     line-height: 20px;
@@ -36,18 +35,22 @@ img {
 
 
 .sidebarList {
+    width: 90%;
     list-style: none;
-    margin-bottom: 30px;
-    padding-left: 30px;
+    margin-bottom: 15px;
+    margin-top: -1px;
+
 }
 
 .sidebatListItem {
-    display: inline-block;
-
-    width: 42%;
-    text-align: center;
-    margin-top: 15px;
+    width: 90%;
     cursor: pointer;
+    padding-left: 5px;
+    padding: 5px 0px 5px 10px;
+    border-radius: 10px;
+}
+.sidebatListItem:hover{
+    background-color: var(--hover-color);
 }
 
 .sidebarSocail {
@@ -85,4 +88,5 @@ img {
     margin-top: 50px;
     font-size: 18px;
     font-weight: normal;
+    text-align: center;
 }

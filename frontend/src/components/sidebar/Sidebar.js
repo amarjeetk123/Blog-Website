@@ -24,9 +24,9 @@ const Sidebar = () => {
                 <span className="title">Categories</span>
                 <ul className="sidebarList" >
                     {
-                        catge.map((c , i) => (
-                            <Link key={i}  className="link" to={`/?cat=${c.name}`} >
-                            <li  className="sidebatListItem"> {c.name} </li>
+                        catge.map((c, i) => (
+                            <Link key={i} className="link" to={`/?cat=${c.name}`} >
+                                <li className="sidebatListItem"> {c.name} </li>
                             </Link>
                         ))
                     }
@@ -41,7 +41,7 @@ const Sidebar = () => {
                     <a className="link linkdin-icon" href="https://www.linkedin.com/in/amarjeet-kumar-46b79b236/"><i className="fa-brands fa-linkedin sidebar_icon"></i></a>
                 </div>
             </div>
-           <h2 className="writeme"> © 2023 Writeme</h2>
+            <h2 className="writeme"> © 2023 Writeme</h2>
         </div>
     );
 };

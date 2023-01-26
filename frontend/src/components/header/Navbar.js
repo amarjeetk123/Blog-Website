@@ -23,21 +23,26 @@ export default function Navbar() {
   return (
     <div className="container" onClick={handleHide}>
       <div className="main">
-        <div className="left">
-          <h1>WriteME</h1>
+
+        <div className="left1">
+          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <h1>WriteME</h1>
+          </Link>
         </div>
+
+        <div>
+        <input className="search-box" placeholder="Search for title, people, articals...." />
+        </div>
+
         <div className="center">
           <ul className="navbar-list">
-            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-              <li title="Home" > Home</li>
-            </Link>
             <Link
               to="/write"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <li title="Blog Writing"> Write </li>
             </Link>
-            
+
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSc8AfiY3YAj34Uy_GZjB2Ke7iLKsZajZ9qwH5V38EbIdaxlug/viewform"
               style={{ textDecoration: "none", color: "inherit" }}
@@ -67,10 +72,16 @@ export default function Navbar() {
             ) : (
               <ul style={{ display: "flex", gap: "30px" }}>
                 <Link to="/login" className="link2">
-                  <li style={{listStyle:"none" , fontSize:"23px" }} > Login</li>
+                  <li style={{ listStyle: "none", fontSize: "23px" }}>
+                    {" "}
+                    Login
+                  </li>
                 </Link>
                 <Link to="/register" className="link2">
-                  <li style={{listStyle:"none" , fontSize:"23px"}}> Register </li>
+                  <li style={{ listStyle: "none", fontSize: "23px" }}>
+                    {" "}
+                    Register{" "}
+                  </li>
                 </Link>
               </ul>
             )}
@@ -108,7 +119,13 @@ export default function Navbar() {
             <div className="second same">
               <div>
                 <h2 style={{ fontWeight: "400" }}>My Blogs</h2>
-                <h2 style={{ fontWeight: "600", fontSize: "25px", marginTop:"-15px" }}>
+                <h2
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "25px",
+                    marginTop: "-15px",
+                  }}
+                >
                   {user.user.email}{" "}
                 </h2>
               </div>
