@@ -6,7 +6,6 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
- 
 }
 
 .sidebar .item {
@@ -54,14 +53,16 @@ img {
 }
 
 .sidebarSocail {
-    margin-top: 15px;
     width: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .sidebar_icon {
+    margin-top: 15px;
     margin-right: 20px;
     font-size: 40px;
     cursor: pointer;
@@ -90,3 +91,14 @@ img {
     font-weight: normal;
     text-align: center;
 }
+
+@media screen and (max-width:1000px) {
+ .sidebar{
+    margin-left: 20px;
+ }
+}
+@media screen and (max-width:900px) {
+    .sidebar{
+     display: none;
+    }
+   }
