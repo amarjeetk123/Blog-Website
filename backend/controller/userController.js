@@ -404,6 +404,7 @@ exports.getPost = async (req, res) => {
 exports.getAllPost = async (req, res) => {
     const username = req.query.user;
     const categoryname = req.query.cat;
+    const search = req.query.search;
     try {
         let posts;
         if (username) {        // it will show all thw posts related to a single user
@@ -415,6 +416,18 @@ exports.getAllPost = async (req, res) => {
                     $in: [categoryname]
                 }
             })
+        }
+        // else if(search){
+        //     let username = search;
+        //     let title = search;
+        //     posts = await Post.find({ username:username })
+        //     if(posts.length==0){
+        //         posts = await Post.find({ title:title }) 
+        //         // console.log("zero")
+        //     }
+        // }
+        else if(search){
+            posts = await Post.find({ $or: [{ title: new RegExp(search, 'i')} , {username: new RegExp(search, 'i')}   ] })  // it will search the post ny title or username
         }
         else {
             posts = await Post.find()  // it will show all the posts
@@ -433,4 +446,3 @@ exports.getAllPost = async (req, res) => {
         })
     }
 }
-
