@@ -4,7 +4,7 @@ import { Context } from "../../context_api/Context";
 import "./Navbar.css";
 import { SERVER_URL } from "../../App";
 
-export default function Navbar() {
+export default function Navbar({removebox,setRemoveBox}) {
   const { user, dispatch } = useContext(Context);
   const publicFolder = `${SERVER_URL}/images/`;
   // console.log(user);
@@ -13,8 +13,17 @@ export default function Navbar() {
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
   };
+  if(showuserbox){
+    if(removebox){
+    setShowUserbox(false)
+    }
+  }
+ 
 
   const handleHide = () => {
+    if(removebox){
+      setRemoveBox(false)
+    }
     if (showuserbox) {
       setShowUserbox(false);
     }

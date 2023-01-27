@@ -2,15 +2,14 @@ import "./home.css"
 import Header from "../../components/header/Header"
 import Posts from "../../components/posts/Posts"
 import Sidebar from "../../components/sidebar/Sidebar"
-
-import { SERVER_URL } from "../../App"
-
 import {useEffect, useState} from "react"
-
 import axios from "axios"
 import { useLocation } from "react-router-dom"
 
-const Home = () => {
+import { SERVER_URL } from "../../App"
+
+
+const Home = ({setRemoveBox}) => {
   const [posts , setPosts] = useState([])
   // console.log(SERVER_URL)
 
@@ -27,15 +26,17 @@ const Home = () => {
       setPosts(res.data.posts)
   }
 
+ 
+
   useEffect( () => {
     fetchPost();
   },[search] )
   return (
     <>
-    <Header />
-    <div className="home" >
+    <Header  />
+    <div className="home" onClick={() => setRemoveBox(true)}  >
     <Sidebar />
-    <Posts  posts={posts} />
+    <Posts   posts={posts} />
     </div>
     </>
     

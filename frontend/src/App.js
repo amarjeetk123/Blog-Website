@@ -19,7 +19,9 @@ export const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
 function App() {
+
   const [spinner, setSpinner] = useState(false)
+ 
 
   useEffect(() => {
     setSpinner(true)
@@ -28,8 +30,7 @@ function App() {
     }, 2000);
 
   }, [])
-
-
+  const [removebox, setRemoveBox] = useState(false)
   const { user } = useContext(Context)
   return (
     <div>
@@ -40,9 +41,9 @@ function App() {
           </div>
           :
           <BrowserRouter>
-            <Navbar />
+            <Navbar setRemoveBox={setRemoveBox} removebox={removebox} />
             <Routes>
-              <Route path='/' element={<Home />} />
+              <Route path='/' element={<Home setRemoveBox={setRemoveBox} />} />
               <Route path='/register' element={user ? <Home /> : <RegisterPage />} />
               <Route path='/login' element={user ? <Home /> : <Loginpage />} />
               <Route path='/write' element={user ? <WritePage /> : <Loginpage />} />
