@@ -20,7 +20,8 @@ export const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
 
-  const [spinner, setSpinner] = useState(false)
+  const [spinner, setSpinner] = useState(false);
+  const [searchInput , setSearchInput] = useState("");
  
 
   useEffect(() => {
@@ -41,9 +42,9 @@ function App() {
           </div>
           :
           <BrowserRouter>
-            <Navbar setRemoveBox={setRemoveBox} removebox={removebox} />
+            <Navbar setRemoveBox={setRemoveBox} setSearchInput={setSearchInput} removebox={removebox} />
             <Routes>
-              <Route path='/' element={<Home setRemoveBox={setRemoveBox} />} />
+              <Route path='/' element={<Home setRemoveBox={setRemoveBox} searchInput={searchInput} />} />
               <Route path='/register' element={user ? <Home /> : <RegisterPage />} />
               <Route path='/login' element={user ? <Home /> : <Loginpage />} />
               <Route path='/write' element={user ? <WritePage /> : <Loginpage />} />

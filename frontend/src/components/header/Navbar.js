@@ -4,24 +4,29 @@ import { Context } from "../../context_api/Context";
 import "./Navbar.css";
 import { SERVER_URL } from "../../App";
 
-export default function Navbar({removebox,setRemoveBox}) {
+export default function Navbar({ removebox, setRemoveBox , setSearchInput }) {
   const { user, dispatch } = useContext(Context);
   const publicFolder = `${SERVER_URL}/images/`;
   // console.log(user);
+  const [inputBoxValue , setInputBoxValue] = useState("")
+  // const handleSearch = (e) => {
+   
+  //   setSearchInput(inputBoxValue)
+  // }
 
   const [showuserbox, setShowUserbox] = useState(false);
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
   };
-  if(showuserbox){
-    if(removebox){
-    setShowUserbox(false)
+  if (showuserbox) {
+    if (removebox) {
+      setShowUserbox(false)
     }
   }
- 
+
 
   const handleHide = () => {
-    if(removebox){
+    if (removebox) {
       setRemoveBox(false)
     }
     if (showuserbox) {
@@ -40,7 +45,14 @@ export default function Navbar({removebox,setRemoveBox}) {
         </div>
 
         <div>
-        <input className="search-box" placeholder="Search for title, people, articals...." />
+          <input className="search-box" placeholder="Search for title, people, articals...."
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                // console.log(searchInput)
+                // handleSearch(e)
+              };
+            }} />
         </div>
 
         <div className="center">
