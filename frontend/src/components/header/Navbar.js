@@ -4,7 +4,7 @@ import { Context } from "../../context_api/Context";
 import "./Navbar.css";
 import { SERVER_URL } from "../../App";
 
-export default function Navbar({ removebox, setRemoveBox , setSearchInput }) {
+export default function Navbar({ removebox, setRemoveBox , setSearchInput, searchInput }) {
   const { user, dispatch } = useContext(Context);
   const publicFolder = `${SERVER_URL}/images/`;
   // console.log(user);
@@ -34,11 +34,15 @@ export default function Navbar({ removebox, setRemoveBox , setSearchInput }) {
     }
   };
 
+  const cleanInputBox = () => {
+    setSearchInput("")
+  }
+
   return (
     <div className="container" onClick={handleHide}>
       <div className="main">
 
-        <div className="left1">
+        <div className="left1"  onClick={cleanInputBox} >
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <h1>WriteME</h1>
           </Link>
@@ -46,13 +50,15 @@ export default function Navbar({ removebox, setRemoveBox , setSearchInput }) {
 
         <div>
           <input className="search-box" placeholder="Search for title, people, articals...."
+          value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 // console.log(searchInput)
                 // handleSearch(e)
               };
-            }} />
+            }}
+             />
         </div>
 
         <div className="center">

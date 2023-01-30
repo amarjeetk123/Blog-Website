@@ -11,14 +11,13 @@ import { SERVER_URL } from "../../App"
 
 const Home = ({ setRemoveBox, searchInput }) => {
   const [posts, setPosts] = useState([])
-  // console.log(SERVER_URL)
 
   let { search } = useLocation()
-  //  console.log(search)
-  if (searchInput !== "") {
-    // console.log(searchInput)
+
+  if (searchInput !== "" && !search) {
     search = `/?search=${searchInput}`
     console.log(search)
+
   }
 
   const fetchPost = async () => {
@@ -26,12 +25,9 @@ const Home = ({ setRemoveBox, searchInput }) => {
     const res = await axios.get(`${SERVER_URL}/getallpost` + search)
     //  console.log(res.data)
     //  console.log(res.data.success)
-    // console.log(res.data.posts[0].title)
 
     setPosts(res.data.posts)
   }
-
-
 
   useEffect(() => {
     fetchPost();

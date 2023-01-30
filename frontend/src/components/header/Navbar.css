@@ -19,20 +19,21 @@
 }
 
 .search-box {
-    width: 400px;
+    width: 600px;
     border-radius: 16px;
-    height: 25px;
+    height: 23px;
     font-size: 22px;
     padding: 6px 10px 6px 20px;
     border: none;
     background-color: var(--first-color);
+   color: rgb(53, 48, 48);
 }
 
 .search-box:focus {
     outline-color: #444;
 }
 .search-box::placeholder{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .left1 h1 {

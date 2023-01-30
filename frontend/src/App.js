@@ -42,7 +42,7 @@ function App() {
           </div>
           :
           <BrowserRouter>
-            <Navbar setRemoveBox={setRemoveBox} setSearchInput={setSearchInput} removebox={removebox} />
+            <Navbar setRemoveBox={setRemoveBox} setSearchInput={setSearchInput} searchInput={searchInput}  removebox={removebox} />
             <Routes>
               <Route path='/' element={<Home setRemoveBox={setRemoveBox} searchInput={searchInput} />} />
               <Route path='/register' element={user ? <Home /> : <RegisterPage />} />
