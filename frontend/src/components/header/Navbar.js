@@ -4,13 +4,13 @@ import { Context } from "../../context_api/Context";
 import "./Navbar.css";
 import { SERVER_URL } from "../../App";
 
-export default function Navbar({ removebox, setRemoveBox , setSearchInput, searchInput }) {
+export default function Navbar({ removebox, setRemoveBox, setSearchInput, searchInput }) {
   const { user, dispatch } = useContext(Context);
   const publicFolder = `${SERVER_URL}/images/`;
   // console.log(user);
-  const [inputBoxValue , setInputBoxValue] = useState("")
+  const [inputBoxValue, setInputBoxValue] = useState("")
   // const handleSearch = (e) => {
-   
+
   //   setSearchInput(inputBoxValue)
   // }
 
@@ -33,6 +33,7 @@ export default function Navbar({ removebox, setRemoveBox , setSearchInput, searc
       setShowUserbox(false);
     }
   };
+  const [threeline, setThreeline] = useState(true)
 
   const cleanInputBox = () => {
     setSearchInput("")
@@ -42,7 +43,14 @@ export default function Navbar({ removebox, setRemoveBox , setSearchInput, searc
     <div className="container" onClick={handleHide}>
       <div className="main">
 
-        <div className="left1"  onClick={cleanInputBox} >
+       
+
+        <div className="left1" onClick={cleanInputBox} >
+       <div onClick={() => setThreeline(!threeline)} >
+       {
+          threeline ? <i className="fas fa-bars fa-2x" id="cross"></i> : <i className="fas fa-x fa-2x" id="cross"></i>
+        }
+       </div>
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <h1>WriteME</h1>
           </Link>
@@ -50,7 +58,7 @@ export default function Navbar({ removebox, setRemoveBox , setSearchInput, searc
 
         <div>
           <input className="search-box" placeholder="Search for title, people, articals...."
-          value={searchInput}
+            value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -58,7 +66,7 @@ export default function Navbar({ removebox, setRemoveBox , setSearchInput, searc
                 // handleSearch(e)
               };
             }}
-             />
+          />
         </div>
 
         <div className="center">
@@ -135,7 +143,7 @@ export default function Navbar({ removebox, setRemoveBox , setSearchInput, searc
               )}
             </div>
             <div className="left2">
-              <h2 className="name">AMARJEET KUMAR</h2>
+              <h2 className="name"></h2>
               <h4 style={{ fontWeight: "400" }} className="username">
                 @{user.user.username}{" "}
               </h4>
