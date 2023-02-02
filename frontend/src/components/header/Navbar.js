@@ -46,11 +46,11 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
        
 
         <div className="left1" onClick={cleanInputBox} >
-       <div onClick={() => setThreeline(!threeline)} >
+       {/* <div onClick={() => setThreeline(!threeline)} >
        {
           threeline ? <i className="fas fa-bars fa-2x" id="cross"></i> : <i className="fas fa-x fa-2x" id="cross"></i>
         }
-       </div>
+       </div> */}
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <h1>WriteME</h1>
           </Link>
@@ -143,7 +143,7 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
               )}
             </div>
             <div className="left2">
-              <h2 className="name"></h2>
+              <h2 className="name"> {user.user.fullname} </h2>
               <h4 style={{ fontWeight: "400" }} className="username">
                 @{user.user.username}{" "}
               </h4>

@@ -24,8 +24,11 @@ exports.register = async (req, res) => {
         if (!( newUser.fullname && newUser.username && newUser.email && newUser.password)) {
             return res.status(401).send("All field are required")
         }
-        if (newUser.password.length < 6) {
-            return res.status(401).send("Password Should be Greater than 6 Character");
+        if (newUser.password.length < 8) {
+            return res.status(401).send("Password Should be Greater than or Equal to 8 Character");
+        }
+        if (newUser.username.length < 6) {
+            return res.status(401).send("Username Should be Greater than or Equal to 6 Character");
         }
 
 

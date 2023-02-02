@@ -10,6 +10,28 @@ function RegisterPage() {
   const [password, setPassword] = useState("")
   const [fullname, setFullname] = useState("")
 
+  const validateFullname = () => {
+    let value = fullname;
+    const regMatch = /^[a-z A-Z]*$/.test(value);
+    if (!regMatch) {
+      alert("Fullname Should Contain Aplhabets Only");
+      setFullname("")
+    }
+  }
+  const validateUsername = () => {
+    let value = username
+    const regMatch = /[0-9A-F:]+/g.test(value);
+    if (!regMatch) {
+      alert("Username Should Contain AplhaNumric value");
+      setUsername("")
+    }
+    // console.log(typeof username[0] )
+    //   if(typeof username[0] === "number"){
+
+    //  return alert("Username Should be Start from Alphabets")
+    //   }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,36 +51,23 @@ function RegisterPage() {
       alert(error.response.data)
     }
 
+
   }
 
-  const checkfullname = (e) => {
-   let value = fullname
-    const regMatch = /^[a-zA-Z]*$/.test(value);
 
-    if (!regMatch) {
-      alert("Fullname Should Contain Aplhabets Only")
-    }
-  }
-  const checkUsername = (e) => {
-    let value = username
-     const regMatch = /^[a-zA-Z]*$/.test(value);
- 
-     if (!regMatch) {
-       alert("Fullname Should Contain Aplhabets Only")
-     }
-   }
 
   return (
     <div className="register" >
       <span className="registerTitle">register</span>
       <form className="registerFarm" onSubmit={handleSubmit}>
-      <label>Fullname</label>
-        <input type="text" placeholder="Enter your Fullname...."
-          onChange={(e) => setFullname (e.target.value)} 
-           onBlur={checkfullname} />
+        <label>Fullname</label>
+        <input value={fullname} type="text" placeholder="Enter your Fullname...."
+          onChange={(e) => setFullname(e.target.value)}
+          onBlur={validateFullname} />
         <label>Username</label>
-        <input type="text" placeholder="Enter your username...."
-          onChange={(e) => setUsername(e.target.value)} />
+        <input value={username} type="text" placeholder="Enter your username...."
+          onChange={(e) => setUsername(e.target.value)} 
+          onBlur={validateUsername} />
         <label>Email</label>
         <input type="email" placeholder="Enter your email...."
           onChange={(e) => setEmail(e.target.value)} />
