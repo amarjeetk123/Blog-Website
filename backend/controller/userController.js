@@ -13,14 +13,21 @@ exports.register = async (req, res) => {
     try {
         // craete a new user 
         const newUser = new User({
+            fullname: req.body.fullname,
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
         })
 
-        if (!(newUser.username && newUser.email && newUser.password)) {
+
+
+        if (!( newUser.fullname && newUser.username && newUser.email && newUser.password)) {
             return res.status(401).send("All field are required")
         }
+        if (newUser.password.length < 6) {
+            return res.status(401).send("Password Should be Greater than 6 Character");
+        }
+
 
         //check if username exists or not
         let username = newUser.username
@@ -426,8 +433,8 @@ exports.getAllPost = async (req, res) => {
         //         // console.log("zero")
         //     }
         // }
-        else if(search){
-            posts = await Post.find({ $or: [{ title: new RegExp(search, 'i')} , {username: new RegExp(search, 'i')}   ] })  // it will search the post ny title or username
+        else if (search) {
+            posts = await Post.find({ $or: [{ title: new RegExp(search, 'i') }, { username: new RegExp(search, 'i') }] })  // it will search the post ny title or username
         }
         else {
             posts = await Post.find()  // it will show all the posts

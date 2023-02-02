@@ -8,12 +8,14 @@ function RegisterPage() {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [fullname, setFullname] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.post(`${SERVER_URL}/register`, {
+        fullname,
         username,
         email,
         password
@@ -29,10 +31,31 @@ function RegisterPage() {
 
   }
 
+  const checkfullname = (e) => {
+   let value = fullname
+    const regMatch = /^[a-zA-Z]*$/.test(value);
+
+    if (!regMatch) {
+      alert("Fullname Should Contain Aplhabets Only")
+    }
+  }
+  const checkUsername = (e) => {
+    let value = username
+     const regMatch = /^[a-zA-Z]*$/.test(value);
+ 
+     if (!regMatch) {
+       alert("Fullname Should Contain Aplhabets Only")
+     }
+   }
+
   return (
     <div className="register" >
       <span className="registerTitle">register</span>
       <form className="registerFarm" onSubmit={handleSubmit}>
+      <label>Fullname</label>
+        <input type="text" placeholder="Enter your Fullname...."
+          onChange={(e) => setFullname (e.target.value)} 
+           onBlur={checkfullname} />
         <label>Username</label>
         <input type="text" placeholder="Enter your username...."
           onChange={(e) => setUsername(e.target.value)} />
