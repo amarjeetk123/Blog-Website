@@ -27,6 +27,9 @@ const Loginpage = () => {
       })
       // console.log( "res", res.data)
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data }) 
+     if(res){
+      window.location.replace("/")
+     }
       
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" })
