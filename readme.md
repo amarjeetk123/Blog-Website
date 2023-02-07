@@ -35,7 +35,7 @@ Hey I am Amarjeet Kumar, Fullstack Javascript Developer. Very much eager to expl
 
 [Linkdin](https://www.linkedin.com/in/amarjeet-kumar-46b79b236/)
 
-[Instagram]()
+[Instagram](https://www.instagram.com/amarkumar.aaryan.5/)
 
 
 <!-- Live Link:- [Click Here!]() -->
