@@ -15,6 +15,10 @@
 .loginTitle{
     font-size: 45px;
 }
+.forgottitle{
+    font-size: 37px;
+    margin-bottom: 15px;
+}
 .loginFarm > label{
  
     font-size: 20px;
