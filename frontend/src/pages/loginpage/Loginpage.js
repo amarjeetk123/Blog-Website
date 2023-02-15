@@ -52,7 +52,7 @@ const Loginpage = () => {
   // console.log(isFetching)
   return (
     <>
-      {showForgetPassword=== false &&
+      {showForgetPassword === false &&
         <div className="login">
           <span className="loginTitle">Login</span>
           <form className="loginFarm" onSubmit={handleSubmit} >
@@ -70,9 +70,9 @@ const Loginpage = () => {
                 setPassword(e.target.value),
                 setPassworderror(false)
               )} />
-           <span style={{fontWeight:"500" , textAlign:"right" , cursor:"pointer" }} onClick={() => setShowFprgotPassword(true)} > Forgot Password ?</span>
+            {/* <span style={{fontWeight:"500" , textAlign:"right" , cursor:"pointer" }} onClick={() => setShowFprgotPassword(true)} > Forgot Password ?</span> */}
             {passworderror && <h4 className="warning2 same3" >Wrong Password</h4>}
-           
+
             <button className="login-btn" disabled={isFetching}>Login</button>
           </form>
           <Link to={"/register"} style={{ textDecoration: "none" }} >
@@ -83,18 +83,18 @@ const Loginpage = () => {
 
       {showForgetPassword === true &&
         <div className="login">
-        <span className="forgottitle">Forgot Password</span>
-        <form className="loginFarm" >
+          {/* <span className="forgottitle">Forgot Password</span> */}
+          <form className="loginFarm" >
 
-          <label style={{fontSize:"25px"}} >Email</label>
-          <input type="email" placeholder="Enter your Email...."
+            <label style={{ fontSize: "25px" }} >Email</label>
+            <input type="email" placeholder="Enter your Email...."
             />
-          <button className="login-btn">Submit</button>
-        </form>
- 
+            <button className="login-btn">Submit</button>
+          </form>
+
           <button className="register-btn" type="submit" onClick={() => setShowFprgotPassword(false)}  >Login</button>
- 
-      </div>}
+
+        </div>}
     </>
   )
 }

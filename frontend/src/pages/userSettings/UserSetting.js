@@ -15,11 +15,10 @@ const UserSetting = () => {
     const [file, setFile] = useState(null)
     // console.log( "file" ,file)
     // console.log( "file" ,user.user.profilepicture)
-  
+
     const [email, setEmail] = useState("")
     // console.log(email)
     const [password, setPassword] = useState("")
-
     const [sucseesMessage, setSuccessMessage] = useState(false)
 
     const handleSubmit = async (e) => {
@@ -45,7 +44,7 @@ const UserSetting = () => {
                 const res = await axios.post(`${SERVER_URL}/api/upload`, data)
             } catch (error) {
                 console.log(error)
-                 console.log("error in first try catch in handleSubmit in writePage.js")
+                console.log("error in first try catch in handleSubmit in writePage.js")
             }
         }
 
@@ -64,12 +63,12 @@ const UserSetting = () => {
         } catch (error) {
             dispatch({ type: "UPDATE_FAILURE" });
             console.log(error.message)
-            
+
         }
     }
-    console.log( "file" ,user.user.profilepicture)
+    console.log("file", user.user.profilepicture)
 
-
+    // function for deleting the user
     const handleDelete = async (e) => {
         e.preventDefault();
 
@@ -83,11 +82,10 @@ const UserSetting = () => {
                 }
 
                 const res = await axios.delete(`${SERVER_URL}/user/delete/${id}`, { data })
-            //    console.log( "del" , res)
+                //    console.log( "del" , res)
                 dispatch({ type: "LOGOUT" });
                 window.location.replace("/register")
             } catch (error) {
-
                 // console.log(  "del" , error.message)
             }
 
@@ -99,9 +97,7 @@ const UserSetting = () => {
         <div className="userSetting">
             <div className="settingWrapper">
                 <div className="settingTitle">
-
                     <button className="settingDeleteTitle" onClick={handleDelete}>Delete Your Accound </button>
-
                 </div>
 
                 <form className="settingForm" onSubmit={handleSubmit} >
@@ -110,7 +106,7 @@ const UserSetting = () => {
                         {
                             user.user.profilepicture ?
                                 <img className="ppimage1"
-                                    src={ publicFolder + user.user.profilepicture}
+                                    src={publicFolder + user.user.profilepicture}
                                     alt="userImage"
                                 /> :
                                 <img className="ppimage2"
@@ -129,7 +125,7 @@ const UserSetting = () => {
                     <input type={"text"} placeholder={user.user.username} defaultValue={user.user.username} readOnly className="setingUsernameinput" />
 
                     <label>Email</label>
-                    <input type={"email"} placeholder={email} defaultValue={email}  className="setingUseremailinput " onChange={(e) => setEmail(e.target.value)} />
+                    <input type={"email"} placeholder={email} defaultValue={email} className="setingUseremailinput " onChange={(e) => setEmail(e.target.value)} />
 
                     <label>Password</label>
                     <input type={"password"} className="setingUsernameinput" placeholder={user.user.password} onChange={(e) => setPassword(e.target.value)} />
@@ -143,9 +139,7 @@ const UserSetting = () => {
                         </div>
                     }
 
-
                 </form>
-
             </div>
 
             <Sidebar />
@@ -154,4 +148,4 @@ const UserSetting = () => {
     )
 }
 
-export default UserSetting
+export default UserSetting;
