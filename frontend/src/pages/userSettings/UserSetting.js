@@ -57,16 +57,15 @@ const UserSetting = () => {
 
             dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
 
-            console.log(res)
+            // console.log(res)
             window.location.reload()
 
         } catch (error) {
             dispatch({ type: "UPDATE_FAILURE" });
             console.log(error.message)
-
         }
     }
-    console.log("file", user.user.profilepicture)
+
 
     // function for deleting the user
     const handleDelete = async (e) => {
@@ -109,10 +108,7 @@ const UserSetting = () => {
                                     src={publicFolder + user.user.profilepicture}
                                     alt="userImage"
                                 /> :
-                                <img className="ppimage2"
-                                    src="https://cdn.onlinewebfonts.com/svg/img_24073.png"
-                                    alt="userImage"
-                                />
+                                <i  style={{marginTop:"16px"}} class="fa-solid fa-user"></i>
                         }
                         <label htmlFor="fileInput" className="same1" >
                             <img className="setingProfilepicIcon" src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" alt="image-btn" />
@@ -125,10 +121,10 @@ const UserSetting = () => {
                     <input type={"text"} placeholder={user.user.username} defaultValue={user.user.username} readOnly className="setingUsernameinput" />
 
                     <label>Email</label>
-                    <input type={"email"} placeholder={email} defaultValue={email} className="setingUseremailinput " onChange={(e) => setEmail(e.target.value)} />
+                    <input type={"email"} placeholder={user.user.email} defaultValue={user.user.email} className="setingUseremailinput " onChange={(e) => setEmail(e.target.value)} />
 
-                    <label>Password</label>
-                    <input type={"password"} className="setingUsernameinput" placeholder={user.user.password} onChange={(e) => setPassword(e.target.value)} />
+                    {/* <label>Password</label>
+                    <input  className="setingUsernameinput" placeholder={user.user.password} onChange={(e) => setPassword(e.target.value)} /> */}
 
                     <button className="settingUpdatebtn " type="submit"> Update</button>
 

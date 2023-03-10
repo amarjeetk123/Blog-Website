@@ -9,19 +9,24 @@
 }
 .settingTitle{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 
-.settingDeleteTitle{
+.settingDeleteTitle , .changeInformation{
     padding: 8px 20px;
     border: none;
     border-radius: 5px;
     align-self: flex-end;
     cursor: pointer;
-    background-color: red;
     color: #ffffff;
     font-size: 17px;
+}
+.settingDeleteTitle{
+    background-color: red;
+}
+.changeInformation{
+    background-color: #008080;
 }
 
 .settingForm{
