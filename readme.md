@@ -42,6 +42,7 @@ Hey I am Amarjeet Kumar, Fullstack Javascript Developer. Very much eager to expl
 
 Web View 🖥️
 ![](./images/1st.png)
+![](./images/2nd.png)
 
 
 ## ⏳ Meta Information ⏳
