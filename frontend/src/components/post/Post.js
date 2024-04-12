@@ -19,7 +19,7 @@ function Post({ post }) {
         username: post.username,
       }
       const res = await axios.post(`${SERVER_URL}/getuserbyusername/`, data);
-      // console.log(res)
+      console.log(res,"res")
       setUser(res.data.user)
     } catch (error) {
       // console.log(error)
