@@ -109,9 +109,9 @@ const SinglePost = () => {
 
 
                 <div className="postInformation">
-                    <span className="postAuthor" >   Author:
+                    <span className="postAuthor" >   Author : 
                         <Link to={`/?user=${post.username}`} className="link" >
-                            <b>{post.username}</b>
+                            <b> {post.username}</b>
                         </Link>
                     </span>
                     <span className="singlePostDate" > {new Date(post.createdAt).toDateString()} </span>

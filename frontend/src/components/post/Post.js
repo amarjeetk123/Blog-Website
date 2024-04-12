@@ -10,7 +10,7 @@ import parse from "html-react-parser";
 function Post({ post }) {
 
   const publicFolder = `${SERVER_URL}/images/`;
-  // console.log(post)
+  console.log(publicFolder)
 
   const [user, setUser] = useState("")
   const getUser = async () => {
@@ -30,7 +30,7 @@ function Post({ post }) {
   const res = parse(post.description)
   useEffect(() => {
     getUser()
-  }, [])
+  })
   // console.log(res[0]?.props?.children)
   return (
     <div className="container1">
@@ -61,7 +61,7 @@ function Post({ post }) {
 
             <div className="discription">
               <span >
-                {res[0]?.props?.children}
+                {res[0]?.props?.children.slice(0,3)}
                 {/* <br />
                 {res[1]?.props?.children} */}
                 {/* <br />
@@ -76,13 +76,13 @@ function Post({ post }) {
               <img
                 className="postImage"
                 src={publicFolder + post.photo}
-                alt="Post Image"
+                alt="Post Img"
               />
             ) : (
               <img
                 src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
                 className="postImage"
-                alt="POST Image"
+                alt="POST Img"
               />
             )}
           </div>
