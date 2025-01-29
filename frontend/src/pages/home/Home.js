@@ -1,53 +1,47 @@
-import "./home.css"
-import Header from "../../components/header/Header"
-import Posts from "../../components/posts/Posts"
-import Sidebar from "../../components/sidebar/Sidebar"
-import { useEffect, useState } from "react"
-import axios from "axios"
-import { useLocation } from "react-router-dom"
-
-import { SERVER_URL } from "../../App"
-
+import { useCallback, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+import "./home.css";
+import Header from "../../components/header/Header";
+import Posts from "../../components/posts/Posts";
+import Sidebar from "../../components/sidebar/Sidebar";
+import { SERVER_URL } from "../../App";
 
 const Home = ({ setRemoveBox, searchInput }) => {
 
-  const location = useLocation();
-  const hideHeaderPaths = ["/login", "/register", "/admin"];
-
-  const [posts, setPosts] = useState([])
-
-  let { search } = useLocation()
+  const [posts, setPosts] = useState([]);
+  let { search } = useLocation();
 
   if (searchInput !== "" && !search) {
-    search = `/?search=${searchInput}`
-    console.log(search)
-
+    search = `/?search=${searchInput}`;
   }
 
-  const fetchPost = async () => {
-    // const res = await  axios.get("/getallpost" + search )
-    const res = await axios.get(`${SERVER_URL}/getallpost` + search)
-    //  console.log(res.data)
-    //  console.log(res.data.success)
-
-    setPosts(res.data.posts)
-  }
+  // Use useCallback to avoid unnecessary re-creation
+  const fetchPost = useCallback(async () => {
+    console.log("yes"); // ✅ Will now log only when `search` actually changes
+    try {
+      const res = await axios.get(`${SERVER_URL}/getallpost` + search);
+      setPosts(res.data.posts);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  }, [search]);
 
   useEffect(() => {
     fetchPost();
-  }, [search])
+  }, [fetchPost]);
+
   return (
     <>
-      {!hideHeaderPaths.includes(location.pathname) && <Header />}
-      <div className="home" onClick={() => setRemoveBox(true)}  >
+      <Header />
+      <div className="home" onClick={() => setRemoveBox(true)}>
         <div className="con">
           <Sidebar />
           <Posts posts={posts} />
         </div>
       </div>
     </>
+  );
+};
 
-  )
-}
-
-export default Home
+export default Home;

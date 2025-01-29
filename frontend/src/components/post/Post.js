@@ -24,13 +24,12 @@ function Post({ post }) {
     } catch (error) {
       // console.log(error)
     }
-
   }
 
   const res = parse(post.description)
   useEffect(() => {
-    getUser()
-  })
+    getUser();
+  }, [post.username]);
   // console.log(res[0]?.props?.children)
   return (
     <div className="container1">
