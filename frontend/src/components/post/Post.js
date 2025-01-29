@@ -45,11 +45,12 @@ function Post({ post }) {
                   alt="user"
                 />
               ) : (
-                <img
+                <div  className="image2">
+                  <img
                   src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
-                  className="image2"
                   alt="user"
                 />
+                </div>
               )}
               <div>
                 {<h2 className="username">{post.username}</h2>}

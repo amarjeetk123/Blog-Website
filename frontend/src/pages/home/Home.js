@@ -10,6 +10,10 @@ import { SERVER_URL } from "../../App"
 
 
 const Home = ({ setRemoveBox, searchInput }) => {
+
+  const location = useLocation();
+  const hideHeaderPaths = ["/login", "/register", "/admin"];
+
   const [posts, setPosts] = useState([])
 
   let { search } = useLocation()
@@ -34,10 +38,12 @@ const Home = ({ setRemoveBox, searchInput }) => {
   }, [search])
   return (
     <>
-      <Header />
+      {!hideHeaderPaths.includes(location.pathname) && <Header />}
       <div className="home" onClick={() => setRemoveBox(true)}  >
-        <Sidebar />
-        <Posts posts={posts} />
+        <div className="con">
+          <Sidebar />
+          <Posts posts={posts} />
+        </div>
       </div>
     </>
 

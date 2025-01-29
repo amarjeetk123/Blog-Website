@@ -99,15 +99,13 @@ padding-left: 10px;
 .update-btn{
     cursor: pointer;
    width: 150px;
-   
     padding: 5px 10px;
-   
     background-color: #219e9e;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    background-color:var(--white);
     border-radius: 6px;
     font-size: 21px;
     

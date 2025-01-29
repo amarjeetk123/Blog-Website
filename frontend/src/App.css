@@ -5,6 +5,14 @@
   --hover-color:#E2E8F0;
   --border-color: #e7e9f2 ;
   --jd-color-border: #de0a0a;
+  --blue: #5846df;
+  --heading: #0a122b;
+  --white: #fff;
+  --desc: #5f5b5b;
+  --error: red;
+  --black: #000000;
+  --bggray: #fafafa;
+  --line: #e7e9f2;
 }
 p{
   font-size: 20px;

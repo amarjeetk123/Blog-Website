@@ -94,7 +94,7 @@
 
 .user-box {
     position: absolute;
-    background-color: #ffffff;
+    background-color:var(--white);
     margin-top: 12px;
     right: 5%;
     border-radius: 8px;

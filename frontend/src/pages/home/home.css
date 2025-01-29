@@ -1,3 +1,17 @@
 .home{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.home div.con{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.posts {
+    max-width: 100%; /* Adjust as needed */
+}
+
+

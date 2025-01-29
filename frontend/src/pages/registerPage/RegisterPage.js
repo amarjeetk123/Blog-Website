@@ -47,7 +47,6 @@ function RegisterPage() {
       res.data && window.location.replace("/login")
 
     } catch (error) {
-      // console.log(error.response.data)
       alert(error.response.data)
     }
 
