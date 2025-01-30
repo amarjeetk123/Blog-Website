@@ -7,15 +7,18 @@ import RichTextEditor from "./RichText"
 // import parse from "html-react-parser";
 
 const WritePage = () => {
-
+    console.log("write page")
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [file, setFile] = useState(null)
     const { user } = useContext(Context)
 
+    if(!user){
+        window.location.href = "/login";
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const newPost = {
             username: user.user.username,
             title,
@@ -43,8 +46,6 @@ const WritePage = () => {
             // console.log(res.data.savePost._id)
         } catch (error) {
             // console.log(error)
-            // console.log(error.message)
-            // console.log("error in second try catch in handleSubmit in writePage.js")
         }
     }
 
@@ -70,7 +71,7 @@ const WritePage = () => {
                     {/* <textarea placeholder="Write About Your Story....." className="writeTectArea writeTitle"
                     onChange={(e) => setDescription(e.target.value)  } ></textarea> */}
                     <div className="textEditor">
-                        <RichTextEditor setDescription={setDescription}  />
+                        <RichTextEditor setDescription={setDescription} />
                         {/* <TipTop setDescription={setDescription} /> */}
                     </div>
                 </div>

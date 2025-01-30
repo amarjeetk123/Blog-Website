@@ -39,3 +39,22 @@ body{
   place-items: center;
  margin: auto;
 }
+
+.logi-btn{
+  background-color: #d05c94;
+}
+.register-btn{
+  background-color: #008080;
+}
+.register-btn , .logi-btn{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background-color: #008080;
+  color: #fff;
+  border-radius: 5px;
+  padding: 7px 17px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}

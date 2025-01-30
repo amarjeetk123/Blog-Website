@@ -63,7 +63,8 @@ function MainContent({ setRemoveBox, searchInput, setSearchInput, removebox, use
         <Route path="/" element={<Home setRemoveBox={setRemoveBox} searchInput={searchInput} />} />
         <Route path="/register" element={user ? <Home /> : <RegisterPage />} />
         <Route path="/login" element={user ? <Home /> : <Loginpage />} />
-        <Route path="/write" element={user ? <WritePage /> : <Loginpage />} />
+        {/* <Route path="/write" element={user ? <WritePage /> : <Loginpage />} /> */}
+        <Route path="/write" element={<WritePage />} />
         <Route path="/settings" element={user ? <UserSetting /> : <RegisterPage />} />
         <Route path="/post/:postid" element={<Single />} />
       </Routes>
