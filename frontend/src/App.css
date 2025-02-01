@@ -16,7 +16,7 @@
 }
 p{
   font-size: 20px;
-  padding-left: 10px;
+  text-align: justify !important;
 }
 ul li{
   font-size: 20px;

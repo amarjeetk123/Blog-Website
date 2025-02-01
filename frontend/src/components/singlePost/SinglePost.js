@@ -109,12 +109,12 @@ const SinglePost = () => {
 
 
                 <div className="postInformation">
-                    <span className="postAuthor" >   Author : 
+                    <p className="postAuthor">Author : 
                         <Link to={`/?user=${post.username}`} className="link" >
-                            <b> {post.username}</b>
+                            <p className="username"> {post.username}</p>
                         </Link>
-                    </span>
-                    <span className="singlePostDate" > {new Date(post.createdAt).toDateString()} </span>
+                    </p>
+                    <p className="singlePostDate" > {new Date(post.createdAt).toDateString()} </p>
                 </div>
                 {updateMode ? <RichTextEditor
                     setDescription={setDescription}

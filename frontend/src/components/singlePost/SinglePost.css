@@ -1,83 +1,92 @@
-.singlePost{
+.singlePost {
     flex: 9;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-
-.singlePosetWrapper{
+.singlePosetWrapper {
     width: 95%;
     display: flex;
     flex-direction: column;
 }
-.singlePostTitle{
+
+.singlePostTitle {
     text-align: center;
     font-family: 'Lora', serif;
     font-size: 28px;
     margin-top: 20px;
-  
+
 }
-.SinglePagecon{
+
+.SinglePagecon {
     float: right;
     font-size: 25px;
 }
-.deleteIcon , .editIcon{
+
+.deleteIcon,
+.editIcon {
     margin-top: 25px;
     cursor: pointer;
     margin-left: 10px;
 }
-.deleteIcon{
+
+.deleteIcon {
     color: #ff0000;
 }
-.editIcon{
+
+.editIcon {
     color: #008080;
 }
-.postInformation{
+
+.postInformation {
     display: flex;
     justify-content: space-between;
     font-size: 25px;
     line-height: 50px;
 
 }
-.singlepostdis{
+
+.singlepostdis {
     color: rgba(32, 24, 24, 0.676);
     font-size: 20px;
     line-height: 25px;
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
-.singlepostdis::first-letter{
+
+.singlepostdis::first-letter {
     font-size: 32px;
     margin-left: 10px;
     font-weight: 600;
 }
 
-.image-div{
+.image-div {
     width: 100%;
     height: auto;
 }
 
-.singlepageimage{
+.singlepageimage {
     margin-top: 68px;
-     width: 340px;
-     height: 95%;
- }
+    width: 400px;
+    /* height: 95%; */
+}
 
- .singlePostTitle-inputmode{
-padding-left: 10px;
+.singlePostTitle-inputmode {
+    padding-left: 10px;
     font-family: 'Lora', serif;
     font-size: 28px;
     margin-top: 20px;
     color: #7d7676;
- }
- .singlePostTitle-inputmode:focus{
+}
+
+.singlePostTitle-inputmode:focus {
     outline: none;
     border: none;
     border-bottom: 1px solid #aba3a3;
     padding-left: 0px;
- } 
+}
 
-.singlepostdis-textarea{
+.singlepostdis-textarea {
     min-height: 200px;
     margin-bottom: 10px;
     padding: 5px 0px 0px 10px;
@@ -86,30 +95,39 @@ padding-left: 10px;
     line-height: 25px;
     max-width: 1100px;
 }
-.singlepostdis-textarea:focus{
+
+.singlepostdis-textarea:focus {
     outline: none;
-    
+
 }
-.up-btn-div{
+
+.up-btn-div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     padding: 20px 0px;
 }
-.update-btn{
+
+.update-btn {
     cursor: pointer;
-   width: 150px;
+    width: 150px;
     padding: 5px 10px;
     background-color: #219e9e;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:var(--white);
+    background-color: var(--white);
     border-radius: 6px;
     font-size: 21px;
-    
+
 }
-.update-btn:hover{
+
+.update-btn:hover {
     background-color: #008080;
+}
+
+p.username {
+    display: inline;
+    color: var(--desc);
 }
