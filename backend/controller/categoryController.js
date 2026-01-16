@@ -5,7 +5,6 @@ exports.createCategory = async (req , res) =>{
     const {name}  = req.body
 
     try {
-        
        if(!name){
         return res.status(402).send("name is required")
        }
@@ -14,8 +13,7 @@ exports.createCategory = async (req , res) =>{
             success: true,
             saveCat,
             message: "category added to databse succesfully"
-        })
-        
+        })  
     } catch (error) {
         console.log("error is:-", error.message)
         console.log("error in createCategory controller")
@@ -23,7 +21,6 @@ exports.createCategory = async (req , res) =>{
             success: false,
             message: "category is not created",
             aa: error.message,
-
         })
     }
 
@@ -31,7 +28,6 @@ exports.createCategory = async (req , res) =>{
 
 
 exports.getAllCategory = async (req , res) =>{
-    
     try {
       const category =  await Category.find();
         res.status(201).json({
@@ -48,6 +44,5 @@ exports.getAllCategory = async (req , res) =>{
             message: "category in not found"
         })
     }
-
 }
 

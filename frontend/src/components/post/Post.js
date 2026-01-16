@@ -1,11 +1,9 @@
 import "./post.css";
 import { Link } from "react-router-dom";
-// import ReactReadMoreReadLess from "react-read-more-read-less";
 import { SERVER_URL } from "../../App";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
-
 
 function Post({ post }) {
 

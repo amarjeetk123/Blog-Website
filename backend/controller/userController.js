@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs")
 const validator = require("email-validator");
-
 const Post = require("../models/Post");    // i am using this is delete controller....
 
 exports.home = (req, res) => {
@@ -19,8 +18,6 @@ exports.register = async (req, res) => {
             password: req.body.password,
         })
 
-
-
         if (!( newUser.fullname && newUser.username && newUser.email && newUser.password)) {
             return res.status(401).send("All field are required")
         }
@@ -30,7 +27,6 @@ exports.register = async (req, res) => {
         if (newUser.username.length < 6) {
             return res.status(401).send("Username Should be Greater than or Equal to 6 Character");
         }
-
 
         //check if username exists or not
         let username = newUser.username
@@ -52,7 +48,6 @@ exports.register = async (req, res) => {
             return res.status(401).send("Email id already exist")
         }
 
-
         //encrypt the password
         const myEncyPassword = await bcrypt.hash(newUser.password, 10)
         newUser.password = myEncyPassword
@@ -62,7 +57,6 @@ exports.register = async (req, res) => {
 
         //don't want to send the password
         newUser.password = undefined;
-
 
         // now send a message to frontend guy
         res.status(201).json({
@@ -78,7 +72,6 @@ exports.register = async (req, res) => {
             success: false,
             message: "user is not registerd"
         })
-
     }
 };
 
@@ -88,7 +81,6 @@ exports.login = async (req, res) => {
     //collected information from frontend
     let { username, password } = req.body
     try {
-
         //validate
         if (!username) {
             return res.status(401).send("username is required")
@@ -128,15 +120,12 @@ exports.login = async (req, res) => {
             succsess: false,
             message: "error in login controller"
         })
-
     }
 }
 
 
 // Function for update user information
 exports.update = async (req, res) => {
-
-
 
     const { email, password, profilepicture } = req.body
     // console.log(profilepicture)
@@ -162,8 +151,6 @@ exports.update = async (req, res) => {
     if (profilepicture) {
         data.profilepicture = profilepicture
     }
-
-
 
     try {
         const user = await User.findByIdAndUpdate(req.params.id, data)
@@ -220,7 +207,6 @@ exports.deleteuser = async (req, res) => {
                 message: "user not found!",
                 success: false,
                 message: "error in delete controller in first try catch ",
-
             });
         }
     }
@@ -383,8 +369,6 @@ exports.deletePost = async (req, res) => {
             })
 
         }
-
-
     } catch (error) {
         console.log(error)
         res.status(500).send(error)

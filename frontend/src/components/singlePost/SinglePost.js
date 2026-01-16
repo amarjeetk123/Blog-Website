@@ -2,7 +2,6 @@ import "./SinglePost.css"
 import { Link, useLocation } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import RichTextEditor from "../../pages/write/RichText"
-
 import axios from "axios"
 import { Context } from "../../context_api/Context"
 import { SERVER_URL } from "../../App"
@@ -64,21 +63,19 @@ const SinglePost = () => {
 
             const id = path
             const res = await axios.put(`${SERVER_URL}/post/${id}`, data)     // value comming fro user through useContext
-
             // window.location.reload()
             setUpdateMode(false)
 
         } catch (error) {
             // console.log(error)
             // console.log(error.response)
-            alert(error.response.data)
+            alert(error.response.data , "error in hande update")
         }
     }
 
 
     useEffect(() => {
         getPost();
-
     }, [path])
 
     return (
@@ -107,7 +104,6 @@ const SinglePost = () => {
                         </div>}
                     </h1>}
 
-
                 <div className="postInformation">
                     <p className="postAuthor">Author : 
                         <Link to={`/?user=${post.username}`} className="link" >
@@ -128,10 +124,7 @@ const SinglePost = () => {
                 {updateMode && <div className="up-btn-div">
                     <button type="submit" className="update-btn" onClick={handleUpdate} >Update Post</button>
                 </div>}
-
             </div>
-
-
         </div>
     )
 }

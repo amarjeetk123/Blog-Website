@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-
 const {home , register , login, update , deleteuser , getUser , createPost , updatePost ,deletePost, getPost, getAllPost, getUserByUserName } = require("../controller/userController")
-
 const {createCategory , getAllCategory } = require("../controller/categoryController");
-
 
 router.get("/",home)
 router.post("/register",register)
@@ -16,22 +13,17 @@ router.delete("/user/delete/:id", deleteuser)
 router.get("/user/:id", getUser)
 router.post("/getuserbyusername", getUserByUserName)
 
-
 router.post("/post",createPost)
 router.put("/post/:id",updatePost)
 router.delete("/post/delete/:id",deletePost)
 router.get("/getpost/:id",getPost)
 router.get("/getallpost",getAllPost)
 
-
 router.post("/category",createCategory)
 router.get("/getallcategory",getAllCategory)
 
 
-
-
 const multer = require("multer") // for string photos from user
-
 const storage = multer.diskStorage({
     destination:(req,file,cb) => {   //  cb- call back
         cb(null , "images")   // images is our destination folder where our images will be stored
