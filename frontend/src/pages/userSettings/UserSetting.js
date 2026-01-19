@@ -7,18 +7,17 @@ import axios from "axios"
 import { SERVER_URL } from "../../App"
 
 const UserSetting = () => {
+
     const publicFolder = `${SERVER_URL}/images/`
 
     const { user, dispatch } = useContext(Context)
     // console.log("user" , user)
 
     const [file, setFile] = useState(null)
-    // console.log( "file" ,file)
     // console.log( "file" ,user.user.profilepicture)
 
     const [email, setEmail] = useState("")
     // console.log(email)
-    const [password, setPassword] = useState("")
     const [sucseesMessage, setSuccessMessage] = useState(false)
 
     const handleSubmit = async (e) => {
@@ -29,7 +28,6 @@ const UserSetting = () => {
         const User = {
             userId: user.user._id,
             email,
-            password,
         }
 
         if (file) {
@@ -41,7 +39,7 @@ const UserSetting = () => {
             User.profilepicture = filename;
             try {
                 // const res = await axios.post("api/upload", data)
-                const res = await axios.post(`${SERVER_URL}/api/upload`, data)
+                await axios.post(`${SERVER_URL}/api/upload`, data)
             } catch (error) {
                 console.log(error)
                 console.log("error in first try catch in handleSubmit in writePage.js")
@@ -50,16 +48,10 @@ const UserSetting = () => {
 
         try {
             const id = User.userId
-            // const res = await axios.put(`/user/update/${id}`, User)
             const res = await axios.put(`${SERVER_URL}/user/update/${id}`, User)
-
             setSuccessMessage(true)
-
             dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
-
-            // console.log(res)
             window.location.reload()
-
         } catch (error) {
             dispatch({ type: "UPDATE_FAILURE" });
             console.log(error.message)
@@ -80,16 +72,14 @@ const UserSetting = () => {
                     userId: user.user._id,
                 }
 
-                const res = await axios.delete(`${SERVER_URL}/user/delete/${id}`, { data })
+                await axios.delete(`${SERVER_URL}/user/delete/${id}`, { data })
                 //    console.log( "del" , res)
                 dispatch({ type: "LOGOUT" });
                 window.location.replace("/register")
             } catch (error) {
                 // console.log(  "del" , error.message)
             }
-
         }
-
     }
 
     return (
@@ -108,7 +98,7 @@ const UserSetting = () => {
                                     src={publicFolder + user.user.profilepicture}
                                     alt="userImage"
                                 /> :
-                                <i  style={{marginTop:"16px"}} className="fa-solid fa-user"></i>
+                                <i style={{ marginTop: "16px" }} className="fa-solid fa-user"></i>
                         }
                         <label htmlFor="fileInput" className="same1" >
                             <img className="setingProfilepicIcon" src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" alt="image-btn" />

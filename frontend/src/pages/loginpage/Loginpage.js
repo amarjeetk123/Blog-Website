@@ -13,7 +13,7 @@ const Loginpage = () => {
   const [password, setPassword] = useState("");
   const [username, steUsername] = useState("")
 
-  const { user, dispatch, isFetching } = useContext(Context)
+  const { dispatch, isFetching } = useContext(Context)
 
   const handleSubmit = async (e) => {
     e.preventDefault();

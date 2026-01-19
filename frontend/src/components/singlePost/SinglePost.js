@@ -17,27 +17,16 @@ const SinglePost = () => {
 
     const [post, setPost] = useState({})
 
-    const getPost = async () => {
-        // const res = await axios.get("/getpost/" + path);
-        const res = await axios.get(`${SERVER_URL}/getpost/` + path);
-        // console.log(res.data.post)
-        setPost(res.data.post)
 
-        // for post update
-        setTitle(res.data.post.title)
-        setDescription(res.data.post.description)
-    }
     const handleDelete = async () => {
         try {
             const userPermission = window.confirm("Are you want to delete this post")
             if (userPermission) {
-
                 const id = path
-                // console.log(username1) 
                 const data = {
                     username: user.user.username,
                 }
-                const res = await axios.delete(`${SERVER_URL}/post/delete/${id}`, { data })
+                await axios.delete(`${SERVER_URL}/post/delete/${id}`, { data })
                 window.location.replace("/")
             }
 
@@ -61,19 +50,26 @@ const SinglePost = () => {
             }
 
             const id = path
-            const res = await axios.put(`${SERVER_URL}/post/${id}`, data)     // value comming fro user through useContext
+            await axios.put(`${SERVER_URL}/post/${id}`, data)     // value comming fro user through useContext
             // window.location.reload()
             setUpdateMode(false)
 
         } catch (error) {
-            console.log(error,"error in hande update")
+            console.log(error, "error in hande update")
             // console.log(error.response)
-            alert(error.response.data , "error in hande update")
+            alert(error.response.data, "error in hande update")
         }
     }
 
-
     useEffect(() => {
+        const getPost = async () => {
+            const res = await axios.get(`${SERVER_URL}/getpost/` + path);
+            // console.log(res.data.post)
+            setPost(res.data.post)
+            // for post update
+            setTitle(res.data.post.title)
+            setDescription(res.data.post.description)
+        }
         getPost();
     }, [path])
 
@@ -86,10 +82,10 @@ const SinglePost = () => {
                     {post.photo ?
                         <img src={publicFolder + post.photo}
                             className="singlepageimage"
-                        /> :
+                            alt="post-image" /> :
                         <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
                             className="singlepageimage"
-                        />
+                            alt="post-image" />
                     }
                 </div>
 
@@ -104,7 +100,7 @@ const SinglePost = () => {
                     </h1>}
 
                 <div className="postInformation">
-                    <p className="postAuthor">Author : 
+                    <p className="postAuthor">Author :
                         <Link to={`/?user=${post.username}`} className="link" >
                             <p className="username"> {post.username}</p>
                         </Link>

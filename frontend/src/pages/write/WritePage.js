@@ -33,7 +33,7 @@ const WritePage = () => {
             newPost.photo = filename;
             try {
                 // const res = await axios.post("api/upload", data)
-                const res = await axios.post(`${SERVER_URL}/api/upload`, data)
+                await axios.post(`${SERVER_URL}/api/upload`, data)
             } catch (error) {
                 // console.log(error.message)
                 // console.log("error in first try catch in handleSubmit in writePage.js")

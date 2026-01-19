@@ -8,11 +8,6 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
   const { user, dispatch } = useContext(Context);
   const publicFolder = `${SERVER_URL}/images/`;
   // console.log(user);
-  const [inputBoxValue, setInputBoxValue] = useState("")
-  // const handleSearch = (e) => {
-
-  //   setSearchInput(inputBoxValue)
-  // }
 
   const [showuserbox, setShowUserbox] = useState(false);
   const handleLogout = () => {
@@ -33,7 +28,6 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
       setShowUserbox(false);
     }
   };
-  const [threeline, setThreeline] = useState(true)
 
   const cleanInputBox = () => {
     setSearchInput("")
@@ -42,15 +36,7 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
   return (
     <div className="container" onClick={handleHide}>
       <div className="main">
-
-
-
         <div className="left1" onClick={cleanInputBox} >
-          {/* <div onClick={() => setThreeline(!threeline)} >
-       {
-          threeline ? <i className="fas fa-bars fa-2x" id="cross"></i> : <i className="fas fa-x fa-2x" id="cross"></i>
-        }
-       </div> */}
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <h1>WriteME</h1>
           </Link>
