@@ -23,7 +23,6 @@ exports.createCategory = async (req , res) =>{
             aa: error.message,
         })
     }
-
 }
 
 

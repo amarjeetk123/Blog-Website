@@ -108,7 +108,7 @@ const UserSetting = () => {
                                     src={publicFolder + user.user.profilepicture}
                                     alt="userImage"
                                 /> :
-                                <i  style={{marginTop:"16px"}} class="fa-solid fa-user"></i>
+                                <i  style={{marginTop:"16px"}} className="fa-solid fa-user"></i>
                         }
                         <label htmlFor="fileInput" className="same1" >
                             <img className="setingProfilepicIcon" src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" alt="image-btn" />

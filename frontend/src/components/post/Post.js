@@ -17,7 +17,7 @@ function Post({ post }) {
         username: post.username,
       }
       const res = await axios.post(`${SERVER_URL}/getuserbyusername/`, data);
-      console.log(res,"res")
+      console.log(res, "res")
       setUser(res.data.user)
     } catch (error) {
       // console.log(error)
@@ -42,11 +42,8 @@ function Post({ post }) {
                   alt="user"
                 />
               ) : (
-                <div  className="image2">
-                  <img
-                  src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
-                  alt="user"
-                />
+                <div className="image2">
+                  <i className="fa-solid fa-user"></i>
                 </div>
               )}
               <div>
@@ -59,7 +56,7 @@ function Post({ post }) {
 
             <div className="discription">
               <span >
-                {res[0]?.props?.children.slice(0,3)}
+                {res[0]?.props?.children.slice(0, 3)}
                 {/* <br />
                 {res[1]?.props?.children} */}
                 {/* <br />

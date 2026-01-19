@@ -154,13 +154,11 @@ exports.update = async (req, res) => {
 
     try {
         const user = await User.findByIdAndUpdate(req.params.id, data)
-
         user.password = undefined;
         res.status(201).json({
             success: true,
             user,
             message: "user information updated succesfully",
-
         });
 
     } catch (error) {
@@ -248,14 +246,12 @@ exports.getUserByUserName = async (req, res) => {
             message: "user found succesfully",
             user
         })
-
     } catch (error) {
         console.log(error.message)
         res.status(401).json({
             success: false,
             message: "error in getUserByUserName controller"
         });
-
     }
 }
 
@@ -288,9 +284,7 @@ exports.createPost = async (req, res) => {
             success: false,
             message: "error in creat post controller",
             m2: error.message,
-
         })
-
     }
 }
 
@@ -327,9 +321,7 @@ exports.updatePost = async (req, res) => {
                 a: post.username,
                 b: username
             })
-
         }
-
     } catch (error) {
         res.status(500).send(error)
     }
@@ -367,13 +359,11 @@ exports.deletePost = async (req, res) => {
                 a: post.username,
                 b: username
             })
-
         }
     } catch (error) {
         console.log(error)
         res.status(500).send(error)
     }
-
 }
 
 // function for getting \any post on search or by postid  - almost same like getUser
@@ -431,7 +421,6 @@ exports.getAllPost = async (req, res) => {
             success: true,
             posts
         })
-
     } catch (error) {
         console.log(error.message)
         console.log("error in getAllPost controller")

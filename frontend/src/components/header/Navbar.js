@@ -43,10 +43,10 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
     <div className="container" onClick={handleHide}>
       <div className="main">
 
-       
+
 
         <div className="left1" onClick={cleanInputBox} >
-       {/* <div onClick={() => setThreeline(!threeline)} >
+          {/* <div onClick={() => setThreeline(!threeline)} >
        {
           threeline ? <i className="fas fa-bars fa-2x" id="cross"></i> : <i className="fas fa-x fa-2x" id="cross"></i>
         }
@@ -97,12 +97,7 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
                   title="Profile"
                 />
               ) : (
-                <img
-                  src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
-                  className="image"
-                  alt="user"
-                  title="Profile"
-                />
+                <i className="fa-solid fa-user user-icon"></i>
               )
             ) : (
               <ul style={{ display: "flex", gap: "30px" }}>
@@ -135,78 +130,39 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
                   alt="user"
                 />
               ) : (
-                <img
-                  src="https://vssmn.org/wp-content/uploads/2018/12/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
-                  className="image"
-                  alt="user"
-                />
+                <i className="fa-solid fa-user user-icon-2"></i>
               )}
             </div>
-            <div className="left2">
-              <h2 className="name"> {user.user.fullname} </h2>
-              <h4 style={{ fontWeight: "400" }} className="username">
-                @{user.user.username}{" "}
-              </h4>
-            </div>
+            <span className="user-name"> {user.user.fullname} </span>
           </div>
 
           <Link className="link" to={`/?user=${user.user.username}`}>
             <div className="second same">
-              <div>
-                <h2 style={{ fontWeight: "400" }}>My Blogs</h2>
-                <h2
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "25px",
-                    marginTop: "-15px",
-                  }}
-                >
-                  {user.user.email}{" "}
-                </h2>
-              </div>
-              <i
-                style={{
-                  marginLeft: "40px",
-                  color: "#808080",
-                  fontSize: "25px",
-                }}
-                className="fa-solid fa-greater-than"
-              ></i>
+              <i className="fa-solid fa-blog"></i>
+              <span className="my-blog">My Blogs</span>
             </div>
           </Link>
 
           <Link to={"/settings"} className="link">
             <div className=" same">
               <i
-                style={{ color: "#808080", fontSize: "30px" }}
-                className="fa-regular fa-circle-user"
+                className="fa-regular fa-circle-user accout-icon"
               ></i>
-              <h2
-                style={{
-                  fontSize: "22px",
-                  marginLeft: "-4px",
-                  fontWeight: "500",
-                }}
+              <span
               >
                 Account Settings
-              </h2>
+              </span>
             </div>
           </Link>
-          <div className="same" style={{ color: "red", fontSize: "32px" }}>
+          <div className="same" style={{ color: "red" }}>
             <i
-              style={{ fontSize: "32px" }}
-              className="fa-solid fa-right-from-bracket"
+              className="fa-solid fa-right-from-bracket log-out-icon"
             ></i>
-            <h2
-              style={{
-                fontSize: "22px",
-                marginLeft: "-6px",
-                fontWeight: "500",
-              }}
+            <span
               onClick={handleLogout}
             >
               Log Out
-            </h2>
+            </span>
           </div>
         </div>
       )}

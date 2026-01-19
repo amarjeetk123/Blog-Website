@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
 
 const postSchema = new mongoose.Schema({
-
     title:{
         type:String,
         // unique:[true , "title should be unique" ] ,
@@ -22,14 +21,8 @@ const postSchema = new mongoose.Schema({
     category:{
         type:Array,  // array means collection of music, life and all the category
         required: false,
-
     }
-
-},
-
-{ timestamps:true }
-
-)
+},{ timestamps:true })
 
 // module.exports = mongoose.model("Post" , postSchema )
 module.exports = mongoose.models['Post'] || mongoose.model('Post', postSchema)

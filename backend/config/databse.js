@@ -53,9 +53,7 @@ exports.createPost = async (req, res) => {
             success: false,
             message: "error in creat post controller",
             m2: error.message,
-
         })
-
     }
 }
 

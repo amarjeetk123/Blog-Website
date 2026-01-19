@@ -5,7 +5,6 @@ import RichTextEditor from "../../pages/write/RichText"
 import axios from "axios"
 import { Context } from "../../context_api/Context"
 import { SERVER_URL } from "../../App"
-
 import parse from "html-react-parser";
 
 const SinglePost = () => {
@@ -67,7 +66,7 @@ const SinglePost = () => {
             setUpdateMode(false)
 
         } catch (error) {
-            // console.log(error)
+            console.log(error,"error in hande update")
             // console.log(error.response)
             alert(error.response.data , "error in hande update")
         }
