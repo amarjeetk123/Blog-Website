@@ -90,7 +90,6 @@ exports.updatePost = async (req, res) => {
                 a: post.username,
                 b: username
             })
-
         }
 
     } catch (error) {
