@@ -58,18 +58,17 @@ const Loginpage = () => {
           <form className="loginFarm" onSubmit={handleSubmit} >
 
             <label>Username</label>
-            <input type="text" placeholder="Enter your username...." onChange={(e) => (
-              steUsername(e.target.value),
+            <input type="text" placeholder="Enter your username...." onChange={(e) => {
+              steUsername(e.target.value)
               setUsernameerror(false)
-            )
-            } />
+            }} />
             {usernameerror && <h4 className="warning1 same3" >Wrong Username</h4>}
             <label>Password</label>
             <input type="password" placeholder="Enter your password...."
-              onChange={(e) => (
-                setPassword(e.target.value),
+              onChange={(e) => {
+                setPassword(e.target.value)
                 setPassworderror(false)
-              )} />
+              }} />
             {/* <span style={{fontWeight:"500" , textAlign:"right" , cursor:"pointer" }} onClick={() => setShowFprgotPassword(true)} > Forgot Password ?</span> */}
             {passworderror && <h4 className="warning2 same3" >Wrong Password</h4>}
 

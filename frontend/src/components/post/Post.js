@@ -6,22 +6,19 @@ import axios from "axios";
 import parse from "html-react-parser";
 
 function Post({ post }) {
-  const publicFolder = `${SERVER_URL}/images/`;
 
-  const [user, setUser] = useState("");
+  const publicFolder = `${SERVER_URL}/images/`;
 
   const getUser = async () => {
     try {
       const payload = {
         username: post.username,
       };
-
       const response = await axios.post(
         `${SERVER_URL}/getuserbyusername/`,
         payload
       );
-
-      setUser(response.data.user);
+      console.log(response.data.user,"response.data.user")
     } catch (error) {
       console.error(error);
     }
