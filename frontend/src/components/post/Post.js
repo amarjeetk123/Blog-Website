@@ -8,6 +8,8 @@ import parse from "html-react-parser";
 function Post({ post }) {
 
   const publicFolder = `${SERVER_URL}/images/`;
+    const [user, setUser] = useState(false);
+
 
   const getUser = async () => {
     try {
@@ -19,6 +21,7 @@ function Post({ post }) {
         payload
       );
       console.log(response.data.user,"response.data.user")
+      setUser(response.data.user)
     } catch (error) {
       console.error(error);
     }
@@ -60,7 +63,7 @@ function Post({ post }) {
 
             <h2 className="postTitle">{post.title}</h2>
 
-            <div className="discription">
+            <div className="discription two-line-heading">
               <span>
                 {parsedDescription?.[0]?.props?.children?.slice(0, 3)}
               </span>

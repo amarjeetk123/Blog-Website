@@ -1,86 +1,160 @@
-import axios from "axios"
-import { useContext, useState } from "react"
-import "./WritePage.css"
-import { Context } from "../../context_api/Context"
-import { SERVER_URL } from "../../App"
-import RichTextEditor from "./RichText"
-// import parse from "html-react-parser";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import "./WritePage.css";
+import { Context } from "../../context_api/Context";
+import { SERVER_URL } from "../../App";
+import RichTextEditor from "./RichText";
 
 const WritePage = () => {
-    console.log("write page")
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
-    const [file, setFile] = useState(null)
-    const { user } = useContext(Context)
 
-    if(!user){
-        window.location.href = "/login";
-    }
+    /* ================= STATE ================= */
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [file, setFile] = useState(null);
 
+    /* Logged-in user from Context */
+    const { user } = useContext(Context);
+
+    /* ================= AUTH GUARD ================= */
+    useEffect(() => {
+        if (!user) {
+            window.location.replace("/login");
+        }
+    }, [user]);
+
+    /* ================= FORM SUBMIT ================= */
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        /* Basic validation */
+        if (!title || !description) {
+            alert("Title and content are required");
+            return;
+        }
+
+        /* Post object (image URL will be added later) */
         const newPost = {
             username: user.user.username,
             title,
             description,
-        }
+        };
+
+        /* ================= IMAGE UPLOAD ================= */
         if (file) {
-            const data = new FormData();
-            // here i have to use a random number so that user can not upload differet images with same file,.... for this we can use current date tiem
-            const filename = Date.now() + file.name
-            data.append("name", filename)
-            data.append("file", file)
-            newPost.photo = filename;
             try {
-                // const res = await axios.post("api/upload", data)
-                await axios.post(`${SERVER_URL}/api/upload`, data)
+                /*
+                 * FormData is required because:
+                 * - Images are binary data
+                 * - Normal JSON cannot send files
+                 */
+                const data = new FormData();
+
+                /*
+                 * "file" key MUST match:
+                 * upload.single("file") in backend
+                 */
+                data.append("file", file);
+
+                /*
+                 * Send image to backend
+                 * Backend uploads it to Cloudinary
+                 * Cloudinary returns a public image URL
+                 */
+                const uploadRes = await axios.post(
+                    `${SERVER_URL}/api/upload`,
+                    data
+                );
+
+                /*
+                 * Save Cloudinary image URL in post
+                 * This is what you store in DB
+                 */
+                newPost.photo = uploadRes.data.imageUrl;
+
             } catch (error) {
-                // console.log(error.message)
-                // console.log("error in first try catch in handleSubmit in writePage.js")
+                console.error("Image upload failed", error);
+                alert("Image upload failed");
+                return;
             }
         }
 
+        /* ================= CREATE POST ================= */
         try {
-            const res = await axios.post(`${SERVER_URL}/post`, newPost)
-            window.location.replace("/post/" + res.data.savePost._id)
-            // console.log(res.data.savePost._id)
-        } catch (error) {
-            // console.log(error)
-        }
-    }
+            const res = await axios.post(
+                `${SERVER_URL}/post`,
+                newPost
+            );
 
+            /* Redirect to newly created post */
+            window.location.replace("/post/" + res.data.savePost._id);
+
+        } catch (error) {
+            console.error("Post creation failed", error);
+        }
+    };
+
+    /* ================= UI ================= */
     return (
-        <div className="write" >
+        <div className="write">
+
+            {/* IMAGE PREVIEW BEFORE UPLOAD */}
             <div className="image-div">
-                {file && <img className="writeImage"
-                    src={URL.createObjectURL(file)}
-                    alt="l"
-                />}
+                {file && (
+                    <img
+                        className="writeImage"
+                        src={URL.createObjectURL(file)}
+                        alt="preview"
+                    />
+                )}
             </div>
-            <form className="writeform"  >
-                <div className="abcd" >
-                    <label htmlFor="fileInput" className="add-cover" >
+
+            {/* FORM */}
+            <form className="writeform" onSubmit={handleSubmit}>
+
+                {/* IMAGE INPUT */}
+                <div className="abcd">
+                    <label htmlFor="fileInput" className="add-cover">
                         <i className="fas fa-plus writeIcon"></i>
                         <h3>Add Cover</h3>
                     </label>
-                    <input type="file" id="fileInput" className="fileinputwe" onChange={(e) => setFile(e.target.files[0])} />
+
+                    {/* 
+                      accept="image/*" 
+                      ensures only images can be selected
+                    */}
+                    <input
+                        type="file"
+                        id="fileInput"
+                        className="fileinputwe"
+                        accept="image/*"
+                        onChange={(e) => setFile(e.target.files[0])}
+                    />
                 </div>
+
+                {/* TITLE & CONTENT */}
                 <div className="writefromGroup">
-                    <input type={"text"} placeholder="Add Title..." className="writeTitle" autoFocus={true}
-                        onChange={(e) => setTitle(e.target.value)} />
-                    {/* <textarea placeholder="Write About Your Story....." className="writeTectArea writeTitle"
-                    onChange={(e) => setDescription(e.target.value)  } ></textarea> */}
+                    <input
+                        type="text"
+                        placeholder="Add Title..."
+                        className="writeTitle"
+                        autoFocus
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+
+                    {/* Rich text editor */}
                     <div className="textEditor">
                         <RichTextEditor setDescription={setDescription} />
-                        {/* <TipTop setDescription={setDescription} /> */}
                     </div>
                 </div>
-                <button className="writebtn" type="submit" onClick={handleSubmit} >
+
+                {/* SUBMIT BUTTON */}
+                <button className="writebtn" type="submit">
                     Publish
                 </button>
+
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default WritePage
+export default WritePage;

@@ -1,7 +1,8 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
+
 .container1 {
     border-bottom: 2px solid var(--line);
     overflow: hidden;
@@ -28,11 +29,14 @@ h2.postTitle {
     color: var(--desc);
     font-style: italic;
 }
+
 .username {
     font-weight: normal;
     color: var(--heading);
 }
-.username , .postdate{
+
+.username,
+.postdate {
     font-size: 20px;
     font-weight: 400;
 }
@@ -41,6 +45,17 @@ h2.postTitle {
     font-size: 21px;
     overflow: hidden;
     color: var(--desc);
+}
+
+.two-line-heading {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em !important;
+    max-height: 3.5em !important;
+    cursor: pointer;
 }
 
 .main-div {

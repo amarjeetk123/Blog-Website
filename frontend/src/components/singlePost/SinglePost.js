@@ -64,7 +64,7 @@ const SinglePost = () => {
     useEffect(() => {
         const getPost = async () => {
             const res = await axios.get(`${SERVER_URL}/getpost/` + path);
-            // console.log(res.data.post)
+            console.log(res.data.post, "post data")
             setPost(res.data.post)
             // for post update
             setTitle(res.data.post.title)
@@ -78,15 +78,21 @@ const SinglePost = () => {
 
             <div className="singlePosetWrapper" >
 
-                <div className="image-div">
+                {/* <div className="image-div">
                     {post.photo ?
-                        <img src={publicFolder + post.photo}
+                        <img src={post.photo}
                             className="singlepageimage"
                             alt="post-image" /> :
                         <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
                             className="singlepageimage"
                             alt="post-image" />
                     }
+                </div> */}
+
+                <div className="image-div">
+                    <img src={post.photo}
+                        className="singlepageimage"
+                        alt="post-image" />
                 </div>
 
                 {updateMode ? <input value={title} className="singlePostTitle-inputmode" autoFocus

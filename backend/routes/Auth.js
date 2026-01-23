@@ -1,55 +1,81 @@
 const express = require("express");
 const router = express.Router();
 
-const {home , register , login, update , deleteuser , getUser , createPost , updatePost ,deletePost, getPost, getAllPost, getUserByUserName } = require("../controller/userController")
-const {createCategory , getAllCategory } = require("../controller/categoryController");
+/* ================= CONTROLLERS ================= */
+const {
+    home,
+    register,
+    login,
+    update,
+    deleteuser,
+    getUser,
+    createPost,
+    updatePost,
+    deletePost,
+    getPost,
+    getAllPost,
+    getUserByUserName
+} = require("../controller/userController");
 
-router.get("/",home)
-router.post("/register",register)
-router.post("/login",login)
+const {
+    createCategory,
+    getAllCategory
+} = require("../controller/categoryController");
 
-router.put("/user/update/:id",update)
-router.delete("/user/delete/:id", deleteuser)
-router.get("/user/:id", getUser)
-router.post("/getuserbyusername", getUserByUserName)
+/* ================= ROUTES ================= */
+router.get("/", home);
+router.post("/register", register);
+router.post("/login", login);
 
-router.post("/post",createPost)
-router.put("/post/:id",updatePost)
-router.delete("/post/delete/:id",deletePost)
-router.get("/getpost/:id",getPost)
-router.get("/getallpost",getAllPost)
+router.put("/user/update/:id", update);
+router.delete("/user/delete/:id", deleteuser);
+router.get("/user/:id", getUser);
+router.post("/getuserbyusername", getUserByUserName);
 
-router.post("/category",createCategory)
-router.get("/getallcategory",getAllCategory)
+router.post("/post", createPost);
+router.put("/post/:id", updatePost);
+router.delete("/post/delete/:id", deletePost);
+router.get("/getpost/:id", getPost);
+router.get("/getallpost", getAllPost);
 
+router.post("/category", createCategory);
+router.get("/getallcategory", getAllCategory);
 
-const multer = require("multer") // for string photos from user
-const storage = multer.diskStorage({
-    destination:(req,file,cb) => {   //  cb- call back
-        cb(null , "images")   // images is our destination folder where our images will be stored
+/* ================= CLOUDINARY UPLOAD ================= */
+const multer = require("multer");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../config/cloudinary");
+
+/* Multer + Cloudinary Storage */
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: "blog_images",
+        allowed_formats: ["jpg", "jpeg", "png", "webp"],
+        public_id: (req, file) => {
+            return Date.now() + "-" + file.originalname;
+        },
     },
-    filename:(req,file,cb) =>{
-      //  cb(null,"hello.jpg") for postman  // this file name will provided from frontend
-      cb(null,req.body.name)
-    }
-})
+});
 
-const upload = multer({storage:storage});
-router.post("/api/upload" , upload.single("file") , (req , res) => {    // "file" is the key name
+const upload = multer({ storage });
+
+/* Upload API */
+router.post("/api/upload", upload.single("file"), (req, res) => {
     try {
-      
         res.status(201).json({
-            succsess : true,
-            message: "file has benn uploaded",
-        })
+            success: true,
+            message: "File uploaded successfully",
+            imageUrl: req.file.path,       // 🔥 Cloudinary public URL
+            publicId: req.file.filename,   // useful for delete
+        });
     } catch (error) {
-        console.log(error.message)
-        res.status(201).json({
-            succsess : false,
-            message: "file has not benn uploaded",
-        })
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "File upload failed",
+        });
     }
-} )
-
+});
 
 module.exports = router;

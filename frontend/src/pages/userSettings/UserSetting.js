@@ -113,9 +113,6 @@ const UserSetting = () => {
                     <label>Email</label>
                     <input type={"email"} placeholder={user.user.email} defaultValue={user.user.email} className="setingUseremailinput " onChange={(e) => setEmail(e.target.value)} />
 
-                    {/* <label>Password</label>
-                    <input  className="setingUsernameinput" placeholder={user.user.password} onChange={(e) => setPassword(e.target.value)} /> */}
-
                     <button className="settingUpdatebtn " type="submit"> Update</button>
 
                     {
