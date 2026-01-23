@@ -8,7 +8,7 @@ import parse from "html-react-parser";
 function Post({ post }) {
 
   const publicFolder = `${SERVER_URL}/images/`;
-    const [user, setUser] = useState(false);
+  const [user, setUser] = useState(false);
 
 
   const getUser = async () => {
@@ -20,7 +20,7 @@ function Post({ post }) {
         `${SERVER_URL}/getuserbyusername/`,
         payload
       );
-      console.log(response.data.user,"response.data.user")
+      console.log(response.data.user, "response.data.user")
       setUser(response.data.user)
     } catch (error) {
       console.error(error);
@@ -65,13 +65,13 @@ function Post({ post }) {
 
             <div className="discription two-line-heading">
               <span>
-                {parsedDescription?.[0]?.props?.children?.slice(0, 3)}
+                {parsedDescription}
               </span>
             </div>
           </div>
 
           <div className="right">
-            <img
+            {/* <img
               className="postImage"
               src={
                 post.photo
@@ -79,7 +79,9 @@ function Post({ post }) {
                   : "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
               }
               alt={post.title}
-            />
+            /> */}
+
+            <img className="postImage" src={post.photo} alt={post.title} />
           </div>
         </Link>
       </div>
