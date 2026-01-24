@@ -2,44 +2,70 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const multer = require("multer");
 
 const app = express();
 
-// Database
+/* ================= DATABASE ================= */
 const connectToDB = require("./config/databse");
 connectToDB();
 
-// Middleware
+/* ================= MIDDLEWARE ================= */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+/* ================= CORS CONFIG ================= */
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://blog-website-git-master-amarjeetk123s-projects.vercel.app"
+  "https://blog-website-git-master-amarjeetk123s-projects.vercel.app",
+  "https://writeme-blog.vercel.app"
 ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like Postman)
-    if (!origin) return callback(null, true);
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow Postman / server-to-server
+      if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+  })
+);
 
+// Preflight
 app.options("*", cors());
 
-// Routes
+/* ================= ROUTES ================= */
 const userRoutes = require("./routes/Auth");
 app.use("/", userRoutes);
 
-// Static images
+/* ================= STATIC FILES (optional) ================= */
 app.use("/images", express.static(path.join(__dirname, "images")));
 
+/* ================= MULTER ERROR HANDLER (CRITICAL) ================= */
+app.use((err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    return res.status(400).json({
+      success: false,
+      message: err.message,
+    });
+  }
+
+  if (err) {
+    return res.status(500).json({
+      success: false,
+      message: err.message || "Internal Server Error",
+    });
+  }
+
+  next();
+});
+
+/* ================= EXPORT ================= */
 module.exports = app;
