@@ -14,61 +14,44 @@ connectToDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* ================= CORS CONFIG ================= */
-const allowedOrigins = [
-  "http://localhost:3000",
-];
-
+/* ================= CORS ================= */
 app.use(
   cors({
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
 
-      // Allow localhost
-      if (allowedOrigins.includes(origin)) {
+      if (origin === "http://localhost:3000") {
         return callback(null, true);
       }
 
-      // 🔥 Allow ANY vercel.app subdomain
       if (origin.endsWith(".vercel.app")) {
         return callback(null, true);
       }
 
-      return callback(new Error("Not allowed by CORS"));
+      return callback(null, false);
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 
-// Preflight
-app.options("*", cors());
+app.options("*", cors({ origin: true, credentials: true }));
 
 /* ================= ROUTES ================= */
 const userRoutes = require("./routes/Auth");
 app.use("/", userRoutes);
 
-/* ================= STATIC FILES (optional) ================= */
-app.use("/images", express.static(path.join(__dirname, "images")));
-
-/* ================= MULTER ERROR HANDLER (CRITICAL) ================= */
+/* ================= ERROR HANDLER ================= */
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
-    return res.status(400).json({
-      success: false,
-      message: err.message,
-    });
+    return res.status(400).json({ success: false, message: err.message });
   }
 
   if (err) {
-    return res.status(500).json({
-      success: false,
-      message: err.message || "Internal Server Error",
-    });
+    return res.status(500).json({ success: false, message: err.message });
   }
 
   next();
 });
 
-/* ================= EXPORT ================= */
 module.exports = app;
