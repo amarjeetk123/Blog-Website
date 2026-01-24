@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs")
 const validator = require("email-validator");
-const Post = require("../models/post");    // i am using this is delete controller....
+const Post = require("../models/Post");    // i am using this is delete controller....
 
 exports.home = (req, res) => {
     res.send("Amarjett Kumar Aryan");

@@ -19,10 +19,7 @@ const connectToDB = () =>{
 module.exports = connectToDB;
 
 
-
-
-
-const Post = require("../models/post");
+const Post = require("../models/Post");
 
 // function for creating post 
 exports.createPost = async (req, res) => {
