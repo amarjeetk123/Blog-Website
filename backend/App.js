@@ -17,21 +17,24 @@ app.use(express.urlencoded({ extended: true }));
 /* ================= CORS CONFIG ================= */
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://blog-website-git-master-amarjeetk123s-projects.vercel.app",
-  "https://writeme-blog.vercel.app"
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow Postman / server-to-server
       if (!origin) return callback(null, true);
 
+      // Allow localhost
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
-      } else {
-        return callback(new Error("Not allowed by CORS"));
       }
+
+      // 🔥 Allow ANY vercel.app subdomain
+      if (origin.endsWith(".vercel.app")) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
     },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
