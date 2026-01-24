@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context_api/Context";
 import "./Navbar.css";
 import { SERVER_URL } from "../../App";
+import { useCurrentURL } from "../../services/utils.service";
 
 export default function Navbar({ removebox, setRemoveBox, setSearchInput, searchInput }) {
   const { user, dispatch } = useContext(Context);
   const publicFolder = `${SERVER_URL}/images/`;
+  const currentUrl = useCurrentURL();
   // console.log(user);
 
   const [showuserbox, setShowUserbox] = useState(false);
@@ -18,7 +20,6 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
       setShowUserbox(false)
     }
   }
-
 
   const handleHide = () => {
     if (removebox) {
@@ -33,76 +34,85 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
     setSearchInput("")
   }
 
+  console.log(currentUrl, "getCurrentURL") // currentUrl.fullUrl
+
   return (
     <div className="container" onClick={handleHide}>
       <div className="main">
-        <div className="left1" onClick={cleanInputBox} >
-          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+        <div className="left" onClick={cleanInputBox} >
+        <div>
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <h1>WriteME</h1>
           </Link>
         </div>
 
-        <div>
-          <input className="search-box" placeholder="Search for title, people, articals...."
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                // console.log(searchInput)
-                // handleSearch(e)
-              };
-            }}
-          />
+          {currentUrl.fullUrl == "/" &&
+            <div>
+              <input className="search-box" placeholder="Search for title, people, articals...."
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    // console.log(searchInput)
+                    // handleSearch(e)
+                  };
+                }}
+              />
+            </div>
+          }
         </div>
 
-        <div className="center">
-          <ul className="navbar-list">
-            <Link
-              to="/write"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <li title="Blog Writing"> Write </li>
-            </Link>
+        <div className="right">
 
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSc8AfiY3YAj34Uy_GZjB2Ke7iLKsZajZ9qwH5V38EbIdaxlug/viewform"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <li title="Feedback Form">Feedback</li>
-            </a>
-          </ul>
-        </div>
-        <div className="right" onClick={() => setShowUserbox(!showuserbox)}>
-          <Link>
-            {user ? (
-              user.user.profilepicture ? (
-                <img
-                  className="image"
-                  src={publicFolder + user.user.profilepicture}
-                  alt="user"
-                  title="Profile"
-                />
+            <ul className="navbar-list">
+              <Link
+                to="/write"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <li title="Blog Writing"> Write </li>
+              </Link>
+
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSc8AfiY3YAj34Uy_GZjB2Ke7iLKsZajZ9qwH5V38EbIdaxlug/viewform"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <li title="Feedback Form">Feedback</li>
+              </a>
+            </ul>
+
+          <div onClick={() => setShowUserbox(!showuserbox)}>
+            <Link>
+              {user ? (
+                user.user.profilepicture ? (
+                  <img
+                    className="image"
+                    src={publicFolder + user.user.profilepicture}
+                    alt="user"
+                    title="Profile"
+                  />
+                ) : (
+                  <i className="fa-solid fa-user user-icon"></i>
+                )
               ) : (
-                <i className="fa-solid fa-user user-icon"></i>
-              )
-            ) : (
-              <ul style={{ display: "flex", gap: "30px" }}>
-                <Link to="/login" className="link2">
-                  <li style={{ listStyle: "none", fontSize: "23px" }}>
-                    {" "}
-                    Login
-                  </li>
-                </Link>
-                <Link to="/register" className="link2">
-                  <li style={{ listStyle: "none", fontSize: "23px" }}>
-                    {" "}
-                    Register{" "}
-                  </li>
-                </Link>
-              </ul>
-            )}
-          </Link>
+                <ul style={{ display: "flex", gap: "30px" }}>
+                  <Link to="/login" className="link2">
+                    <li style={{ listStyle: "none", fontSize: "23px" }}>
+                      {" "}
+                      Login
+                    </li>
+                  </Link>
+                  <Link to="/register" className="link2">
+                    <li style={{ listStyle: "none", fontSize: "23px" }}>
+                      {" "}
+                      Register{" "}
+                    </li>
+                  </Link>
+                </ul>
+              )}
+            </Link>
+          </div>
         </div>
+
       </div>
 
       {user && showuserbox && (

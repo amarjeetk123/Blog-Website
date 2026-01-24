@@ -64,7 +64,7 @@ const SinglePost = () => {
     useEffect(() => {
         const getPost = async () => {
             const res = await axios.get(`${SERVER_URL}/getpost/` + path);
-            console.log(res.data.post, "post data")
+            // console.log(res.data.post, "post data") need to check this responec
             setPost(res.data.post)
             // for post update
             setTitle(res.data.post.title)

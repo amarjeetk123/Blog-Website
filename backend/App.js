@@ -1,24 +1,31 @@
-
 require("dotenv").config();
-const express = require("express")
-const app = express()
-const cors = require("cors")
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
 
-const path = require("path")
+const app = express();
 
-// Databse Connection
-const connectToDB = require("./config/databse")
+// Database
+const connectToDB = require("./config/databse");
 connectToDB();
 
-// middleware
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
 
-const userRoutes = require("./routes/Auth")
-app.use("/" , userRoutes)
+app.use(cors({
+  origin: "https://blog-website-git-master-amarjeetk123s-projects.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
-app.use("/images" , express.static(path.join(__dirname , "/images")) )
+app.options("*", cors());
 
+// Routes
+const userRoutes = require("./routes/Auth");
+app.use("/", userRoutes);
 
-module.exports = app
+// Static images
+app.use("/images", express.static(path.join(__dirname, "images")));
+
+module.exports = app;
