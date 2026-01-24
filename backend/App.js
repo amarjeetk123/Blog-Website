@@ -13,8 +13,22 @@ connectToDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://blog-website-git-master-amarjeetk123s-projects.vercel.app"
+];
+
 app.use(cors({
-  origin: "https://blog-website-git-master-amarjeetk123s-projects.vercel.app",
+  origin: function (origin, callback) {
+    // allow requests with no origin (like Postman)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
