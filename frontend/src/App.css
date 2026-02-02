@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Sevillana&family=Teko:wght@300;400;500;600&display=swap');
 
-:root{
-  --first-color:#e9ebf1;
-  --hover-color:#E2E8F0;
-  --border-color: #e7e9f2 ;
+:root {
+  --first-color: #e9ebf1;
+  --hover-color: #E2E8F0;
+  --border-color: #e7e9f2;
   --jd-color-border: #de0a0a;
   --blue: #5846df;
   --heading: #0a122b;
@@ -14,39 +14,50 @@
   --bggray: #fafafa;
   --line: #e7e9f2;
 }
-p{
+
+*{
+  text-decoration: none;
+}
+
+p {
   font-size: 20px;
   text-align: justify !important;
 }
-ul li{
+
+ul li {
   font-size: 20px;
 }
 
-.jodit-status-bar{
+.jodit-status-bar {
   visibility: hidden;
 }
-td{
+
+td {
   border: 1px solid black;
 }
-body{
-  background-color: var(--first-color) ;
+
+body {
+  background-color: var(--first-color);
 }
 
-.loading-animation{
+.loading-animation {
   width: 100%;
   height: 100vh;
   display: grid;
   place-items: center;
- margin: auto;
+  margin: auto;
 }
 
-.logi-btn{
+.logi-btn {
   background-color: #d05c94;
 }
-.register-btn{
+
+.register-btn {
   background-color: #008080;
 }
-.register-btn , .logi-btn{
+
+.register-btn,
+.logi-btn {
   position: absolute;
   right: 15px;
   top: 15px;

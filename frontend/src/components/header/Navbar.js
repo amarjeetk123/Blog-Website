@@ -40,13 +40,13 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
     <div className="container" onClick={handleHide}>
       <div className="main">
         <div className="left" onClick={cleanInputBox} >
-        <div>
+          <div>
             <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            <h1>WriteME</h1>
-          </Link>
-        </div>
+              <h1>WriteME</h1>
+            </Link>
+          </div>
 
-          {currentUrl.fullUrl == "/" &&
+          {currentUrl.fullUrl === "/" &&
             <div>
               <input className="search-box" placeholder="Search for title, people, articals...."
                 value={searchInput}
@@ -64,21 +64,22 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
 
         <div className="right">
 
-            <ul className="navbar-list">
-              <Link
-                to="/write"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <li title="Blog Writing"> Write </li>
+          <ul className="navbar-list">
+            <li title="Blog Writing">
+              <Link to="/write" style={{ textDecoration: "none", color: "inherit" }} >
+                Write
               </Link>
+            </li>
 
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSc8AfiY3YAj34Uy_GZjB2Ke7iLKsZajZ9qwH5V38EbIdaxlug/viewform"
+            <li title="Feedback Form">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSc8AfiY3YAj34Uy_GZjB2Ke7iLKsZajZ9qwH5V38EbIdaxlug/viewform"
                 style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <li title="Feedback Form">Feedback</li>
+                target="_blank" rel="noopener noreferrer" >
+                Feedback
               </a>
-            </ul>
+            </li>
+          </ul>
+
 
           <div onClick={() => setShowUserbox(!showuserbox)}>
             <Link>
@@ -94,19 +95,14 @@ export default function Navbar({ removebox, setRemoveBox, setSearchInput, search
                   <i className="fa-solid fa-user user-icon"></i>
                 )
               ) : (
-                <ul style={{ display: "flex", gap: "30px" }}>
-                  <Link to="/login" className="link2">
-                    <li style={{ listStyle: "none", fontSize: "23px" }}>
-                      {" "}
-                      Login
-                    </li>
-                  </Link>
-                  <Link to="/register" className="link2">
-                    <li style={{ listStyle: "none", fontSize: "23px" }}>
-                      {" "}
-                      Register{" "}
-                    </li>
-                  </Link>
+                <ul className="navbar-list">
+                  <li style={{ listStyle: "none", fontSize: "23px" }}>
+                    <Link to="/login" className="link2">Login</Link>
+                  </li>
+
+                  <li style={{ listStyle: "none", fontSize: "23px" }}>
+                    <Link to="/register" className="link2">Register</Link>
+                  </li>
                 </ul>
               )}
             </Link>

@@ -36,8 +36,8 @@ exports.register = async (req, res) => {
         }
 
         // do email validation
-        const a = validator.validate(newUser.email);
-        if (a == false) {
+        const validatedEmail = validator.validate(newUser.email);
+        if (validatedEmail == false) {
             return res.status(401).send("Email is not in correct format")
         }
 
@@ -122,7 +122,6 @@ exports.login = async (req, res) => {
         })
     }
 }
-
 
 // Function for update user information
 exports.update = async (req, res) => {

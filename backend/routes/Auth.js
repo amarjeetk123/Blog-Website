@@ -2,25 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 /* ================= CONTROLLERS ================= */
-const {
-    home,
-    register,
-    login,
-    update,
-    deleteuser,
-    getUser,
-    createPost,
-    updatePost,
-    deletePost,
-    getPost,
-    getAllPost,
-    getUserByUserName
-} = require("../controller/userController");
+const { home, register, login, update, deleteuser, getUser, createPost, updatePost, deletePost, getPost, getAllPost, getUserByUserName } = require("../controller/userController");
 
-const {
-    createCategory,
-    getAllCategory
-} = require("../controller/categoryController");
+const { createCategory, getAllCategory } = require("../controller/categoryController");
 
 /* ================= ROUTES ================= */
 router.get("/", home);
